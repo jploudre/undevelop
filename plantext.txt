@@ -1,0 +1,843 @@
+Urine Pregnancy Test	uhcg
+Urinalysis	ua
+Rapid Strep	strep
+BMP	bmp
+BNP	bnp
+CMP	cmp
+CBC	cbc
+CBC	cbcw
+CBC without Diff	cbcwo
+Strep Culture	strepcx
+Urine Culture	ucx
+Fungal Culture (skin/hair)	fungalcx
+Pertussis Swab	pertcx
+Stool Culture	stoolcx
+Vaginal Culture	vagcx
+GBS Vaginal Culture	gbscx
+Wound Culture	woundcx
+ESR	esr
+Glucose	gluc
+Quant. HCG	qhcg
+Hepatic Function Panel	lft
+Liver Function Panel	lft
+A1C	a1c
+Lipid Panel	lipid
+Direct LDL	ldl
+Microalbumin/Cr Ratio	microalb
+INR	inr
+Vitamin D	vitd
+D-Dimer	ddimer
+Amylase	amylase
+Pap Smear	pap
+HPV (High Risk)	hpv
+PKU	pku
+Quad Screen	quad
+PSA (Total)	psa
+TSH	tsh
+Free T3	freet3
+Free T4	freet4
+Chest XR	cxr
+L-spine XR	lspine
+C-spine XR	cspine
+Fetal Survey	obus
+AAA Screening	aaa
+EKG	ekg
+ECG	ecg
+PFT	pft
+Cardiology	cardt
+Dermatology	dermt
+Endocrinology	endot
+Otolaryngology	entt
+Gastroenterology	git
+General Surgery	surgt
+Hematology	hemet
+Nephrology	nephrt
+Neurology	neurot
+Neuro Surgery	neurosurg
+OB/Gyn	obgyn
+Ophthalmology	ophthalt
+Orthopedics	orthot
+Podiatry	podt
+Psychiatry	psycht
+Pulmonology	pulmt
+Rheumatology	rheumt
+Sleep	sleept
+Urology	urot
+Audiology	audiot
+Chiropracter	chirot
+Diabetic Educator	diabed
+Home Health	homehealth
+Hospice	hospice
+Massage	massage
+Massage	massaget
+Physical Therapy	phtt
+Physical Therapy	pht
+Patient Refused	refusal
+Patient Refused	refused
+OB visit until 28w	ob1
+OB visit 28-35w	ob2
+OB visit 36+w	ob3
+OB Postpartum Visit	obppv
+Time > 10min; 99212	212
+Time > 15min; 99213	213
+Time > 25min; 99214	214
+Time > 40min; 99215	215
+New Medication	med
+No Change in Meds	ncmed
+Increase Medication Dose	incrmed
+Decrease Medication Dose	decrmed
+Discontinue Medication	dcmed
+Hold Medication	holdmed
+Resume Medication	resumemed
+Electronic Prescription	erx
+Discussed medication	dmed
+Natural History	dnh
+Differential Diagnosis	ddx
+OTC Meds	dotc
+Reassuring Exam	drexam
+Warning Signs (Red Flags)	drf
+URI Measures	duri
+Treatment Options	dtxo
+Another Topic	dsn
+Follow up at future visit	fuissue
+As Needed	fprn
+Call 1 day	c1d
+Call 2 days	c2d
+Call 3 days	c3d
+Call 4 days	c4d
+Call 5 days	c5d
+Call 6 days	c6d
+Call 7 days	c7d
+Call 8 days	c8d
+Call 9 days	c9d
+Call 10 days	c10d
+Call 11 days	c11d
+Call 12 days	c12d
+Call 13 days	c13d
+Call 14 days	c14d
+Call 1 week	c1w
+Call 2 weeks	c2w
+Call 3 weeks	c3w
+Call 4 weeks	c4w
+Call 5 weeks	c5w
+Call 6 weeks	c6w
+Call 7 weeks	c7w
+Call 8 weeks	c8w
+Call 9 weeks	c9w
+Call 10 weeks	c10w
+Call 11 weeks	c11w
+Call 12 weeks	c12w
+Call 1 month	c1m
+Call 2 months	c2m
+Call 3 months	c3m
+Call 4 months	c4m
+Call 5 months	c5m
+Call 6 months	c6m
+Call 7 months	c7m
+Call 8 months	c8m
+Call 9 months	c9m
+Call 10 months	c10m
+Call 11 months	c11m
+Call 12 months	c12m
+Appointment 1 day	f1d
+Appointment 2 days	f2d
+Appointment 3 days	f3d
+Appointment 4 days	f4d
+Appointment 5 days	f5d
+Appointment 6 days	f6d
+Appointment 7 days	f7d
+Appointment 8 days	f8d
+Appointment 9 days	f9d
+Appointment 10 days	f10d
+Appointment 11 days	f11d
+Appointment 12 days	f12d
+Appointment 13 days	f13d
+Appointment 14 days	f14d
+Appointment 1 week	f1w
+Appointment 2 weeks	f2w
+Appointment 3 weeks	f3w
+Appointment 4 weeks	f4w
+Appointment 5 weeks	f5w
+Appointment 6 weeks	f6w
+Appointment 7 weeks	f7w
+Appointment 8 weeks	f8w
+Appointment 9 weeks	f9w
+Appointment 10 weeks	f10w
+Appointment 11 weeks	f11w
+Appointment 12 weeks	f12w
+Appointment 1 month	f1m
+Appointment 2 months	f2m
+Appointment 3 months	f3m
+Appointment 4 months	f4m
+Appointment 5 months	f5m
+Appointment 6 months	f6m
+Appointment 7 months	f7m
+Appointment 8 months	f8m
+Appointment 9 months	f9m
+Appointment 10 months	f10m
+Appointment 11 months	f11m
+Appointment 12 months	f12m
+Appointment 1 year	f1y
+Depending on Lab/Test Results	fpend
+Schedule CPE	fcpe
+Percocet
+Vicodin
+Methadone
+Simvastatin
+Clonazepam
+Lisinopril
+Meloxicam
+Flonase
+Lisinopril/Hydrochlorothiazide
+Atenolol
+Metformin
+Fluoxetine
+Hydrocodone/Acetaminophen
+Hydrochlorothiazide (HCTZ)
+Amoxicillin
+Lorazepam
+Omeprazole
+Zolpidem
+Adderall XR
+Levothyroxine
+Zoloft
+Lovastatin
+Citalopram
+Albuterol HFA
+Ambien
+Codeine/Guaifenesin
+Prednisone
+Celexa
+Metoprolol
+Triamcinolone
+Azithromycin
+Atenolol/Chlorthalidone
+Trazodone
+Zofran
+MS Contin
+Cyclobenzaprine HCl
+Bactrim DS
+Amitriptyline HCl
+Viagra
+Cialis
+Synthroid
+Potassium Chloride
+Tylenol w/Codeine #3
+Alprazolam
+Dilaudid
+Lipitor
+Glyburide
+Adderall
+Keflex
+Flexeril
+Ciprofloxacin HCl
+Gabapentin
+Sertraline HCl
+Aerochamber
+Venlafaxine HCl
+Effexor XR
+Flomax
+Oxycontin
+Wellbutrin XL
+Terbinafine HCl
+Test strips
+Glipizide
+Cipro
+Amlodipine
+Prilosec
+Acyclovir
+Flovent HFA
+Furosemide
+Imitrex
+Cozaar
+Pravastatin
+Allopurinol
+Doxazosin Mesylate
+Prozac
+Clobetasol Propionate
+Xanax
+Mirapex
+Coumadin
+Vitamin D2
+Nystatin
+Albuterol
+Lantus
+Plavix
+Tylenol w/Codeine #4
+Protonix
+Chantix
+Levoxyl
+Morphine Sulfate
+Ritalin SR
+Paxil
+Endocet
+Tramadol
+Dicyclomine HCl
+Metronidazole
+Physical Therapy
+Phenergan
+Effexor
+Fluoritab
+Premarin
+Acetaminophen/Codeine
+Lasix
+Oxycodone/Acetaminophen
+Ranitidine
+Tessalon Perles
+Propranolol HCl
+Advair Diskus
+Losartan
+Nortriptyline
+Spironolactone
+Benzamycin
+Fioricet
+QVAR
+Bupropion ER (SR)
+Maxzide
+Wellbutrin SR
+Augmentin
+Benazepril HCl
+Crestor
+Diltiazem HCl
+Estradiol
+Naproxen
+Fluticasone Propionate
+Indomethacin
+Oxycodone HCl
+Permethrin
+Doxepin HCl
+Levitra
+Losartan/Hydrochlorothiazide
+Pantoprazole
+Ritalin LA
+Ativan
+Erythromycin Ophthalmic
+TobraDex
+Diflucan
+Minocycline HCl
+Ritalin
+Triamterene/Hydrochlorothiazide
+Zocor
+Mirtazapine
+Seroquel
+Toprol XL
+Venlafaxine ER
+BuSpar
+Carvedilol
+Clotrimazole
+Ortho Novum 7/7/7 28 day
+Paroxetine HCl
+Valium
+Fosamax
+Glucometer
+ProAir HFA
+Requip
+Bupropion HCl
+EpiPen Auto-Injector
+Diazepam
+Enalapril Maleate
+Geodon
+Metadate ER
+Methylin
+Reglan
+Syringes
+Celebrex
+Chlorthalidone
+Gemfibrozil
+Ibuprofen
+Benicar
+Clindamycin HCl
+Clonidine HCl
+Estrace
+Glucophage
+Lancet
+Lidex
+Prenatal Multivitamin
+Temazepam
+Warfarin Sodium
+Maxalt
+Micardis
+Nexium
+Tetracycline HCl
+Tri Vit w/Fluoride
+Atorvastatin Calcium
+Dilantin Kapseals
+NuvaRing
+Oxybutynin Chloride
+Prilosec OTC
+Ramipril
+Vosol HC
+Azelastine HCl
+Cymbalta
+Diclofenac Sodium
+Ferrous Sulfate
+Humalog
+Isosorbide Mononitrate
+Klonopin
+Levothroid
+Promethazine HCl
+Scopolamine
+Valtrex
+Zovirax
+Bactroban
+Benicar HCT
+Colchicine
+Micronor
+Strattera
+Ventolin HFA
+Combivent
+Methylphenidate HCl
+Nasacort AQ
+Neurontin
+Pyridium
+Vivelle-Dot
+Yasmin
+Allegra
+Auralgan
+Cholestyramine
+Fenofibrate
+Hydrocortisone
+Levaquin
+MetroGel
+NovoLog Mix 70/30
+Phenytoin Sodium, Extended
+Singulair
+Sodium Fluoride
+DuoNeb
+Felodipine
+Lithium Carbonate
+Lotensin
+Miralax
+Nadolol
+Propoxyphene Napsylate/Acetaminophen
+Compazine
+Docusate Sodium
+Drysol
+Insulin Syringes
+Ketoconazole
+Lamisil
+Prinivil
+Spiriva HandiHaler
+Sumatriptan
+Testosterone Cypionate
+Tri-Sprintec 28
+Verapamil HCl
+Voltaren
+Acetaminophen
+Cortisporin
+Diovan
+fluoride
+Lidoderm
+Lonox
+Massage Therapy
+Patanol
+Pravachol
+Prevacid
+Prinzide
+Relpax
+Terazosin
+Triazolam
+Tylox
+Actos
+Asmanex Twisthaler
+Cipro HC
+Clarithromycin
+Cytomel
+Doxycycline
+Flagyl
+Lexapro
+Loratadine
+Macrobid
+Mebendazole
+Nitrofurantoin
+Ortho Novum 1/35  28 day
+Oxazepam
+Tramadol ER
+Zaditor
+Aricept
+Ascensia CONTOUR Test Strips
+Aspirin (ASA)
+Ciprodex
+Concerta
+Lomotil
+Rosuvastatin
+Soma
+Amoxil
+Apri 28
+Avodart
+Benazepril/Hydrochlorothiazide
+Budeprion SR
+Colace
+Differin
+Glucose Reagent Blood Test Strips
+Maxalt MLT
+Niaspan
+Norvasc
+Plan B
+Tizanidine HCl
+Trimethoprim/Sulfamethoxazole
+TriNessa 28
+Valacyclovir
+Vitamin B12
+Zantac
+Zithromax
+Ambien CR
+Astelin
+Digoxin
+Diltia XT
+Ditropan XL
+Finasteride
+Fluocinonide
+Lactulose
+Loestrin  Fe 1.5/30  28 day
+Lortab
+Metoprolol ER
+Mevacor
+Nasonex
+NovoLog
+Ortho Tri-Cyclen  28
+Pletal
+Pramipexole
+Risperidone
+Ropinirole HCl
+Rythmol
+Serax
+Serevent Diskus
+Tamsulosin HCl
+Vistaril
+Vitamin D3
+Welchol
+Yaz
+Aerochamber with Mask (small mask)
+Amlodipine/Benazepril
+Anusol HC
+Cardizem CD
+Chiropactic Treatments
+Ciprofloxacin/Dexamethasone
+Coreg CR
+glucose test strips
+Glyburide/Metformin
+Hydromorphone HCl
+Insulin, Regular (Human)
+Lanoxin
+Lantus SoloSTAR
+Lidocaine HCl
+Low-Ogestrel 28
+Midrin
+Nicoderm CQ
+Nitroglycerin
+Ondansetron HCl
+Opana ER
+Phentermine HCl
+Proctofoam-HC
+Provera
+Restoril
+Septra DS
+Sprintec
+Tretinoin
+Zomig
+Zyrtec
+Acetasol HC
+AcipHex
+Activella
+Alendronate Sodium
+Allegra-D 12 Hour
+Amphetamine Aspartate & Sulfate/Dextroamphetamine Saccharate & Sulfate
+Anusol HC 2.5
+Bentyl
+BenzaClin
+Calan SR
+Calcium Carbonate
+Cefuroxime Axetil
+Clobex
+Darvocet-N 100
+Delestrogen
+Depo Testosterone
+Elocon
+Estropipate
+Etodolac
+Famciclovir
+Famvir
+Fexofenadine HCl
+Glucovance
+Insulin Glargine (rDNA)
+Intuniv
+Keppra XR
+Klor-Con M10
+Levsin
+Loperamide
+Malarone
+Methocarbamol
+Mobic
+Monistat 1 Combination Pack
+Multivitamin/Mineral Supplement
+Naprosyn
+Niacin (Nicotinic Acid)
+Novolin N
+Ortho Evra
+Prednisolone
+Prometrium
+Slow-Mag
+Spacer Device
+Symbicort
+Testosterone
+Vicodin ES
+Voltaren XR
+Aldactazide
+Aldactone
+Aviane 28
+Baclofen
+Betamethasone Diproprionate
+Bethanechol Chloride
+Calcium Carbonate/Vitamin D
+Ceftin
+Cephalexin
+Claritin
+Clindamycin Phosphate
+Cyclocort
+Depakote
+Dextromethorphan HBr
+Dicloxacillin Sodium
+Erythromycin Topical
+Estring
+Fluconazole
+Flunisolide
+Fluocinolone Acetonide
+Fosamax Plus D
+Hydralazine HCl
+Hydroxyzine HCl
+Hytrin
+Imdur
+Ketotifen
+Labetalol HCl
+Lamictal
+Lantus OptiClik
+Loestrin 1.5/30  21 day
+Mirena
+Nicotine
+Nizatidine
+Nizoral
+Novolog Flexpen
+Ortho Cyclen  28
+Ortho Tri-Cyclen Lo 28
+Plendil
+Podofilox
+Poly-Vi-Flor
+Prevpac
+Pulmicort Respules
+Raloxifene
+Remeron
+Robaxin
+Seasonale
+Selegiline HCl
+Senna
+Septra
+Slo-Niacin
+Tamiflu
+Vicoprofen
+Vimpat
+Zanaflex
+Zithromax Z-Pak
+Advicor
+Aggrenox
+Amiodarone HCl
+AndroGel 2.5G
+Anusol
+Arimidex
+Armour Thyroid
+Atrovent HFA
+Augmentin ES-600
+Bactrim Pediatric
+Bactroban Nasal
+Beconase AQ
+Betamethasone Valerate
+Bisoprolol/Hydrochlorthiazide
+Cetirizine HCl
+chiropracter
+Ciprofloxacin/Hydrocortisone
+Codeine Sulfate
+Demerol HCl
+Dexamethasone
+Dexedrine
+Dextroamphetamine
+Ditropan
+Dovonex
+Dulcolax
+Duragesic
+Elidel
+Erythromycin/Benzoyl Peroxide
+Etanercept
+Ethinyl Estradiol /Ethynodiol Diacetate
+Fentanyl
+Ferrous Gluconate
+Folic Acid
+Glucagon Emergency
+Glycolax
+Halcion
+Humulin 70/30
+Humulin R
+Imodium A-D
+Indocin
+Insulin, Isophane Suspension (NPH, Human)
+Ivermectin
+Levofloxacin
+Lodine
+Loestrin  Fe 1/20  28 day
+Loratadine/Pseudoephedrine
+Lumigan
+Lybrel
+Macrodantin
+Medrol
+Medroxyprogesterone Acetate
+Metadate CD
+Metoclopramide HCl
+Metoprolol Succinate
+Micatin
+Miconazole Nitrate
+Mircette
+Monopril
+Nabumetone
+Nitrostat
+Novofine needle
+Prempro
+Proctosol-HC
+Promethazine with Codeine
+Provigil
+Pseudoephedrine HCl
+Quinapril
+Retin-A
+Robitussin A-C
+Sanctura XR
+Selenium Sulfide
+Sulfasalazine
+Tenoretic 50
+Tioconazole
+Torsemide
+Tussionex
+Ultram
+Vancomycin HCl
+Veramyst
+Vicodin HP
+Vitamin C
+Vitamin K
+Vytorin
+Zonisamide
+Aldara
+AndroGel 5.0G
+AndroGel Pump
+Arthrotec 50
+Atacand
+Avandia
+Avar Green
+Axert
+Azathioprine
+Azelaic Acid
+Biaxin
+Bisacodyl
+Boniva
+Carbamazepine
+Catapres-TTS
+Cefadroxil
+Cefixime
+Chloroquine Phosphate
+Cilostazol
+Clopidogrel
+Codeine Phosphate
+Compression Hose
+Coreg
+Cryselle
+D.H.E. 45
+Desonide
+Diphenhydramine HCl
+Divalproex Sodium
+Dyazide
+Econazole Nitrate
+Enoxaparin
+Estraderm
+Famotidine
+Fexofenadine/Pseudoephedrine
+Flector
+Fludrocortisone Acetate
+Fluvoxamine Maleate
+Fosinopril/Hydrochlorothiazide
+Glucotrol XL
+Guaifenesin
+Guiatuss AC
+Haloperidol
+Ipratropium Bromide
+Keppra
+Lamisil AT
+Lamotrigine
+Levalbuterol
+Levemir
+Librax (w/clidinium)
+Lotrel
+Lotrimin AF
+Lotrisone
+Lovenox
+Lyrica
+Malathion
+Meclizine HCl
+Melatonin
+Metamucil
+Methotrexate Sodium
+Methylprednisolone
+Milk Of Magnesia
+Monistat 7
+Mupirocin
+Naproxen Sodium
+Necon 0.5/35 28 day
+Necon 1/35 28 day
+Niacinamide
+Nicorette
+Nifediac CC
+Nix Creme Rinse
+Norco
+Nortrel 7/7/7
+Novolin 70/30
+NovoLog Mix 70/30 FlexPen
+Nuvigil
+Ogestrel 28
+One Touch Basic Monitor
+Peak Flow Meter
+Plan B One-Step
+Polymyxin B/Trimethoprim
+Polytrim
+Pregabalin
+Prenatal Multivitamin & DHA
+Primidone
+Prochlorperazine
+Protopic
+Pulmicort Flexhaler
+Questran
+Quinapril/Hydrochlorothiazide
+Quinine Sulfate
+Relafen
+Retin-A Micro
+Rhinocort Aqua
+Rifampin
+Rifaximin
+Senna-Gen
+Sildenafil Citrate
+Silver Sulfadiazine
+Sinemet-CR
+Tacrolimus
+Temovate
+Tenormin
+Tiotropium Bromide
+Topiramate
+Tricor
+Triple Antibiotic
+Tylenol, Children's
+Tylenol, Infants' Drops
+Ultram ER
+Ventolin
+Vermox
+VESIcare
+Vitamin K
+Vivelle
+Xylocaine Viscous
+Zanamivir
+Zaroxolyn
+Zestoretic
+Zyrtec-D 12 Hour
