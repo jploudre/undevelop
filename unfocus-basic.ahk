@@ -1,5 +1,3 @@
-;unfocus basic
-
 ArrayCount = 0
 Loop, Read, %Listname%
 {
@@ -8,11 +6,6 @@ Loop, Read, %Listname%
 }
 
 SetBatchLines -1
-SetControlDelay, -1
-SetWinDelay, 0
-SetKeyDelay, -1
-SetMouseDelay, -1
-ListLines Off
 windowwidth := 432
 #NoEnv
 
@@ -20,14 +13,12 @@ windowwidth := 432
 Gui, +AlwaysOnTop -Caption +ToolWindow Border
 GUI, margin, 0,0
 gui, color, 6b7c70, ffffff
-Gui, +Lastfound
-WinSet, TransColor, 6b7c70
 gui, font, s18, Tahoma Bold
 Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y36 h236 t240 t316 -Background -E0x200
 gui, color, 6b7c70, F2efc2
 Gui, Add, Edit, x0 y0 w%windowwidth% h36 -E0x200
 
-Gosub RefreshListBoxfirst
+RefreshList(1,1)
 
 search =   
 Loop
@@ -66,7 +57,7 @@ Loop
    
     search = %search%%input%  
     GuiControl,, Edit1, %search%            
-    Gosub RefreshListBox 
+	RefreshList(0,0)
 }
 return
 
@@ -75,76 +66,47 @@ GuiClose:
 GuiEscape:
    ExitApp
    
-RefreshListBoxfirst:
+RefreshList(animate, small){
 Critical
-resultnum := 0, Wordlist :=""
-Loop, %ArrayCount%
-{
-   IfInString, Array%A_Index% , %Search%      
-   {
-      resultnum++
-      line := Array%A_Index%
-      Wordlist = %Wordlist% | %line%
-      if (resultnum >7)
-      Break
-}
-   Else
-      continue
-}
-GuiControl,, ListBox1, %wordlist%
-GuiControl, Choose, ListBox1, 1
-;GuiControl, hide, Listbox1
-Gui +LastFound
-GUI_ID:=WinExist() 
-Gui, Show, xCenter y10 w%windowwidth% h36 Hide, Plan Autocomplete
-DllCall("AnimateWindow","UInt",GUI_ID,"Int",300,"UInt","0xa0000")
-Return
+global windowwidth
+global ArrayCount
+global search
 
-RefreshListBoxreset:
-Critical
-resultnum := 0, Wordlist :=""
-Loop, %ArrayCount%
+If (small = 0)
 {
-   IfInString, Array%A_Index% , %Search%      
-   {
-      resultnum++
-      line := Array%A_Index%
-      Wordlist = %Wordlist% | %line%
-      if (resultnum >7)
-      Break
+	resultnum := 0, Wordlist :=""
+	Loop, %ArrayCount%
+	{
+	   IfInString, Array%A_Index% , %Search%      
+	   {
+		  resultnum++
+		  line := Array%A_Index%
+		  Wordlist = %Wordlist% | %line%
+		  if (resultnum >7)
+		  Break
+	}
+	   Else
+		  continue
+	}
 }
-   Else
-      continue
-}
-GuiControl,, ListBox1, %wordlist%
-GuiControl, Choose, ListBox1, 1
-;GuiControl, hide, Listbox1
-Gui +LastFound
-GUI_ID:=WinExist() 
-Gui, Show, xCenter y10 w%windowwidth% h36, Plan Autocomplete
-Return
 
-RefreshListBox:
-Critical
-resultnum := 0, Wordlist :=""
-Loop, %ArrayCount%
-{
-   IfInString, Array%A_Index% , %Search%      
-   {
-      resultnum++
-      line := Array%A_Index%
-      Wordlist = %Wordlist% | %line%
-      if (resultnum >7)
-      Break
-}
-   Else
-      continue
-}
 GuiControl,, ListBox1, %wordlist%
 GuiControl, Choose, ListBox1, 1
-;GuiControl, show, Listbox1
-Gui, Show, xCenter y10 w%windowwidth% h268, Plan Autocomplete
-Return
+
+If (animate = 1) {
+	Gui +LastFound
+	GUI_ID:=WinExist() 
+	Gui, Show, xCenter y10 w%windowwidth% h36 Hide, Plan Autocomplete
+	DllCall("AnimateWindow","UInt",GUI_ID,"Int",300,"UInt","0xa0000")
+}
+
+else if (small = 1){
+	Gui, Show, xCenter y10 w%windowwidth% h36, Plan Autocomplete
+}
+else if (small = 0) {
+	Gui, Show, xCenter y10 w%windowwidth% h268, Plan Autocomplete
+}
+}
 
 DeleteSearchChar:
 if search =
@@ -154,10 +116,10 @@ GuiControl,, Edit1, %search%
 ; make interface small again if empty search term
 if search =
 {
-   Gosub, RefreshListBoxreset
+	RefreshList(0,1)
     return
 }
-GoSub, RefreshListBox
+RefreshList(0,0)
 return
 
 ListBoxClick:
