@@ -1,18 +1,8 @@
-﻿; Load Different plans based on 'location'
-SetTitleMatchMode, 2
-
-
-IfWinActive, Level
-{
+﻿; ListName needs to match bottom #include
 ListName=plantext.txt
-; Needs correlated include at the end.
-}
-
-
 #Include unfocus-basic.ahk
 
-; JKP Custom Functions
-; Functions.#######################################################
+; Functions #######################################################
 
 templateclicker(level1, level2 = 0,level3 = 0,level4 = 0,level5 = 0,level6 = 0)
 {
@@ -52,8 +42,6 @@ WinWaitActive, Medication List
 SendInput !w%med%
 }
 return
-
-; WordRetrieve should be an #include to match the list being processed
 
 #Include unfocus-plan-macros.ahk
 
