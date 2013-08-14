@@ -8,9 +8,9 @@ Loop, Read, %Listname%
 SetBatchLines -1
 windowwidth := 432
 nobevel = -E0x200
-smallboxheight = 36
+smallboxheight = 29
 fromtopposition = 10
-fullboxheight = 268
+fullboxheight = 264
 lefteditoffset = 10
 editwidth := windowwidth - lefteditoffset
 #NoEnv
