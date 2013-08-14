@@ -143,35 +143,6 @@ Pattern := RegExReplace(Word,"S).","$0.*") ;subsequence matching pattern
     Return, MatchList
 }
 
-Suggest(Word,ByRef WordList)
-{
-    Pattern := RegExReplace(Word,"S).","$0.*") ;subsequence matching pattern
-
-    ;treat accented characters as equivalent to their unaccented counterparts
-    Pattern := RegExReplace(Pattern,"S)[a" . Chr(224) . Chr(226) . "]","[a" . Chr(224) . Chr(226) . "]")
-    Pattern := RegExReplace(Pattern,"S)[c" . Chr(231) . "]","[c" . Chr(231) . "]")
-    Pattern := RegExReplace(Pattern,"S)[e" . Chr(233) . Chr(232) . Chr(234) . Chr(235) . "]","[e" . Chr(233) . Chr(232) . Chr(234) . Chr(235) . "]")
-    Pattern := RegExReplace(Pattern,"S)[i" . Chr(238) . Chr(239) . "]","[i" . Chr(238) . Chr(239) . "]")
-    Pattern := RegExReplace(Pattern,"S)[o" . Chr(244) . "]","[o" . Chr(244) . "]")
-    Pattern := RegExReplace(Pattern,"S)[u" . Chr(251) . Chr(249) . "]","[u" . Chr(251) . Chr(249) . "]")
-
-    Pattern := "`nimS)^" . Pattern ;match options
-
-    ;search for words matching the pattern
-    MatchList := ""
-    Position := 1
-    While, Position := RegExMatch(WordList,Pattern,Word,Position)
-    {
-        Position += StrLen(Word)
-        StringReplace, Word, Word, %A_Tab%, %A_Space%%A_Space%%A_Space%%A_Space%, All
-        MatchList .= Word . "|"
-    }
-
-    Sort, MatchList, FRankResults D| ;rank results by score
-
-    Return, MatchList
-}
-
 RankResults(Entry1,Entry2,Offset)
 {
     Return, Score(Entry2,0) - Score(Entry1,Offset)
@@ -213,12 +184,11 @@ PrepareWordList(ByRef WordList)
 
 
 DeleteSearchChar:
-if search =
+if searchterm =
     return
-StringTrimRight, search, search, 1
-GuiControl,, Edit1, %search%
-; make interface small again if empty search term
-if search =
+StringTrimRight, searchterm, searchterm, 1
+GuiControl,, Edit1, %searchterm%
+if searchterm =
 {
 	RefreshList(0,1)
     return
