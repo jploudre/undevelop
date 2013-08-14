@@ -115,6 +115,66 @@ hWindow := WinExist()
 
 }
 
+Suggest(Word,ByRef WordList)
+{
+    Pattern := RegExReplace(Word,"S).","$0.*") ;subsequence matching pattern
+
+    ;treat accented characters as equivalent to their unaccented counterparts
+    Pattern := RegExReplace(Pattern,"S)[a" . Chr(224) . Chr(226) . "]","[a" . Chr(224) . Chr(226) . "]")
+    Pattern := RegExReplace(Pattern,"S)[c" . Chr(231) . "]","[c" . Chr(231) . "]")
+    Pattern := RegExReplace(Pattern,"S)[e" . Chr(233) . Chr(232) . Chr(234) . Chr(235) . "]","[e" . Chr(233) . Chr(232) . Chr(234) . Chr(235) . "]")
+    Pattern := RegExReplace(Pattern,"S)[i" . Chr(238) . Chr(239) . "]","[i" . Chr(238) . Chr(239) . "]")
+    Pattern := RegExReplace(Pattern,"S)[o" . Chr(244) . "]","[o" . Chr(244) . "]")
+    Pattern := RegExReplace(Pattern,"S)[u" . Chr(251) . Chr(249) . "]","[u" . Chr(251) . Chr(249) . "]")
+
+    Pattern := "`nimS)^" . Pattern ;match options
+
+    ;search for words matching the pattern
+    MatchList := ""
+    Position := 1
+    While, Position := RegExMatch(WordList,Pattern,Word,Position)
+    {
+        Position += StrLen(Word)
+        StringReplace, Word, Word, %A_Tab%, %A_Space%%A_Space%%A_Space%%A_Space%, All
+        MatchList .= Word . "|"
+    }
+
+    Sort, MatchList, FRankResults D| ;rank results by score
+
+    Return, MatchList
+}
+
+RankResults(Entry1,Entry2,Offset)
+{
+    Return, Score(Entry2,0) - Score(Entry1,Offset)
+}
+
+Score(Entry,Offset)
+{
+    global CurrentWord
+    Score := 100
+
+    Length := StrLen(CurrentWord)
+
+    ;determine prefixing
+    Position := 1
+    While, Position <= Length && SubStr(CurrentWord,Position,1) = SubStr(Entry,Position,1)
+        Position ++
+    Score *= Position ** 3
+
+    ;determine number of superfluous characters
+    RegExMatch(Entry,"`nmS)^" . SubStr(RegExReplace(CurrentWord,"S).","$0.*"),1,-2),Word)
+    Score *= (1 + StrLen(Word) - Length) ** -1.5
+
+    ;determine the offset (for wordlists sorted by frequency)
+    If Offset > 0
+        Score *= 10 ** 0.4
+    Else If Offset < 0
+        Score *= 10 ** -0.4
+
+    Return, Score
+}
+
 DeleteSearchChar:
 if search =
     return
