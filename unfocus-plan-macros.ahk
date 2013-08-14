@@ -1,27 +1,6 @@
-WordRetrieve:
-Gui, submit
-GuiControlGet, Choice
-; Turn off all the speedups
-SetBatchLines 10
-SetControlDelay, 20
-SetWinDelay, 100
-SetKeyDelay, 10
-SetMouseDelay, 10
-; Clean up the input.
-StringGetPos, tabpos, Choice, %A_Tab%,
-tabpos++
-StringTrimLeft, Choice, Choice, tabpos 
-;StringTrimRight, Choice, Choice, 1
-gui, cancel
-CoordMode, Mouse, screen
-click, 233, 34
-CoordMode, Mouse, relative
-;Sleep, 200
-
-; Plan Template Macros
-
-theinput = %Choice%
 ; Plan Template Items from spreadsheet replace with \r\n (transform backslashes), remove the first else
+
+performchoice(theinput) {
 if theinput = uhcg
 templateclicker("2", "3")
 else if theinput = ua
@@ -1713,6 +1692,5 @@ else if theinput = Zestoretic
 rxmed("Zestoretic")
 else if theinput = Zyrtec-D 12 Hour
 rxmed("Zyrtec-D 12 Hour")
+}
 
-gosub, GuiClose
-return

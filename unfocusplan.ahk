@@ -1,6 +1,7 @@
 ﻿; ListName needs to match bottom #include
 ListName=plantext.txt
 #Include unfocus-basic.ahk
+#Include unfocus-plan-macros.ahk
 
 ; Functions #######################################################
 
@@ -43,7 +44,7 @@ SendInput !w%med%
 }
 return
 
-#Include unfocus-plan-macros.ahk
+
 
 
 
