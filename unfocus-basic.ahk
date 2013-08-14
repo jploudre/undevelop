@@ -5,6 +5,9 @@ Loop, Read, %Listname%
     Array%ArrayCount% := A_LoopReadLine
 }
 
+FileRead, WordList, %Listname%
+PrepareWordList(WordList)
+
 SetBatchLines -1
 windowwidth := 432
 nobevel = -E0x200
@@ -13,6 +16,8 @@ fromtopposition = 10
 fullboxheight = 264
 lefteditoffset = 10
 editwidth := windowwidth - lefteditoffset
+MaxResults = 8
+
 #NoEnv
 
 #SingleInstance, Force
@@ -26,11 +31,12 @@ Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
 
 RefreshList(1,1)
 
-search =   
+searchterm =   
 Loop
 {
     Input, input, L1, {enter}{esc}{backspace}{up}{down}{tab}
-          if ErrorLevel = EndKey:escape
+    
+	   if ErrorLevel = EndKey:escape
       {
          Gui, cancel
          Gosub GuiClose
@@ -61,8 +67,8 @@ Loop
          continue
       }
    
-    search = %search%%input%  
-    GuiControl,, Edit1, %search%            
+    searchterm = %searchterm%%input%  
+    GuiControl,, Edit1, %searchterm%            
 	RefreshList(0,0)
 }
 return
@@ -78,23 +84,15 @@ Critical
 
 If (small = 0)
 {
-	resultnum := 0, Wordlist :=""
-	Loop, %ArrayCount%
-	{
-	   IfInString, Array%A_Index% , %Search%      
-	   {
-		  resultnum++
-		  line := Array%A_Index%
-		  Wordlist = %Wordlist% | %line%
-		  if (resultnum >7)
-		  Break
-		}
-	   Else
-		  continue
-	}
+	Matchlist := jkpSuggest(searchterm, Wordlist)
+	;limit the number of results
+	Position := InStr(MatchList,"|",True,1,MaxResults)
+	If Position
+    MatchList := SubStr(MatchList,1,Position - 1)
+
 }
 
-GuiControl,, ListBox1, %wordlist%
+GuiControl,, ListBox1, %Matchlist%
 GuiControl, Choose, ListBox1, 1
 
 
@@ -111,8 +109,38 @@ else if (small = 1){
 else if (small = 0) {
 	Gui, Show, xCenter y%fromtopposition% w%windowwidth% h%fullboxheight%, AutoComplete
 }
-hWindow := WinExist()
 
+}
+
+jkpSuggest(Word, ByRef Wordlist)
+{
+global
+
+Pattern := RegExReplace(Word,"S).","$0.*") ;subsequence matching pattern
+
+    ;treat accented characters as equivalent to their unaccented counterparts
+    Pattern := RegExReplace(Pattern,"S)[a" . Chr(224) . Chr(226) . "]","[a" . Chr(224) . Chr(226) . "]")
+    Pattern := RegExReplace(Pattern,"S)[c" . Chr(231) . "]","[c" . Chr(231) . "]")
+    Pattern := RegExReplace(Pattern,"S)[e" . Chr(233) . Chr(232) . Chr(234) . Chr(235) . "]","[e" . Chr(233) . Chr(232) . Chr(234) . Chr(235) . "]")
+    Pattern := RegExReplace(Pattern,"S)[i" . Chr(238) . Chr(239) . "]","[i" . Chr(238) . Chr(239) . "]")
+    Pattern := RegExReplace(Pattern,"S)[o" . Chr(244) . "]","[o" . Chr(244) . "]")
+    Pattern := RegExReplace(Pattern,"S)[u" . Chr(251) . Chr(249) . "]","[u" . Chr(251) . Chr(249) . "]")
+
+    Pattern := "`nimS)^" . Pattern ;match options
+
+    ;search for words matching the pattern
+    MatchList := ""
+    Position := 1
+    While, Position := RegExMatch(WordList,Pattern,Word,Position)
+    {
+        Position += StrLen(Word)
+        ;StringReplace, Word, Word, %A_Tab%, %A_Space%%A_Space%%A_Space%%A_Space%, All
+        MatchList .= Word . "|"
+    }
+    
+    Sort, MatchList, FRankResults D| ;rank results by score
+
+    Return, MatchList
 }
 
 Suggest(Word,ByRef WordList)
@@ -174,6 +202,15 @@ Score(Entry,Offset)
 
     Return, Score
 }
+
+PrepareWordList(ByRef WordList)
+{
+    If InStr(WordList,"`r")
+        StringReplace, WordList, WordList, `r,, All
+    While, InStr(WordList,"`n`n")
+        StringReplace, WordList, WordList, `n`n, `n, All
+}
+
 
 DeleteSearchChar:
 if search =
