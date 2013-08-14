@@ -11,6 +11,8 @@ nobevel = -E0x200
 smallboxheight = 36
 fromtopposition = 10
 fullboxheight = 268
+lefteditoffset = 10
+editwidth := windowwidth - lefteditoffset
 #NoEnv
 
 #SingleInstance, Force
@@ -19,8 +21,8 @@ GUI, margin, 0,0
 gui, color, 6b7c70, ffffff
 gui, font, s18, Tahoma Bold
 Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h236 t240 t316 -Background %nobevel%
-gui, color, 6b7c70, F2efc2
-Gui, Add, Edit, x0 y0 w%windowwidth% h%smallboxheight% %nobevel%
+gui, color, F2efc2, F2efc2
+Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
 
 RefreshList(1,1)
 
