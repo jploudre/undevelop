@@ -7,6 +7,10 @@ Loop, Read, %Listname%
 
 SetBatchLines -1
 windowwidth := 432
+nobevel = -E0x200
+smallboxheight = 36
+fromtopposition = 10
+fullboxheight = 268
 #NoEnv
 
 #SingleInstance, Force
@@ -14,9 +18,9 @@ Gui, +AlwaysOnTop -Caption +ToolWindow Border
 GUI, margin, 0,0
 gui, color, 6b7c70, ffffff
 gui, font, s18, Tahoma Bold
-Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y36 h236 t240 t316 -Background -E0x200
+Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h236 t240 t316 -Background %nobevel%
 gui, color, 6b7c70, F2efc2
-Gui, Add, Edit, x0 y0 w%windowwidth% h36 -E0x200
+Gui, Add, Edit, x0 y0 w%windowwidth% h%smallboxheight% %nobevel%
 
 RefreshList(1,1)
 
@@ -67,10 +71,8 @@ GuiEscape:
    ExitApp
    
 RefreshList(animate, small){
+global
 Critical
-global windowwidth
-global ArrayCount
-global search
 
 If (small = 0)
 {
@@ -84,7 +86,7 @@ If (small = 0)
 		  Wordlist = %Wordlist% | %line%
 		  if (resultnum >7)
 		  Break
-	}
+		}
 	   Else
 		  continue
 	}
@@ -93,19 +95,22 @@ If (small = 0)
 GuiControl,, ListBox1, %wordlist%
 GuiControl, Choose, ListBox1, 1
 
+
 If (animate = 1) {
 	Gui +LastFound
 	GUI_ID:=WinExist() 
-	Gui, Show, xCenter y10 w%windowwidth% h36 Hide, Plan Autocomplete
+	Gui, Show, xCenter y%fromtopposition% w%windowwidth% h%smallboxheight% Hide, AutoComplete
 	DllCall("AnimateWindow","UInt",GUI_ID,"Int",300,"UInt","0xa0000")
 }
 
 else if (small = 1){
-	Gui, Show, xCenter y10 w%windowwidth% h36, Plan Autocomplete
+	Gui, Show, xCenter y%fromtopposition% w%windowwidth% h%smallboxheight%, AutoComplete
 }
 else if (small = 0) {
-	Gui, Show, xCenter y10 w%windowwidth% h268, Plan Autocomplete
+	Gui, Show, xCenter y%fromtopposition% w%windowwidth% h%fullboxheight%, AutoComplete
 }
+hWindow := WinExist()
+
 }
 
 DeleteSearchChar:
@@ -125,4 +130,19 @@ return
 ListBoxClick:
 if A_GuiControlEvent = DoubleClick
     send, {enter}
+return
+
+WordRetrieve:
+Gui, submit
+GuiControlGet, Choice
+
+StringGetPos, tabpos, Choice, %A_Tab%,
+tabpos++
+StringTrimLeft, Choice, Choice, tabpos 
+gui, cancel
+CoordMode, Mouse, screen
+click, 233, 34
+CoordMode, Mouse, relative
+PerformChoice(Choice)
+gosub, GuiClose
 return
