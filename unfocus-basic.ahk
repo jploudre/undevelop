@@ -5,14 +5,19 @@ Loop, Read, %Listname%
     Array%ArrayCount% := A_LoopReadLine
 }
 
+FileRead, WordList, %Listname%
+PrepareWordList(WordList)
+
 SetBatchLines -1
 windowwidth := 432
 nobevel = -E0x200
 smallboxheight = 29
 fromtopposition = 10
 fullboxheight = 264
-lefteditoffset = 10
+lefteditoffset = 2
 editwidth := windowwidth - lefteditoffset
+MaxResults = 8
+
 #NoEnv
 
 #SingleInstance, Force
@@ -26,11 +31,12 @@ Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
 
 RefreshList(1,1)
 
-search =   
+searchterm =   
 Loop
 {
     Input, input, L1, {enter}{esc}{backspace}{up}{down}{tab}
-          if ErrorLevel = EndKey:escape
+    
+	   if ErrorLevel = EndKey:escape
       {
          Gui, cancel
          Gosub GuiClose
@@ -61,8 +67,8 @@ Loop
          continue
       }
    
-    search = %search%%input%  
-    GuiControl,, Edit1, %search%            
+    searchterm = %searchterm%%input%  
+    GuiControl,, Edit1, %searchterm%            
 	RefreshList(0,0)
 }
 return
@@ -78,23 +84,16 @@ Critical
 
 If (small = 0)
 {
-	resultnum := 0, Wordlist :=""
-	Loop, %ArrayCount%
-	{
-	   IfInString, Array%A_Index% , %Search%      
-	   {
-		  resultnum++
-		  line := Array%A_Index%
-		  Wordlist = %Wordlist% | %line%
-		  if (resultnum >7)
-		  Break
-		}
-	   Else
-		  continue
-	}
+	MatchList = 
+	Matchlist := jkpSuggest(searchterm, ByRef Wordlist)
+	
+	Position1 := InStr(MatchList,"|",True,1,MaxResults)
+	If Position1
+    MatchList := SubStr(MatchList,1,Position1 - 1)
+
 }
 
-GuiControl,, ListBox1, %wordlist%
+GuiControl,, ListBox1, |%Matchlist%
 GuiControl, Choose, ListBox1, 1
 
 
@@ -111,17 +110,85 @@ else if (small = 1){
 else if (small = 0) {
 	Gui, Show, xCenter y%fromtopposition% w%windowwidth% h%fullboxheight%, AutoComplete
 }
-hWindow := WinExist()
 
 }
 
+jkpSuggest(Word, Wordlist)
+{
+global
+
+Pattern := RegExReplace(Word,"S).","$0.*") ;subsequence matching pattern
+
+    ;treat accented characters as equivalent to their unaccented counterparts
+    Pattern := RegExReplace(Pattern,"S)[a" . Chr(224) . Chr(226) . "]","[a" . Chr(224) . Chr(226) . "]")
+    Pattern := RegExReplace(Pattern,"S)[c" . Chr(231) . "]","[c" . Chr(231) . "]")
+    Pattern := RegExReplace(Pattern,"S)[e" . Chr(233) . Chr(232) . Chr(234) . Chr(235) . "]","[e" . Chr(233) . Chr(232) . Chr(234) . Chr(235) . "]")
+    Pattern := RegExReplace(Pattern,"S)[i" . Chr(238) . Chr(239) . "]","[i" . Chr(238) . Chr(239) . "]")
+    Pattern := RegExReplace(Pattern,"S)[o" . Chr(244) . "]","[o" . Chr(244) . "]")
+    Pattern := RegExReplace(Pattern,"S)[u" . Chr(251) . Chr(249) . "]","[u" . Chr(251) . Chr(249) . "]")
+
+    Pattern := "`nimS)^" . Pattern ;match options
+
+    ;search for words matching the pattern
+    Position := 1
+    While, Position := RegExMatch(WordList,Pattern,Word,Position)
+    {
+        Position += StrLen(Word)
+        ;StringReplace, Word, Word, %A_Tab%, %A_Space%%A_Space%%A_Space%%A_Space%, All
+        MatchList .= Word . "|"
+    }
+    
+    Sort, MatchList, FRankResults D| ;rank results by score
+
+    Return, MatchList
+}
+
+RankResults(Entry1,Entry2,Offset)
+{
+    Return, Score(Entry2,0) - Score(Entry1,Offset)
+}
+
+Score(Entry,Offset)
+{
+    global CurrentWord
+    Score := 100
+
+    Length := StrLen(CurrentWord)
+
+    ;determine prefixing
+    Position := 1
+    While, Position <= Length && SubStr(CurrentWord,Position,1) = SubStr(Entry,Position,1)
+        Position ++
+    Score *= Position ** 3
+
+    ;determine number of superfluous characters
+    RegExMatch(Entry,"`nmS)^" . SubStr(RegExReplace(CurrentWord,"S).","$0.*"),1,-2),Word)
+    Score *= (1 + StrLen(Word) - Length) ** -1.5
+
+    ;determine the offset (for wordlists sorted by frequency)
+    If Offset > 0
+        Score *= 10 ** 0.4
+    Else If Offset < 0
+        Score *= 10 ** -0.4
+
+    Return, Score
+}
+
+PrepareWordList(ByRef WordList)
+{
+    If InStr(WordList,"`r")
+        StringReplace, WordList, WordList, `r,, All
+    While, InStr(WordList,"`n`n")
+        StringReplace, WordList, WordList, `n`n, `n, All
+}
+
+
 DeleteSearchChar:
-if search =
+if searchterm =
     return
-StringTrimRight, search, search, 1
-GuiControl,, Edit1, %search%
-; make interface small again if empty search term
-if search =
+StringTrimRight, searchterm, searchterm, 1
+GuiControl,, Edit1, %searchterm%
+if searchterm =
 {
 	RefreshList(0,1)
     return
