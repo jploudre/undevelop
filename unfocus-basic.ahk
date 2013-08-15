@@ -84,15 +84,16 @@ Critical
 
 If (small = 0)
 {
-	Matchlist := jkpSuggest(searchterm, Wordlist)
-	;limit the number of results
-	Position := InStr(MatchList,"|",True,1,MaxResults)
-	If Position
-    MatchList := SubStr(MatchList,1,Position - 1)
+	MatchList = 
+	Matchlist := jkpSuggest(searchterm, ByRef Wordlist)
+	
+	Position1 := InStr(MatchList,"|",True,1,MaxResults)
+	If Position1
+    MatchList := SubStr(MatchList,1,Position1 - 1)
 
 }
 
-GuiControl,, ListBox1, %Matchlist%
+GuiControl,, ListBox1, |%Matchlist%
 GuiControl, Choose, ListBox1, 1
 
 
@@ -112,7 +113,7 @@ else if (small = 0) {
 
 }
 
-jkpSuggest(Word, ByRef Wordlist)
+jkpSuggest(Word, Wordlist)
 {
 global
 
@@ -129,7 +130,6 @@ Pattern := RegExReplace(Word,"S).","$0.*") ;subsequence matching pattern
     Pattern := "`nimS)^" . Pattern ;match options
 
     ;search for words matching the pattern
-    MatchList := ""
     Position := 1
     While, Position := RegExMatch(WordList,Pattern,Word,Position)
     {
