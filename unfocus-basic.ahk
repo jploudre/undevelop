@@ -22,9 +22,12 @@ MaxResults = 8
 
 #SingleInstance, Force
 Gui, +AlwaysOnTop -Caption +ToolWindow Border
+DllCall( "AddFontResource", Str,"OpenSans-Semibold.ttf" ) 
+;DllCall( "GDI32.DLL\AddFontResourceEx", Str,"OpenSans-Semibold.ttf",UInt,(FR_PRIVATE:=0x10), Int,0)
+SendMessage,  0x1D,,,, ahk_id 0xFFFF ; Broadcast the change
 GUI, margin, 0,0
 gui, color, 6b7c70, ffffff
-gui, font, s18, Tahoma Bold
+gui, font, s16 w600, Open Sans
 Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h236 t240 t316 -Background %nobevel%
 gui, color, F2efc2, F2efc2
 Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
@@ -76,6 +79,7 @@ return
 ; Functions.#######################################################
 GuiClose:
 GuiEscape:
+DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"OpenSans-Semibold.ttf",UInt,(FR_PRIVATE:=0x10),Int,0)
    ExitApp
    
 RefreshList(animate, small){
@@ -134,7 +138,7 @@ Pattern := RegExReplace(Word,"S).","$0.*") ;subsequence matching pattern
     While, Position := RegExMatch(WordList,Pattern,Word,Position)
     {
         Position += StrLen(Word)
-        ;StringReplace, Word, Word, %A_Tab%, %A_Space%%A_Space%%A_Space%%A_Space%, All
+        StringReplace, Word, Word, %A_Tab%, %A_Space%%A_Space%%A_Space%%A_Space%, All
         MatchList .= Word . "|"
     }
     
