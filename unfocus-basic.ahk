@@ -9,11 +9,11 @@ FileRead, WordList, %Listname%
 PrepareWordList(WordList)
 
 SetBatchLines -1
-windowwidth := 432
+windowwidth := 800
 nobevel = -E0x200
-smallboxheight = 29
+smallboxheight = 42
 fromtopposition = 10
-fullboxheight = 264
+fullboxheight = 398
 lefteditoffset = 2
 editwidth := windowwidth - lefteditoffset
 MaxResults = 8
@@ -26,8 +26,8 @@ DllCall( "GDI32.DLL\AddFontResourceEx", Str,"jkpAwesome.TTF",UInt,(FR_PRIVATE:=0
 Gui, +AlwaysOnTop -Caption +ToolWindow Border
 GUI, margin, 0,0
 gui, color, 6b7c70, ffffff
-gui, font, s18 q4, FontAwesome
-Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h236 t240 t316 -Background %nobevel%
+gui, font, s32 q2, FontAwesome
+Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h356 -Background %nobevel%
 gui, color, F2efc2, F2efc2
 Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
 
