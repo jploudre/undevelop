@@ -14,7 +14,7 @@ nobevel = -E0x200
 smallboxheight = 29
 fromtopposition = 10
 fullboxheight = 264
-lefteditoffset = 10
+lefteditoffset = 2
 editwidth := windowwidth - lefteditoffset
 MaxResults = 8
 
