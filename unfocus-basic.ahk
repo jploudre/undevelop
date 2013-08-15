@@ -21,10 +21,12 @@ MaxResults = 8
 #NoEnv
 
 #SingleInstance, Force
+
+DllCall( "GDI32.DLL\AddFontResourceEx", Str,"jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10), Int,0)
 Gui, +AlwaysOnTop -Caption +ToolWindow Border
 GUI, margin, 0,0
 gui, color, 6b7c70, ffffff
-gui, font, s18, Tahoma Bold
+gui, font, s18 q4, FontAwesome
 Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h236 t240 t316 -Background %nobevel%
 gui, color, F2efc2, F2efc2
 Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
@@ -76,6 +78,7 @@ return
 ; Functions.#######################################################
 GuiClose:
 GuiEscape:
+DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
    ExitApp
    
 RefreshList(animate, small){
