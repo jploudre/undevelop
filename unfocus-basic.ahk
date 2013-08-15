@@ -126,7 +126,6 @@ Pattern := RegExReplace(Word,"S).","$0.*") ;subsequence matching pattern
     While, Position := RegExMatch(WordList,Pattern,Word,Position)
     {
         Position += StrLen(Word)
-        ;StringReplace, Word, Word, %A_Tab%, %A_Space%%A_Space%%A_Space%%A_Space%, All
         MatchList .= Word . "|"
     }
     
