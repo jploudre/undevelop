@@ -86,11 +86,6 @@ If (small = 0)
 {
 	MatchList = 
 	Matchlist := Suggest(searchterm, ByRef Wordlist)
-	
-	Position1 := InStr(MatchList,"|",True,1,MaxResults)
-	If Position1
-    MatchList := SubStr(MatchList,1,Position1 - 1)
-
 }
 
 GuiControl,, ListBox1, |%Matchlist%
@@ -130,6 +125,10 @@ Pattern := RegExReplace(Word,"S).","$0.*") ;subsequence matching pattern
     }
     
     Sort, MatchList, FRankResults D| ;rank results by score
+    
+    Position1 := InStr(MatchList,"|",True,1,MaxResults)
+	If Position1
+    MatchList := SubStr(MatchList,1,Position1 - 1)
 
     Return, MatchList
 }
@@ -141,19 +140,19 @@ RankResults(Entry1,Entry2,Offset)
 
 Score(Entry,Offset)
 {
-    global CurrentWord
+    global searchterm
     Score := 100
 
-    Length := StrLen(CurrentWord)
+    Length := StrLen(searchterm)
 
     ;determine prefixing
     Position2 := 1
-    While, Position2 <= Length && SubStr(CurrentWord,Position2,1) = SubStr(Entry,Position2,1)
+    While, Position2 <= Length && SubStr(searchterm,Position2,1) = SubStr(Entry,Position2,1)
         Position2 ++
     Score *= Position2 ** 3
 
     ;determine number of superfluous characters
-    RegExMatch(Entry,"`nmS)^" . SubStr(RegExReplace(CurrentWord,"S).","$0.*"),1,-2),Word)
+    RegExMatch(Entry,"`nmS)^" . SubStr(RegExReplace(searchterm,"S).","$0.*"),1,-2),Word)
     Score *= (1 + StrLen(Word) - Length) ** -1.5
 
     ;determine the offset (for wordlists sorted by frequency)
