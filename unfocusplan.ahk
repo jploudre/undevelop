@@ -7,6 +7,7 @@ ListName=plantext.txt
 
 templateclicker(level1, level2 = 0,level3 = 0,level4 = 0,level5 = 0,level6 = 0)
 {
+	focusonfirsttemplate()
 	CoordMode, mouse, screen
 	WinGetPos, originx, originy,,,A
 	templaterelativeclicker(level1,60,originx,originy)
@@ -43,6 +44,13 @@ WinWaitActive, Medication List
 SendInput !w%med%
 }
 return
+
+focusonfirsttemplate()
+{
+CoordMode, Mouse, screen
+click, 233, 34
+CoordMode, Mouse, relative
+}
 
 
 
