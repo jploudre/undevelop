@@ -113,7 +113,7 @@ else if (small = 0) {
 
 }
 
-jkpSuggest(Word, Wordlist)
+jkpSuggest(Word, Byref Wordlist)
 {
 global
 
