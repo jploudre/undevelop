@@ -1,9 +1,5 @@
-ArrayCount = 0
-Loop, Read, %Listname%
-{
-    ArrayCount += 1  
-    Array%ArrayCount% := A_LoopReadLine
-}
+ListName=plantext.txt
+#Include unfocus-plan-macros.ahk
 
 FileRead, WordList, %Listname%
 PrepareWordList(WordList)

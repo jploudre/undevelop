@@ -1,3 +1,49 @@
+templateclicker(level1, level2 = 0,level3 = 0,level4 = 0,level5 = 0,level6 = 0)
+{
+	focusonfirsttemplate()
+	CoordMode, mouse, screen
+	WinGetPos, originx, originy,,,A
+	templaterelativeclicker(level1,60,originx,originy)
+	templaterelativeclicker(level2,260,originx,originy)
+	templaterelativeclicker(level3,460,originx,originy)
+	templaterelativeclicker(level4,660,originx,originy)
+	templaterelativeclicker(level5,860,originx,originy)
+	templaterelativeclicker(level6,1060,originx,originy)
+	CoordMode, mouse, relative
+}
+
+templaterelativeclicker(level,offset,originx,originy)
+{
+	if (level is between 0  and 6){
+		If(level > 0) {
+		clicky := originy + (level * 25) + 15
+		clickx := originx + offset
+		click, %clickx%, %clicky%
+		WinWaitNotActive
+		}
+	}
+}
+
+rxmed(med)
+{
+templateclicker("15", "4", "2")
+Sendinput %med%{Enter}{Escape}
+WinWaitActive, Patient Chart
+ImageSearch, FoundX, FoundY, 421, 152, 1040, 975, *n4 prescriptions.png
+click, %FoundX%, %FoundY%
+WinWaitActive, Medication List
+SendInput !w%med%
+}
+
+focusonfirsttemplate()
+{
+CoordMode, Mouse, screen
+click, 233, 34
+CoordMode, Mouse, relative
+}
+
+
+
 ; Plan Template Items from spreadsheet replace with \r\n (transform backslashes), remove the first else
 
 performchoice(theinput) {
