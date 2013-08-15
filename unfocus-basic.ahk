@@ -147,10 +147,10 @@ Score(Entry,Offset)
     Length := StrLen(CurrentWord)
 
     ;determine prefixing
-    Position := 1
-    While, Position <= Length && SubStr(CurrentWord,Position,1) = SubStr(Entry,Position,1)
-        Position ++
-    Score *= Position ** 3
+    Position2 := 1
+    While, Position2 <= Length && SubStr(CurrentWord,Position2,1) = SubStr(Entry,Position2,1)
+        Position2 ++
+    Score *= Position2 ** 3
 
     ;determine number of superfluous characters
     RegExMatch(Entry,"`nmS)^" . SubStr(RegExReplace(CurrentWord,"S).","$0.*"),1,-2),Word)
