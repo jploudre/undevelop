@@ -195,14 +195,7 @@ return
 WordRetrieve:
 Gui, submit
 GuiControlGet, Choice
-
-StringGetPos, tabpos, Choice, %A_Tab%,
-tabpos++
-StringTrimLeft, Choice, Choice, tabpos 
 gui, cancel
-CoordMode, Mouse, screen
-click, 233, 34
-CoordMode, Mouse, relative
 PerformChoice(Choice)
 gosub, GuiClose
 return
