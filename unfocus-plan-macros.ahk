@@ -1,369 +1,551 @@
 ; Plan Template Items from spreadsheet replace with \r\n (transform backslashes), remove the first else
 
 performchoice(theinput) {
-if theinput = uhcg
+if theinput = In-House Lab: Urine Pregnancy Test
+
 templateclicker("2", "3")
-else if theinput = ua
+else if theinput = In-House Lab: Urinalysis
+
 templateclicker("2", "5")
-else if theinput = strep
+else if theinput = In-House Lab: Rapid Strep
+
 templateclicker("2", "4")
-else if theinput = bmp
+else if theinput = Lab: BMP
+
 templateclicker("3", "3")
-else if theinput = bnp
+else if theinput = Lab: BNP
+
 templateclicker("3", "4")
-else if theinput = cmp
+else if theinput = Lab: CMP
+
 templateclicker("3", "5")
-else if theinput = cbc
+else if theinput = Lab: CBC
+
 templateclicker("3", "7")
-else if theinput = cbcw
+else if theinput = Lab: CBC
+
 templateclicker("3", "7")
-else if theinput = cbcwo
+else if theinput = Lab: CBC without Diff
+
 templateclicker("3", "8")
-else if theinput = strepcx
+else if theinput = Lab: Strep Culture
+
 templateclicker("3", "9", "1")
-else if theinput = ucx
+else if theinput = Lab: Urine Culture
+
 templateclicker("3", "9", "8")
-else if theinput = fungalcx
+else if theinput = Lab: Fungal Culture (skin/hair)
+
 templateclicker("3", "9", "3")
-else if theinput = pertcx
+else if theinput = Lab: Pertussis Swab
+
 templateclicker("3", "9", "4")
-else if theinput = stoolcx
+else if theinput = Lab: Stool Culture
+
 templateclicker("3", "9", "6")
-else if theinput = vagcx
+else if theinput = Lab: Vaginal Culture
+
 templateclicker("3", "9", "9")
-else if theinput = gbscx
+else if theinput = Lab: GBS Vaginal Culture
+
 templateclicker("3", "9", "10")
-else if theinput = woundcx
+else if theinput = Lab: Wound Culture
+
 templateclicker("3", "9", "12")
-else if theinput = esr
+else if theinput = Lab: ESR
+
 templateclicker("3", "10")
-else if theinput = gluc
+else if theinput = Lab: Glucose
+
 templateclicker("3", "11")
-else if theinput = qhcg
+else if theinput = Lab: Quant. HCG
+
 templateclicker("3", "12")
-else if theinput = lft
+else if theinput = Lab: Hepatic Function Panel
+
 templateclicker("3", "13")
-else if theinput = lft
+else if theinput = Lab: Liver Function Panel
+
 templateclicker("3", "13")
-else if theinput = a1c
+else if theinput = Lab: A1C
+
 templateclicker("3", "14")
-else if theinput = lipid
+else if theinput = Lab: Lipid Panel
+
 templateclicker("3", "15")
-else if theinput = ldl
+else if theinput = Lab: Direct LDL
+
 templateclicker("3", "16")
-else if theinput = microalb
+else if theinput = Lab: Microalbumin/Cr Ratio
+
 templateclicker("3", "17")
-else if theinput = inr
+else if theinput = Lab: INR
+
 templateclicker("3", "19")
-else if theinput = vitd
+else if theinput = Lab: Vitamin D
+
 templateclicker("3", "21")
-else if theinput = ddimer
+else if theinput = Lab: D-Dimer
+
 templateclicker("3", "2", "1", "13")
-else if theinput = amylase
+else if theinput = Lab: Amylase
+
 templateclicker("3", "2", "5", "1")
-else if theinput = pap
+else if theinput = Lab: Pap Smear
+
 templateclicker("3", "2", "7", "1")
-else if theinput = hpv
+else if theinput = Lab: HPV (High Risk)
+
 templateclicker("3", "2", "7", "2")
-else if theinput = pku
+else if theinput = Lab: PKU
+
 templateclicker("3", "2", "10", "3")
-else if theinput = quad
+else if theinput = Lab: Quad Screen
+
 templateclicker("3", "2", "10", "4", "13")
-else if theinput = psa
+else if theinput = Lab: PSA (Total)
+
 templateclicker("3", "18", "2")
-else if theinput = tsh
+else if theinput = Lab: TSH
+
 templateclicker("3", "20", "1")
-else if theinput = freet3
+else if theinput = Lab: Free T3
+
 templateclicker("3", "20", "2")
-else if theinput = freet4
+else if theinput = Lab: Free T4
+
 templateclicker("3", "20", "3")
-else if theinput = cxr
+else if theinput = X-Ray: Chest XR
+
 templateclicker("4", "3", "1")
-else if theinput = lspine
+else if theinput = X-Ray: L-spine XR
+
 templateclicker("4", "4", "3", "1")
-else if theinput = cspine
+else if theinput = X-Ray: C-spine XR
+
 templateclicker("4", "4", "1", "1")
-else if theinput = obus
+else if theinput = Ultrasound: Fetal Survey
+
 templateclicker("4", "19", "8")
-else if theinput = aaa
+else if theinput = Ultrasound: AAA Screening
+
 templateclicker("4", "19", "2", "1")
-else if theinput = ekg
+else if theinput = In-House Procedure: EKG
+
 templateclicker("5", "2")
-else if theinput = ecg
+else if theinput = In-House Procedure: ECG
+
 templateclicker("5", "2")
-else if theinput = pft
+else if theinput = In-House Procedure: PFT
+
 templateclicker("5", "5")
-else if theinput = cardt
+else if theinput = Referral: Cardiology
+
 templateclicker("7", "1", "3")
-else if theinput = dermt
+else if theinput = Referral: Dermatology
+
 templateclicker("7", "1", "5")
-else if theinput = endot
+else if theinput = Referral: Endocrinology
+
 templateclicker("7", "1", "6")
-else if theinput = entt
+else if theinput = Referral: Otolaryngology
+
 templateclicker("7", "1", "7")
-else if theinput = git
+else if theinput = Referral: Gastroenterology
+
 templateclicker("7", "1", "8")
-else if theinput = surgt
+else if theinput = Referral: General Surgery
+
 templateclicker("7", "1", "9")
-else if theinput = hemet
+else if theinput = Referral: Hematology
+
 templateclicker("7", "1", "11")
-else if theinput = nephrt
+else if theinput = Referral: Nephrology
+
 templateclicker("7", "1", "14")
-else if theinput = neurot
+else if theinput = Referral: Neurology
+
 templateclicker("7", "1", "15")
-else if theinput = neurosurg
+else if theinput = Referral: Neuro Surgery
+
 templateclicker("7", "1", "16")
-else if theinput = obgyn
+else if theinput = Referral: OB/Gyn
+
 templateclicker("7", "1", "17")
-else if theinput = ophthalt
+else if theinput = Referral: Ophthalmology
+
 templateclicker("7", "1", "18")
-else if theinput = orthot
+else if theinput = Referral: Orthopedics
+
 templateclicker("7", "1", "20")
-else if theinput = podt
+else if theinput = Referral: Podiatry
+
 templateclicker("7", "1", "24")
-else if theinput = psycht
+else if theinput = Referral: Psychiatry
+
 templateclicker("7", "1", "25")
-else if theinput = pulmt
+else if theinput = Referral: Pulmonology
+
 templateclicker("7", "1", "26")
-else if theinput = rheumt
+else if theinput = Referral: Rheumatology
+
 templateclicker("7", "1", "27")
-else if theinput = sleept
+else if theinput = Referral: Sleep
+
 templateclicker("7", "1", "28")
-else if theinput = urot
+else if theinput = Referral: Urology
+
 templateclicker("7", "1", "29")
-else if theinput = audiot
+else if theinput = Referral: Audiology
+
 templateclicker("7", "2", "2")
-else if theinput = chirot
+else if theinput = Referral: Chiropracter
+
 templateclicker("7", "2", "3")
-else if theinput = diabed
+else if theinput = Referral: Diabetic Educator
+
 templateclicker("7", "2", "4")
-else if theinput = homehealth
+else if theinput = Referral: Home Health
+
 templateclicker("7", "2", "5")
-else if theinput = hospice
+else if theinput = Referral: Hospice
+
 templateclicker("7", "2", "6")
-else if theinput = massage
+else if theinput = Referral: Massage
+
 templateclicker("7", "2", "7")
-else if theinput = massaget
+else if theinput = Referral: Massage
+
 templateclicker("7", "2", "7")
-else if theinput = phtt
+else if theinput = Referral: Physical Therapy
+
 templateclicker("7", "2", "12")
-else if theinput = pht
+else if theinput = Referral: Physical Therapy
+
 templateclicker("7", "2", "12")
-else if theinput = refusal
+else if theinput = Refusal: Patient Refused
+
 templateclicker("8", "1")
-else if theinput = refused
+else if theinput = Refusal: Patient Refused
+
 templateclicker("8", "1")
-else if theinput = ob1
+else if theinput = Billing: OB visit until 28w
+
 templateclicker("11", "2")
-else if theinput = ob2
+else if theinput = Billing: OB visit 28-35w
+
 templateclicker("11", "3")
-else if theinput = ob3
+else if theinput = Billing: OB visit 36+w
+
 templateclicker("11", "4")
-else if theinput = obppv
+else if theinput = Billing: OB Postpartum Visit
+
 templateclicker("11", "5")
-else if theinput = 212
+else if theinput = Billing: Time > 10min; 99212
+
 templateclicker("20", "2")
-else if theinput = 213
+else if theinput = Billing: Time > 15min; 99213
+
 templateclicker("20", "3")
-else if theinput = 214
+else if theinput = Billing: Time > 25min; 99214
+
 templateclicker("20", "4")
-else if theinput = 215
+else if theinput = Billing: Time > 40min; 99215
+
 templateclicker("20", "5")
-else if theinput = med
+else if theinput = Medication: New Medication
+
 templateclicker("15", "4", "2")
-else if theinput = ncmed
+else if theinput = Medication: No Change in Meds
+
 templateclicker("15", "1")
-else if theinput = incrmed
+else if theinput = Medication: Increase Medication Dose
+
 templateclicker("15", "6", "2")
-else if theinput = decrmed
+else if theinput = Medication: Decrease Medication Dose
+
 templateclicker("15", "7", "2")
-else if theinput = dcmed
+else if theinput = Medication: Discontinue Medication
+
 templateclicker("15", "8", "2")
-else if theinput = holdmed
+else if theinput = Medication: Hold Medication
+
 templateclicker("15", "9", "2")
-else if theinput = resumemed
+else if theinput = Medication: Resume Medication
+
 templateclicker("15", "10", "2")
-else if theinput = erx
+else if theinput = Medication: Electronic Prescription
+
 templateclicker("16")
-else if theinput = dmed
+else if theinput = Medication: Discussed medication
+
 templateclicker("18")
-else if theinput = dnh
+else if theinput = Discussion: Natural History
+
 templateclicker("17", "1")
-else if theinput = ddx
+else if theinput = Discussion: Differential Diagnosis
+
 templateclicker("17", "2")
-else if theinput = dotc
+else if theinput = Discussion: OTC Meds
+
 templateclicker("17", "3")
-else if theinput = drexam
+else if theinput = Discussion: Reassuring Exam
+
 templateclicker("17", "4")
-else if theinput = drf
+else if theinput = Discussion: Warning Signs (Red Flags)
+
 templateclicker("17", "5")
-else if theinput = duri
+else if theinput = Discussion: URI Measures
+
 templateclicker("17", "6")
-else if theinput = dtxo
+else if theinput = Discussion: Treatment Options
+
 templateclicker("17", "7")
-else if theinput = dsn
+else if theinput = Discussion: Another Topic
+
 templateclicker("17", "8")
-else if theinput = fuissue
+else if theinput = Deferred Issues: Follow up at future visit
+
 templateclicker("19", "1")
-else if theinput = fprn
+else if theinput = Followup: As Needed
+
 templateclicker("23", "6")
-else if theinput = c1d
+else if theinput = Followup: Call 1 day
+
 templateclicker("23", "2", "1", "1")
-else if theinput = c2d
+else if theinput = Followup: Call 2 days
+
 templateclicker("23", "2", "1", "2")
-else if theinput = c3d
+else if theinput = Followup: Call 3 days
+
 templateclicker("23", "2", "1", "3")
-else if theinput = c4d
+else if theinput = Followup: Call 4 days
+
 templateclicker("23", "2", "1", "4")
-else if theinput = c5d
+else if theinput = Followup: Call 5 days
+
 templateclicker("23", "2", "1", "5")
-else if theinput = c6d
+else if theinput = Followup: Call 6 days
+
 templateclicker("23", "2", "1", "6")
-else if theinput = c7d
+else if theinput = Followup: Call 7 days
+
 templateclicker("23", "2", "1", "7")
-else if theinput = c8d
+else if theinput = Followup: Call 8 days
+
 templateclicker("23", "2", "1", "8")
-else if theinput = c9d
+else if theinput = Followup: Call 9 days
+
 templateclicker("23", "2", "1", "9")
-else if theinput = c10d
+else if theinput = Followup: Call 10 days
+
 templateclicker("23", "2", "1", "10")
-else if theinput = c11d
+else if theinput = Followup: Call 11 days
+
 templateclicker("23", "2", "1", "11")
-else if theinput = c12d
+else if theinput = Followup: Call 12 days
+
 templateclicker("23", "2", "1", "12")
-else if theinput = c13d
+else if theinput = Followup: Call 13 days
+
 templateclicker("23", "2", "1", "13")
-else if theinput = c14d
+else if theinput = Followup: Call 14 days
+
 templateclicker("23", "2", "1", "14")
-else if theinput = c1w
+else if theinput = Followup: Call 1 week
+
 templateclicker("23", "2", "2", "1")
-else if theinput = c2w
+else if theinput = Followup: Call 2 weeks
+
 templateclicker("23", "2", "2", "2")
-else if theinput = c3w
+else if theinput = Followup: Call 3 weeks
+
 templateclicker("23", "2", "2", "3")
-else if theinput = c4w
+else if theinput = Followup: Call 4 weeks
+
 templateclicker("23", "2", "2", "4")
-else if theinput = c5w
+else if theinput = Followup: Call 5 weeks
+
 templateclicker("23", "2", "2", "5")
-else if theinput = c6w
+else if theinput = Followup: Call 6 weeks
+
 templateclicker("23", "2", "2", "6")
-else if theinput = c7w
+else if theinput = Followup: Call 7 weeks
+
 templateclicker("23", "2", "2", "7")
-else if theinput = c8w
+else if theinput = Followup: Call 8 weeks
+
 templateclicker("23", "2", "2", "8")
-else if theinput = c9w
+else if theinput = Followup: Call 9 weeks
+
 templateclicker("23", "2", "2", "9")
-else if theinput = c10w
+else if theinput = Followup: Call 10 weeks
+
 templateclicker("23", "2", "2", "10")
-else if theinput = c11w
+else if theinput = Followup: Call 11 weeks
+
 templateclicker("23", "2", "2", "11")
-else if theinput = c12w
+else if theinput = Followup: Call 12 weeks
+
 templateclicker("23", "2", "2", "12")
-else if theinput = c1m
+else if theinput = Followup: Call 1 month
+
 templateclicker("23", "2", "3", "1")
-else if theinput = c2m
+else if theinput = Followup: Call 2 months
+
 templateclicker("23", "2", "3", "2")
-else if theinput = c3m
+else if theinput = Followup: Call 3 months
+
 templateclicker("23", "2", "3", "3")
-else if theinput = c4m
+else if theinput = Followup: Call 4 months
+
 templateclicker("23", "2", "3", "4")
-else if theinput = c5m
+else if theinput = Followup: Call 5 months
+
 templateclicker("23", "2", "3", "5")
-else if theinput = c6m
+else if theinput = Followup: Call 6 months
+
 templateclicker("23", "2", "3", "6")
-else if theinput = c7m
+else if theinput = Followup: Call 7 months
+
 templateclicker("23", "2", "3", "7")
-else if theinput = c8m
+else if theinput = Followup: Call 8 months
+
 templateclicker("23", "2", "3", "8")
-else if theinput = c9m
+else if theinput = Followup: Call 9 months
+
 templateclicker("23", "2", "3", "9")
-else if theinput = c10m
+else if theinput = Followup: Call 10 months
+
 templateclicker("23", "2", "3", "10")
-else if theinput = c11m
+else if theinput = Followup: Call 11 months
+
 templateclicker("23", "2", "3", "11")
-else if theinput = c12m
+else if theinput = Followup: Call 12 months
+
 templateclicker("23", "2", "3", "12")
-else if theinput = f1d
+else if theinput = Followup: Appointment 1 day
+
 templateclicker("23", "7", "1")
-else if theinput = f2d
+else if theinput = Followup: Appointment 2 days
+
 templateclicker("23", "7", "2")
-else if theinput = f3d
+else if theinput = Followup: Appointment 3 days
+
 templateclicker("23", "7", "3")
-else if theinput = f4d
+else if theinput = Followup: Appointment 4 days
+
 templateclicker("23", "7", "4")
-else if theinput = f5d
+else if theinput = Followup: Appointment 5 days
+
 templateclicker("23", "7", "5")
-else if theinput = f6d
+else if theinput = Followup: Appointment 6 days
+
 templateclicker("23", "7", "6")
-else if theinput = f7d
+else if theinput = Followup: Appointment 7 days
+
 templateclicker("23", "7", "7")
-else if theinput = f8d
+else if theinput = Followup: Appointment 8 days
+
 templateclicker("23", "7", "8")
-else if theinput = f9d
+else if theinput = Followup: Appointment 9 days
+
 templateclicker("23", "7", "9")
-else if theinput = f10d
+else if theinput = Followup: Appointment 10 days
+
 templateclicker("23", "7", "10")
-else if theinput = f11d
+else if theinput = Followup: Appointment 11 days
+
 templateclicker("23", "7", "11")
-else if theinput = f12d
+else if theinput = Followup: Appointment 12 days
+
 templateclicker("23", "7", "12")
-else if theinput = f13d
+else if theinput = Followup: Appointment 13 days
+
 templateclicker("23", "7", "13")
-else if theinput = f14d
+else if theinput = Followup: Appointment 14 days
+
 templateclicker("23", "7", "14")
-else if theinput = f1w
+else if theinput = Followup: Appointment 1 week
+
 templateclicker("23", "8", "1")
-else if theinput = f2w
+else if theinput = Followup: Appointment 2 weeks
+
 templateclicker("23", "8", "2")
-else if theinput = f3w
+else if theinput = Followup: Appointment 3 weeks
+
 templateclicker("23", "8", "3")
-else if theinput = f4w
+else if theinput = Followup: Appointment 4 weeks
+
 templateclicker("23", "8", "4")
-else if theinput = f5w
+else if theinput = Followup: Appointment 5 weeks
+
 templateclicker("23", "8", "5")
-else if theinput = f6w
+else if theinput = Followup: Appointment 6 weeks
+
 templateclicker("23", "8", "6")
-else if theinput = f7w
+else if theinput = Followup: Appointment 7 weeks
+
 templateclicker("23", "8", "7")
-else if theinput = f8w
+else if theinput = Followup: Appointment 8 weeks
+
 templateclicker("23", "8", "8")
-else if theinput = f9w
+else if theinput = Followup: Appointment 9 weeks
+
 templateclicker("23", "8", "9")
-else if theinput = f10w
+else if theinput = Followup: Appointment 10 weeks
+
 templateclicker("23", "8", "10")
-else if theinput = f11w
+else if theinput = Followup: Appointment 11 weeks
+
 templateclicker("23", "8", "11")
-else if theinput = f12w
+else if theinput = Followup: Appointment 12 weeks
+
 templateclicker("23", "8", "12")
-else if theinput = f1m
+else if theinput = Followup: Appointment 1 month
+
 templateclicker("23", "9", "1")
-else if theinput = f2m
+else if theinput = Followup: Appointment 2 months
+
 templateclicker("23", "9", "2")
-else if theinput = f3m
+else if theinput = Followup: Appointment 3 months
+
 templateclicker("23", "9", "3")
-else if theinput = f4m
+else if theinput = Followup: Appointment 4 months
+
 templateclicker("23", "9", "4")
-else if theinput = f5m
+else if theinput = Followup: Appointment 5 months
+
 templateclicker("23", "9", "5")
-else if theinput = f6m
+else if theinput = Followup: Appointment 6 months
+
 templateclicker("23", "9", "6")
-else if theinput = f7m
+else if theinput = Followup: Appointment 7 months
+
 templateclicker("23", "9", "7")
-else if theinput = f8m
+else if theinput = Followup: Appointment 8 months
+
 templateclicker("23", "9", "8")
-else if theinput = f9m
+else if theinput = Followup: Appointment 9 months
+
 templateclicker("23", "9", "9")
-else if theinput = f10m
+else if theinput = Followup: Appointment 10 months
+
 templateclicker("23", "9", "10")
-else if theinput = f11m
+else if theinput = Followup: Appointment 11 months
+
 templateclicker("23", "9", "11")
-else if theinput = f12m
+else if theinput = Followup: Appointment 12 months
+
 templateclicker("23", "9", "12")
-else if theinput = f1y
+else if theinput = Followup: Appointment 1 year
+
 templateclicker("23", "9", "12")
-else if theinput = fpend
+else if theinput = Followup: Depending on Lab/Test Results
+
 templateclicker("23", "15")
-else if theinput = fcpe
+else if theinput = Followup: Schedule CPE
+
 templateclicker("23", "10")
 
 
