@@ -85,7 +85,7 @@ Critical
 If (small = 0)
 {
 	MatchList = 
-	Matchlist := jkpSuggest(searchterm, ByRef Wordlist)
+	Matchlist := Suggest(searchterm, ByRef Wordlist)
 	
 	Position1 := InStr(MatchList,"|",True,1,MaxResults)
 	If Position1
@@ -113,7 +113,7 @@ else if (small = 0) {
 
 }
 
-jkpSuggest(Word, Byref Wordlist)
+Suggest(Word, Byref Wordlist)
 {
 global
 
