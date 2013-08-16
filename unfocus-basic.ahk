@@ -111,7 +111,7 @@ Suggest(Word, Byref Wordlist)
 {
 global
 
-Pattern := RegExReplace(Word,"S).","$0.*") ;subsequence matching pattern
+Pattern := ".*" . RegExReplace(Word,"S).","$0.*") ;subsequence matching pattern
 
     Pattern := "`nimS)^" . Pattern ;match options
 
