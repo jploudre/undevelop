@@ -32,7 +32,7 @@ RefreshList(1,1)
 searchterm =   
 Loop
 {
-    Input, input, L1, {enter}{esc}{backspace}{up}{down}{tab}
+    Input, input, L1, {enter}{esc}{backspace}{up}{down}{tab}{space}
     
 	   if ErrorLevel = EndKey:escape
       {
@@ -41,7 +41,7 @@ Loop
       }
        if ErrorLevel = EndKey:enter
       {
-         GoSub, WordRetrieve
+         GoSub, GetSelection
          continue
       }
        if ErrorLevel = EndKey:backspace
@@ -61,10 +61,15 @@ Loop
       }
 		if ErrorLevel = EndKey:tab
       {
-         GoSub, WordRetrieve
+         GoSub, GetSelection
          continue
       }
-   
+   		if ErrorLevel = EndKey:space
+      {
+         if searchterm = 
+         GoSub, DoImDone
+         continue
+      }
     searchterm = %searchterm%%input%  
     GuiControl,, Edit1, %searchterm%            
 	RefreshList(0,0)
@@ -190,10 +195,16 @@ if A_GuiControlEvent = DoubleClick
     send, {enter}
 return
 
-WordRetrieve:
+GetSelection:
 Gui, submit
 GuiControlGet, Choice
 gui, cancel
 PerformChoice(Choice)
+gosub, GuiClose
+return
+
+DoImDone:
+gui, cancel
+Send #{Space}
 gosub, GuiClose
 return
