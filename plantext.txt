@@ -1,185 +1,186 @@
-In-House Lab: Urine Pregnancy Test
-In-House Lab: Urinalysis
-In-House Lab: Rapid Strep
-Lab: BMP
-Lab: BNP
-Lab: CMP
-Lab: CBC
-Lab: CBC
-Lab: CBC without Diff
-Lab: Strep Culture
-Lab: Urine Culture
-Lab: Fungal Culture (skin/hair)
-Lab: Pertussis Swab
-Lab: Stool Culture
-Lab: Vaginal Culture
-Lab: GBS Vaginal Culture
-Lab: Wound Culture
-Lab: ESR
-Lab: Glucose
-Lab: Quant. HCG
-Lab: Hepatic Function Panel
-Lab: Liver Function Panel
-Lab: A1C
-Lab: Lipid Panel
-Lab: Direct LDL
-Lab: Microalbumin/Cr Ratio
-Lab: INR
-Lab: Vitamin D
-Lab: D-Dimer
-Lab: Amylase
-Lab: Pap Smear
-Lab: HPV (High Risk)
-Lab: PKU
-Lab: Quad Screen
-Lab: PSA (Total)
-Lab: TSH
-Lab: Free T3
-Lab: Free T4 é
-X-Ray: Chest XR
-X-Ray: L-spine XR
-X-Ray: C-spine XR
-Ultrasound: Fetal Survey
-Ultrasound: AAA Screening
-In-House Procedure: EKG
-In-House Procedure: ECG
-In-House Procedure: PFT
-Referral: Cardiology
-Referral: Dermatology
-Referral: Endocrinology
-Referral: Otolaryngology
-Referral: Gastroenterology
-Referral: General Surgery
-Referral: Hematology
-Referral: Nephrology
-Referral: Neurology
-Referral: Neuro Surgery
-Referral: OB/Gyn
-Referral: Ophthalmology
-Referral: Orthopedics
-Referral: Podiatry
-Referral: Psychiatry
-Referral: Pulmonology
-Referral: Rheumatology
-Referral: Sleep
-Referral: Urology
-Referral: Audiology
-Referral: Chiropracter
-Referral: Diabetic Educator
-Referral: Home Health
-Referral: Hospice
-Referral: Massage
-Referral: Massage
-Referral: Physical Therapy
-Referral: Physical Therapy
-Refusal: Patient Refused
-Refusal: Patient Refused
-Billing: OB visit until 28w
-Billing: OB visit 28-35w
-Billing: OB visit 36+w
-Billing: OB Postpartum Visit
-Billing: Time > 10min; 99212
-Billing: Time > 15min; 99213
-Billing: Time > 25min; 99214
-Billing: Time > 40min; 99215
-Medication: New Medication
-Medication: No Change in Meds
-Medication: Increase Medication Dose
-Medication: Decrease Medication Dose
-Medication: Discontinue Medication
-Medication: Hold Medication
-Medication: Resume Medication
-Medication: Electronic Prescription
-Medication: Discussed medication
-Discussion: Natural History
-Discussion: Differential Diagnosis
-Discussion: OTC Meds
-Discussion: Reassuring Exam
-Discussion: Warning Signs (Red Flags)
-Discussion: URI Measures
-Discussion: Treatment Options
-Discussion: Another Topic
-Deferred Issues: Follow up at future visit
-Followup: As Needed
-Followup: Call 1 day
-Followup: Call 2 days
-Followup: Call 3 days
-Followup: Call 4 days
-Followup: Call 5 days
-Followup: Call 6 days
-Followup: Call 7 days
-Followup: Call 8 days
-Followup: Call 9 days
-Followup: Call 10 days
-Followup: Call 11 days
-Followup: Call 12 days
-Followup: Call 13 days
-Followup: Call 14 days
-Followup: Call 1 week
-Followup: Call 2 weeks
-Followup: Call 3 weeks
-Followup: Call 4 weeks
-Followup: Call 5 weeks
-Followup: Call 6 weeks
-Followup: Call 7 weeks
-Followup: Call 8 weeks
-Followup: Call 9 weeks
-Followup: Call 10 weeks
-Followup: Call 11 weeks
-Followup: Call 12 weeks
-Followup: Call 1 month
-Followup: Call 2 months
-Followup: Call 3 months
-Followup: Call 4 months
-Followup: Call 5 months
-Followup: Call 6 months
-Followup: Call 7 months
-Followup: Call 8 months
-Followup: Call 9 months
-Followup: Call 10 months
-Followup: Call 11 months
-Followup: Call 12 months
-Followup: Appointment 1 day
-Followup: Appointment 2 days
-Followup: Appointment 3 days
-Followup: Appointment 4 days
-Followup: Appointment 5 days
-Followup: Appointment 6 days
-Followup: Appointment 7 days
-Followup: Appointment 8 days
-Followup: Appointment 9 days
-Followup: Appointment 10 days
-Followup: Appointment 11 days
-Followup: Appointment 12 days
-Followup: Appointment 13 days
-Followup: Appointment 14 days
-Followup: Appointment 1 week
-Followup: Appointment 2 weeks
-Followup: Appointment 3 weeks
-Followup: Appointment 4 weeks
-Followup: Appointment 5 weeks
-Followup: Appointment 6 weeks
-Followup: Appointment 7 weeks
-Followup: Appointment 8 weeks
-Followup: Appointment 9 weeks
-Followup: Appointment 10 weeks
-Followup: Appointment 11 weeks
-Followup: Appointment 12 weeks
-Followup: Appointment 1 month
-Followup: Appointment 2 months
-Followup: Appointment 3 months
-Followup: Appointment 4 months
-Followup: Appointment 5 months
-Followup: Appointment 6 months
-Followup: Appointment 7 months
-Followup: Appointment 8 months
-Followup: Appointment 9 months
-Followup: Appointment 10 months
-Followup: Appointment 11 months
-Followup: Appointment 12 months
-Followup: Appointment 1 year
-Followup: Depending on Lab/Test Results
-Followup: Schedule CPE
+±  Urine Pregnancy Test
+±  Urinalysis
+±  Rapid Strep
+±  BMP
+±  BNP
+±  CMP
+±  CBC
+±  CBC
+±  CBC without Diff
+±  Strep Culture
+±  Urine Culture
+±  Fungal Culture (skin/hair)
+±  Pertussis Swab
+±  Stool Culture
+±  Vaginal Culture
+±  GBS Vaginal Culture
+±  Wound Culture
+±  ESR
+±  Glucose
+±  Quant. HCG
+±  Hepatic Function Panel
+±  Liver Function Panel
+±  A1C
+±  Lipid Panel
+±  Direct LDL
+±  Microalbumin/Cr Ratio
+±  INR
+±  Vitamin D
+±  D-Dimer
+±  Amylase
+±  Pap Smear
+±  HPV (High Risk)
+±  PKU
+±  Quad Screen
+±  PSA (Total)
+±  TSH
+±  Free T3
+±  Free T4
+X-Ray  Chest XR
+X-Ray  L-spine XR
+X-Ray  C-spine XR
+Ultrasound  Fetal Survey
+Ultrasound  AAA Screening
+In-House Procedure  EKG
+In-House Procedure  ECG
+In-House Procedure  PFT
+ï  Cardiology
+ï  Dermatology
+ï  Endocrinology
+ï  Otolaryngology
+ï  Gastroenterology
+ï  General Surgery
+ï  Hematology
+ï  Nephrology
+ï  Neurology
+ï  Neuro Surgery
+ï  OB/Gyn
+ï  Ophthalmology
+ï  Orthopedics
+ï  Podiatry
+ï  Psychiatry
+ï  Pulmonology
+ï  Rheumatology
+ï  Sleep
+ï  Urology
+ï  Audiology
+ï  Chiropracter
+ï  Diabetic Educator
+ï  Home Health
+ï  Hospice
+ï  Massage
+ï  Massage
+ï  Physical Therapy
+ï  Physical Therapy
+Refusal  Patient Refused
+Refusal  Patient Refused
+Billing  OB visit until 28w
+Billing  OB visit 28-35w
+Billing  OB visit 36+w
+Billing  OB Postpartum Visit
+Billing  Time > 10min; 99212
+Billing  Time > 15min; 99213
+Billing  Time > 25min; 99214
+Billing  Time > 40min; 99215
+Medication  New Medication
+Medication  No Change in Meds
+Medication  Increase Medication Dose
+Medication  Decrease Medication Dose
+Medication  Discontinue Medication
+Medication  Hold Medication
+Medication  Resume Medication
+Medication  Electronic Prescription
+Medication  Discussed medication
+¶  Natural History
+¶  Differential Diagnosis
+¶  OTC Meds
+¶  Reassuring Exam
+¶  Warning Signs (Red Flags)
+¶  URI Measures
+¶  Treatment Options
+¶  Another Topic
+Deferred Issues  Follow up at future visit
+Followup  As Needed
+Followup  Call 1 day
+Followup  Call 2 days
+Followup  Call 3 days
+Followup  Call 4 days
+Followup  Call 5 days
+Followup  Call 6 days
+Followup  Call 7 days
+Followup  Call 8 days
+Followup  Call 9 days
+Followup  Call 10 days
+Followup  Call 11 days
+Followup  Call 12 days
+Followup  Call 13 days
+Followup  Call 14 days
+Followup  Call 1 week
+Followup  Call 2 weeks
+Followup  Call 3 weeks
+Followup  Call 4 weeks
+Followup  Call 5 weeks
+Followup  Call 6 weeks
+Followup  Call 7 weeks
+Followup  Call 8 weeks
+Followup  Call 9 weeks
+Followup  Call 10 weeks
+Followup  Call 11 weeks
+Followup  Call 12 weeks
+Followup  Call 1 month
+Followup  Call 2 months
+Followup  Call 3 months
+Followup  Call 4 months
+Followup  Call 5 months
+Followup  Call 6 months
+Followup  Call 7 months
+Followup  Call 8 months
+Followup  Call 9 months
+Followup  Call 10 months
+Followup  Call 11 months
+Followup  Call 12 months
+Followup  Appointment 1 day
+Followup  Appointment 2 days
+Followup  Appointment 3 days
+Followup  Appointment 4 days
+Followup  Appointment 5 days
+Followup  Appointment 6 days
+Followup  Appointment 7 days
+Followup  Appointment 8 days
+Followup  Appointment 9 days
+Followup  Appointment 10 days
+Followup  Appointment 11 days
+Followup  Appointment 12 days
+Followup  Appointment 13 days
+Followup  Appointment 14 days
+Followup  Appointment 1 week
+Followup  Appointment 2 weeks
+Followup  Appointment 3 weeks
+Followup  Appointment 4 weeks
+Followup  Appointment 5 weeks
+Followup  Appointment 6 weeks
+Followup  Appointment 7 weeks
+Followup  Appointment 8 weeks
+Followup  Appointment 9 weeks
+Followup  Appointment 10 weeks
+Followup  Appointment 11 weeks
+Followup  Appointment 12 weeks
+Followup  Appointment 1 month
+Followup  Appointment 2 months
+Followup  Appointment 3 months
+Followup  Appointment 4 months
+Followup  Appointment 5 months
+Followup  Appointment 6 months
+Followup  Appointment 7 months
+Followup  Appointment 8 months
+Followup  Appointment 9 months
+Followup  Appointment 10 months
+Followup  Appointment 11 months
+Followup  Appointment 12 months
+Followup  Appointment 1 year
+Followup  Depending on Lab/Test Results
+Followup  Schedule CPE
+
 
 Percocet
 

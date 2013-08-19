@@ -11,7 +11,7 @@ Ideas for Autocomplete
 * Turn Plantext into a variable inside the single include file.
 * Can Includes include partial code (that doesn't work on it's own?)
 * Subtle Achievements (Gamification Cards?)
-* Snarl/Growl
+* Snarl/Growl/Notify()
 * Display Checklist
 * Display Billing 99213 vs 99214
 * Dragon Macro (with Function keys F1- F9), In Note does Paste F1 -F9.
