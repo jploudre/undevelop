@@ -22,7 +22,7 @@ DllCall( "GDI32.DLL\AddFontResourceEx", Str,"C:\Users\jkploudre\Documents\GitHub
 Gui, +AlwaysOnTop -Caption +ToolWindow Border
 GUI, margin, 0,0
 gui, color, 6b7c70, ffffff
-gui, font, s32 q2, FontAwesome
+gui, font, s32 q4, FontAwesome
 Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h356 -Background %nobevel%
 gui, color, F2efc2, F2efc2
 Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
