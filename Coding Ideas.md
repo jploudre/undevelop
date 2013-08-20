@@ -7,7 +7,8 @@ Approved Ideas for Autocomplete
 * Start making lists of macros.
 * Change Macros into Functions
 * Chain Macros into Brief Multi-step mini-flows.
-* Add tabs Icon \t Title \t Right Icon? \t hidden abbreviation
+
+
 
 Someday Ideas
 ===========
@@ -20,3 +21,5 @@ Someday Ideas
 * Display Checklist
 * Display Billing 99213 vs 99214
 * Dragon Macro (with Function keys F1- F9), In Note does Paste F1 -F9.
+* Switch Font Glyphs to ANSI for simplicity?
+* * Add tabs Icon \t Title \t Right Icon? \t hidden abbreviation
