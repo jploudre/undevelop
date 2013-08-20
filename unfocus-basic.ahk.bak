@@ -7,9 +7,9 @@ PrepareWordList(WordList)
 SetBatchLines -1
 windowwidth := 600
 nobevel = -E0x200
-smallboxheight = 28
+smallboxheight = 26
 fromtopposition = 10
-fullboxheight = 240
+fullboxheight = 235
 lefteditoffset = 2
 editwidth := windowwidth - lefteditoffset
 MaxResults = 8

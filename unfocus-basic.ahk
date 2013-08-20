@@ -7,7 +7,7 @@ PrepareWordList(WordList)
 SetBatchLines -1
 windowwidth := 600
 nobevel = -E0x200
-smallboxheight = 28
+smallboxheight = 26
 fromtopposition = 10
 fullboxheight = 235
 lefteditoffset = 2
@@ -100,7 +100,7 @@ If (animate = 1) {
 	Gui +LastFound
 	GUI_ID:=WinExist() 
 	Gui, Show, xCenter y%fromtopposition% w%windowwidth% h%smallboxheight% Hide, AutoComplete
-	DllCall("AnimateWindow","UInt",GUI_ID,"Int",300,"UInt","0xa0000")
+	DllCall("AnimateWindow","UInt",GUI_ID,"Int",1000,"UInt","0xe0000")
 }
 
 else if (small = 1){
