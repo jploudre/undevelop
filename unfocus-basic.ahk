@@ -100,7 +100,7 @@ If (animate = 1) {
 	Gui +LastFound
 	GUI_ID:=WinExist() 
 	Gui, Show, xCenter y%fromtopposition% w%windowwidth% h%smallboxheight% Hide, AutoComplete
-	DllCall("AnimateWindow","UInt",GUI_ID,"Int",1000,"UInt","0xe0000")
+	DllCall("AnimateWindow","UInt",GUI_ID,"Int",200,"UInt","0xa0000")
 }
 
 else if (small = 1){
