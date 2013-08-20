@@ -36,14 +36,14 @@
 ±  TSH
 ±  Free T3
 ±  Free T4
-æ  Chest XR
-æ  L-spine XR
-æ  C-spine XR
-æ  Fetal Survey
-æ  AAA Screening
-æ  EKG
-æ  ECG
-æ  PFT
+¬  Chest XR
+¬  L-spine XR
+¬  C-spine XR
+¬  Fetal Survey
+¬  AAA Screening
+¬  EKG
+¬  ECG
+¬  PFT
 »  Cardiology
 »  Dermatology
 »  Endocrinology
@@ -180,3 +180,664 @@
 §  Appointment 1 year
 §  Depending on Lab/Test Results
 §  Schedule CPE
+° Percocet
+° Vicodin
+° Methadone
+° Simvastatin
+° Clonazepam
+° Lisinopril
+° Meloxicam
+° Flonase
+° Lisinopril/Hydrochlorothiazide
+° Atenolol
+° Metformin
+° Fluoxetine
+° Hydrocodone/Acetaminophen
+° Hydrochlorothiazide (HCTZ)
+° Amoxicillin
+° Lorazepam
+° Omeprazole
+° Zolpidem
+° Adderall XR
+° Levothyroxine
+° Zoloft
+° Lovastatin
+° Citalopram
+° Albuterol HFA
+° Ambien
+° Codeine/Guaifenesin
+° Prednisone
+° Celexa
+° Metoprolol
+° Triamcinolone
+° Azithromycin
+° Atenolol/Chlorthalidone
+° Trazodone
+° Zofran
+° MS Contin
+° Cyclobenzaprine HCl
+° Bactrim DS
+° Amitriptyline HCl
+° Viagra
+° Cialis
+° Synthroid
+° Potassium Chloride
+° Tylenol w/Codeine #3
+° Alprazolam
+° Dilaudid
+° Lipitor
+° Glyburide
+° Adderall
+° Keflex
+° Flexeril
+° Ciprofloxacin HCl
+° Gabapentin
+° Sertraline HCl
+° Aerochamber
+° Venlafaxine HCl
+° Effexor XR
+° Flomax
+° Oxycontin
+° Wellbutrin XL
+° Terbinafine HCl
+° Test strips
+° Glipizide
+° Cipro
+° Amlodipine
+° Prilosec
+° Acyclovir
+° Flovent HFA
+° Furosemide
+° Imitrex
+° Cozaar
+° Pravastatin
+° Allopurinol
+° Doxazosin Mesylate
+° Prozac
+° Clobetasol Propionate
+° Xanax
+° Mirapex
+° Coumadin
+° Vitamin D2
+° Nystatin
+° Albuterol
+° Lantus
+° Plavix
+° Tylenol w/Codeine #4
+° Protonix
+° Chantix
+° Levoxyl
+° Morphine Sulfate
+° Ritalin SR
+° Paxil
+° Endocet
+° Tramadol
+° Dicyclomine HCl
+° Metronidazole
+° Physical Therapy
+° Phenergan
+° Effexor
+° Fluoritab
+° Premarin
+° Acetaminophen/Codeine
+° Lasix
+° Oxycodone/Acetaminophen
+° Ranitidine
+° Tessalon Perles
+° Propranolol HCl
+° Advair Diskus
+° Losartan
+° Nortriptyline
+° Spironolactone
+° Benzamycin
+° Fioricet
+° QVAR
+° Bupropion ER (SR)
+° Maxzide
+° Wellbutrin SR
+° Augmentin
+° Benazepril HCl
+° Crestor
+° Diltiazem HCl
+° Estradiol
+° Naproxen
+° Fluticasone Propionate
+° Indomethacin
+° Oxycodone HCl
+° Permethrin
+° Doxepin HCl
+° Levitra
+° Losartan/Hydrochlorothiazide
+° Pantoprazole
+° Ritalin LA
+° Ativan
+° Erythromycin Ophthalmic
+° TobraDex
+° Diflucan
+° Minocycline HCl
+° Ritalin
+° Triamterene/Hydrochlorothiazide
+° Zocor
+° Mirtazapine
+° Seroquel
+° Toprol XL
+° Venlafaxine ER
+° BuSpar
+° Carvedilol
+° Clotrimazole
+° Ortho Novum 7/7/7 28 day
+° Paroxetine HCl
+° Valium
+° Fosamax
+° Glucometer
+° ProAir HFA
+° Requip
+° Bupropion HCl
+° EpiPen Auto-Injector
+° Diazepam
+° Enalapril Maleate
+° Geodon
+° Metadate ER
+° Methylin
+° Reglan
+° Syringes
+° Celebrex
+° Chlorthalidone
+° Gemfibrozil
+° Ibuprofen
+° Benicar
+° Clindamycin HCl
+° Clonidine HCl
+° Estrace
+° Glucophage
+° Lancet
+° Lidex
+° Prenatal Multivitamin
+° Temazepam
+° Warfarin Sodium
+° Maxalt
+° Micardis
+° Nexium
+° Tetracycline HCl
+° Tri Vit w/Fluoride
+° Atorvastatin Calcium
+° Dilantin Kapseals
+° NuvaRing
+° Oxybutynin Chloride
+° Prilosec OTC
+° Ramipril
+° Vosol HC
+° Azelastine HCl
+° Cymbalta
+° Diclofenac Sodium
+° Ferrous Sulfate
+° Humalog
+° Isosorbide Mononitrate
+° Klonopin
+° Levothroid
+° Promethazine HCl
+° Scopolamine
+° Valtrex
+° Zovirax
+° Bactroban
+° Benicar HCT
+° Colchicine
+° Micronor
+° Strattera
+° Ventolin HFA
+° Combivent
+° Methylphenidate HCl
+° Nasacort AQ
+° Neurontin
+° Pyridium
+° Vivelle-Dot
+° Yasmin
+° Allegra
+° Auralgan
+° Cholestyramine
+° Fenofibrate
+° Hydrocortisone
+° Levaquin
+° MetroGel
+° NovoLog Mix 70/30
+° Phenytoin Sodium, Extended
+° Singulair
+° Sodium Fluoride
+° DuoNeb
+° Felodipine
+° Lithium Carbonate
+° Lotensin
+° Miralax
+° Nadolol
+° Propoxyphene Napsylate/Acetaminophen
+° Compazine
+° Docusate Sodium
+° Drysol
+° Insulin Syringes
+° Ketoconazole
+° Lamisil
+° Prinivil
+° Spiriva HandiHaler
+° Sumatriptan
+° Testosterone Cypionate
+° Tri-Sprintec 28
+° Verapamil HCl
+° Voltaren
+° Acetaminophen
+° Cortisporin
+° Diovan
+° fluoride
+° Lidoderm
+° Lonox
+° Massage Therapy
+° Patanol
+° Pravachol
+° Prevacid
+° Prinzide
+° Relpax
+° Terazosin
+° Triazolam
+° Tylox
+° Actos
+° Asmanex Twisthaler
+° Cipro HC
+° Clarithromycin
+° Cytomel
+° Doxycycline
+° Flagyl
+° Lexapro
+° Loratadine
+° Macrobid
+° Mebendazole
+° Nitrofurantoin
+° Ortho Novum 1/35  28 day
+° Oxazepam
+° Tramadol ER
+° Zaditor
+° Aricept
+° Ascensia CONTOUR Test Strips
+° Aspirin (ASA)
+° Ciprodex
+° Concerta
+° Lomotil
+° Rosuvastatin
+° Soma
+° Amoxil
+° Apri 28
+° Avodart
+° Benazepril/Hydrochlorothiazide
+° Budeprion SR
+° Colace
+° Differin
+° Glucose Reagent Blood Test Strips
+° Maxalt MLT
+° Niaspan
+° Norvasc
+° Plan B
+° Tizanidine HCl
+° Trimethoprim/Sulfamethoxazole
+° TriNessa 28
+° Valacyclovir
+° Vitamin B12
+° Zantac
+° Zithromax
+° Ambien CR
+° Astelin
+° Digoxin
+° Diltia XT
+° Ditropan XL
+° Finasteride
+° Fluocinonide
+° Lactulose
+° Loestrin  Fe 1.5/30  28 day
+° Lortab
+° Metoprolol ER
+° Mevacor
+° Nasonex
+° NovoLog
+° Ortho Tri-Cyclen  28
+° Pletal
+° Pramipexole
+° Risperidone
+° Ropinirole HCl
+° Rythmol
+° Serax
+° Serevent Diskus
+° Tamsulosin HCl
+° Vistaril
+° Vitamin D3
+° Welchol
+° Yaz
+° Aerochamber with Mask (small mask)
+° Amlodipine/Benazepril
+° Anusol HC
+° Cardizem CD
+° Chiropactic Treatments
+° Ciprofloxacin/Dexamethasone
+° Coreg CR
+° glucose test strips
+° Glyburide/Metformin
+° Hydromorphone HCl
+° Insulin, Regular (Human)
+° Lanoxin
+° Lantus SoloSTAR
+° Lidocaine HCl
+° Low-Ogestrel 28
+° Midrin
+° Nicoderm CQ
+° Nitroglycerin
+° Ondansetron HCl
+° Opana ER
+° Phentermine HCl
+° Proctofoam-HC
+° Provera
+° Restoril
+° Septra DS
+° Sprintec
+° Tretinoin
+° Zomig
+° Zyrtec
+° Acetasol HC
+° AcipHex
+° Activella
+° Alendronate Sodium
+° Allegra-D 12 Hour
+° Amphetamine Aspartate & Sulfate/Dextroamphetamine Saccharate & Sulfate
+° Anusol HC 2.5
+° Bentyl
+° BenzaClin
+° Calan SR
+° Calcium Carbonate
+° Cefuroxime Axetil
+° Clobex
+° Darvocet-N 100
+° Delestrogen
+° Depo Testosterone
+° Elocon
+° Estropipate
+° Etodolac
+° Famciclovir
+° Famvir
+° Fexofenadine HCl
+° Glucovance
+° Insulin Glargine (rDNA)
+° Intuniv
+° Keppra XR
+° Klor-Con M10
+° Levsin
+° Loperamide
+° Malarone
+° Methocarbamol
+° Mobic
+° Monistat 1 Combination Pack
+° Multivitamin/Mineral Supplement
+° Naprosyn
+° Niacin (Nicotinic Acid)
+° Novolin N
+° Ortho Evra
+° Prednisolone
+° Prometrium
+° Slow-Mag
+° Spacer Device
+° Symbicort
+° Testosterone
+° Vicodin ES
+° Voltaren XR
+° Aldactazide
+° Aldactone
+° Aviane 28
+° Baclofen
+° Betamethasone Diproprionate
+° Bethanechol Chloride
+° Calcium Carbonate/Vitamin D
+° Ceftin
+° Cephalexin
+° Claritin
+° Clindamycin Phosphate
+° Cyclocort
+° Depakote
+° Dextromethorphan HBr
+° Dicloxacillin Sodium
+° Erythromycin Topical
+° Estring
+° Fluconazole
+° Flunisolide
+° Fluocinolone Acetonide
+° Fosamax Plus D
+° Hydralazine HCl
+° Hydroxyzine HCl
+° Hytrin
+° Imdur
+° Ketotifen
+° Labetalol HCl
+° Lamictal
+° Lantus OptiClik
+° Loestrin 1.5/30  21 day
+° Mirena
+° Nicotine
+° Nizatidine
+° Nizoral
+° Novolog Flexpen
+° Ortho Cyclen  28
+° Ortho Tri-Cyclen Lo 28
+° Plendil
+° Podofilox
+° Poly-Vi-Flor
+° Prevpac
+° Pulmicort Respules
+° Raloxifene
+° Remeron
+° Robaxin
+° Seasonale
+° Selegiline HCl
+° Senna
+° Septra
+° Slo-Niacin
+° Tamiflu
+° Vicoprofen
+° Vimpat
+° Zanaflex
+° Zithromax Z-Pak
+° Advicor
+° Aggrenox
+° Amiodarone HCl
+° AndroGel 2.5G
+° Anusol
+° Arimidex
+° Armour Thyroid
+° Atrovent HFA
+° Augmentin ES-600
+° Bactrim Pediatric
+° Bactroban Nasal
+° Beconase AQ
+° Betamethasone Valerate
+° Bisoprolol/Hydrochlorthiazide
+° Cetirizine HCl
+° chiropracter
+° Ciprofloxacin/Hydrocortisone
+° Codeine Sulfate
+° Demerol HCl
+° Dexamethasone
+° Dexedrine
+° Dextroamphetamine
+° Ditropan
+° Dovonex
+° Dulcolax
+° Duragesic
+° Elidel
+° Erythromycin/Benzoyl Peroxide
+° Etanercept
+° Ethinyl Estradiol /Ethynodiol Diacetate
+° Fentanyl
+° Ferrous Gluconate
+° Folic Acid
+° Glucagon Emergency
+° Glycolax
+° Halcion
+° Humulin 70/30
+° Humulin R
+° Imodium A-D
+° Indocin
+° Insulin, Isophane Suspension (NPH, Human)
+° Ivermectin
+° Levofloxacin
+° Lodine
+° Loestrin  Fe 1/20  28 day
+° Loratadine/Pseudoephedrine
+° Lumigan
+° Lybrel
+° Macrodantin
+° Medrol
+° Medroxyprogesterone Acetate
+° Metadate CD
+° Metoclopramide HCl
+° Metoprolol Succinate
+° Micatin
+° Miconazole Nitrate
+° Mircette
+° Monopril
+° Nabumetone
+° Nitrostat
+° Novofine needle
+° Prempro
+° Proctosol-HC
+° Promethazine with Codeine
+° Provigil
+° Pseudoephedrine HCl
+° Quinapril
+° Retin-A
+° Robitussin A-C
+° Sanctura XR
+° Selenium Sulfide
+° Sulfasalazine
+° Tenoretic 50
+° Tioconazole
+° Torsemide
+° Tussionex
+° Ultram
+° Vancomycin HCl
+° Veramyst
+° Vicodin HP
+° Vitamin C
+° Vitamin K
+° Vytorin
+° Zonisamide
+° Aldara
+° AndroGel 5.0G
+° AndroGel Pump
+° Arthrotec 50
+° Atacand
+° Avandia
+° Avar Green
+° Axert
+° Azathioprine
+° Azelaic Acid
+° Biaxin
+° Bisacodyl
+° Boniva
+° Carbamazepine
+° Catapres-TTS
+° Cefadroxil
+° Cefixime
+° Chloroquine Phosphate
+° Cilostazol
+° Clopidogrel
+° Codeine Phosphate
+° Compression Hose
+° Coreg
+° Cryselle
+° D.H.E. 45
+° Desonide
+° Diphenhydramine HCl
+° Divalproex Sodium
+° Dyazide
+° Econazole Nitrate
+° Enoxaparin
+° Estraderm
+° Famotidine
+° Fexofenadine/Pseudoephedrine
+° Flector
+° Fludrocortisone Acetate
+° Fluvoxamine Maleate
+° Fosinopril/Hydrochlorothiazide
+° Glucotrol XL
+° Guaifenesin
+° Guiatuss AC
+° Haloperidol
+° Ipratropium Bromide
+° Keppra
+° Lamisil AT
+° Lamotrigine
+° Levalbuterol
+° Levemir
+° Librax (w/clidinium)
+° Lotrel
+° Lotrimin AF
+° Lotrisone
+° Lovenox
+° Lyrica
+° Malathion
+° Meclizine HCl
+° Melatonin
+° Metamucil
+° Methotrexate Sodium
+° Methylprednisolone
+° Milk Of Magnesia
+° Monistat 7
+° Mupirocin
+° Naproxen Sodium
+° Necon 0.5/35 28 day
+° Necon 1/35 28 day
+° Niacinamide
+° Nicorette
+° Nifediac CC
+° Nix Creme Rinse
+° Norco
+° Nortrel 7/7/7
+° Novolin 70/30
+° NovoLog Mix 70/30 FlexPen
+° Nuvigil
+° Ogestrel 28
+° One Touch Basic Monitor
+° Peak Flow Meter
+° Plan B One-Step
+° Polymyxin B/Trimethoprim
+° Polytrim
+° Pregabalin
+° Prenatal Multivitamin & DHA
+° Primidone
+° Prochlorperazine
+° Protopic
+° Pulmicort Flexhaler
+° Questran
+° Quinapril/Hydrochlorothiazide
+° Quinine Sulfate
+° Relafen
+° Retin-A Micro
+° Rhinocort Aqua
+° Rifampin
+° Rifaximin
+° Senna-Gen
+° Sildenafil Citrate
+° Silver Sulfadiazine
+° Sinemet-CR
+° Tacrolimus
+° Temovate
+° Tenormin
+° Tiotropium Bromide
+° Topiramate
+° Tricor
+° Triple Antibiotic
+° Tylenol, Children's
+° Tylenol, Infants' Drops
+° Ultram ER
+° Ventolin
+° Vermox
+° VESIcare
+° Vitamin K
+° Vivelle
+° Xylocaine Viscous
+° Zanamivir
+° Zaroxolyn
+° Zestoretic
+° Zyrtec-D 12 Hour
