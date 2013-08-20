@@ -23,7 +23,7 @@ Gui, +AlwaysOnTop -Caption +ToolWindow Border
 GUI, margin, 0,0
 gui, color, 6b7c70, ffffff
 gui, font, s18 q4, FontAwesome
-Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h216 -Background %nobevel%
+Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h216 t9 -Background %nobevel%
 gui, color, F2efc2, F2efc2
 Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
 
