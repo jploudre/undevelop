@@ -47,7 +47,7 @@ CoordMode, Mouse, relative
 ; Plan Template Items from spreadsheet replace with \r\n (transform backslashes), remove the first else
 
 performchoice(theinput) {
-else if theinput = ±  Urine Pregnancy Test
+if theinput = ±  Urine Pregnancy Test
 templateclicker("2", "3")
 else if theinput = ±  Urinalysis
 templateclicker("2", "5")
