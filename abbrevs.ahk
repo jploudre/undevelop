@@ -4717,6 +4717,7 @@ return  ; This makes the above hotstrings do nothing so that they override the i
 ::perc::percocet
 ::predn::prednisone
 ::simv::simvastatin
+::atorva::atorvastatin
 ::tyl::tylenol
 ::vic::vicodin
 ::zol::zoloft
@@ -5603,4 +5604,7 @@ SendInput SITUATION:{Enter 3}BACKGROUND:{Enter 3}ASSESSMENT:{Enter 3}RECOMENDATI
 return
 ::sdjkp::
 SendInput /JKP %A_MMM% %A_DD%, %A_YYYY%
+return
+::yy::
+SendInput %A_YYYY%
 return
