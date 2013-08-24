@@ -15,8 +15,8 @@ MaxResults = 8
 
 SetBatchLines -1
 #NoEnv
-#Warn All
-#Warn LocalSameAsGlobal, Off
+;#Warn All
+;#Warn LocalSameAsGlobal, Off
 #MaxThreadsBuffer On
 #SingleInstance, Force
 
@@ -90,7 +90,6 @@ Critical
 
 If (small = 0)
 {
-	MatchList = 
 	Matchlist := Suggest(searchterm, ByRef Wordlist)
 }
 
@@ -114,58 +113,52 @@ else if (small = 0) {
 
 }
 
-Suggest(Word, Byref Wordlist)
+Suggest(CurrentWord, Byref Wordlist)
 {
-global
-
-Pattern := ".*" . RegExReplace(Word,"S).","$0.*") ;subsequence matching pattern
+Pattern := ".*" . RegExReplace(CurrentWord,"S).","$0.*") ;subsequence matching pattern
 
     Pattern := "`nimS)^" . Pattern ;match options
 
     ;search for words matching the pattern
+    MatchList := ""
     Position := 1
     While, Position := RegExMatch(WordList,Pattern,Word,Position)
     {
         Position += StrLen(Word)
-        MatchList .= Word . "|"
+        MatchList .= Word . "`n"
     }
+    MatchList := SubStr(MatchList,1,-1) ;remove trailing delimiter
     
-    Sort, MatchList, FRankResults D| ;rank results by score
-    
-    Position1 := InStr(MatchList,"|",True,1,MaxResults)
-	If Position1
-    MatchList := SubStr(MatchList,1,Position1 - 1)
+    ;sort by score
+    SortedMatches := ""
+    Loop, Parse, MatchList, `n
+        SortedMatches .= Score(CurrentWord,A_LoopField) . "`t" . A_LoopField . "`n"
+    SortedMatches := SubStr(SortedMatches,1,-1)
+    Sort, SortedMatches, N R ;rank results numerically descending by score
+
+    ;remove scores
+    MatchList := ""
+    Loop, Parse, SortedMatches, `n
+        MatchList .= SubStr(A_LoopField,InStr(A_LoopField,"`t",True,-1) + 1) . "|"
 
     Return, MatchList
 }
 
-RankResults(Entry1,Entry2,Offset)
+Score(Word,Entry)
 {
-    Return, Score(Entry2,0) - Score(Entry1,Offset)
-}
-
-Score(Entry,Offset)
-{
-    global searchterm
     Score := 100
 
-    Length := StrLen(searchterm)
+    Length := StrLen(Word)
 
     ;determine prefixing
-    Position2 := 1
-    While, Position2 <= Length && SubStr(searchterm,Position2,1) = SubStr(Entry,Position2,1)
-        Position2 ++
-    Score *= Position2 ** 3
+    Position := 1
+    While, Position <= Length && SubStr(Word,Position,1) = SubStr(Entry,Position,1)
+        Position ++
+    Score *= Position ** 8
 
     ;determine number of superfluous characters
-    RegExMatch(Entry,"`nmS)^" . SubStr(RegExReplace(searchterm,"S).","$0.*"),1,-2),Word)
-    Score *= (1 + StrLen(Word) - Length) ** -1.5
-
-    ;determine the offset (for wordlists sorted by frequency)
-    If Offset > 0
-        Score *= 10 ** 0.4
-    Else If Offset < 0
-        Score *= 10 ** -0.4
+    RegExMatch(Entry,"`nimS)^" . SubStr(RegExReplace(Word,"S).","$0.*"),1,-2),Remaining)
+    Score *= (1 + StrLen(Remaining) - Length) ** -1.5
 
     Return, Score
 }
