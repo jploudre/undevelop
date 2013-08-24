@@ -15,8 +15,8 @@ MaxResults = 8
 
 SetBatchLines -1
 #NoEnv
-#Warn All
-#Warn LocalSameAsGlobal, Off
+;#Warn All
+;#Warn LocalSameAsGlobal, Off
 #MaxThreadsBuffer On
 #SingleInstance, Force
 
@@ -212,8 +212,9 @@ PrepareWordList(ByRef WordList)
 {
     If InStr(WordList,"`r")
         StringReplace, WordList, WordList, `r,, All
-    While, InStr(WordList,"`n`n")
+    While, InStr(WordList,"`n`n") ;remove blank lines within the list
         StringReplace, WordList, WordList, `n`n, `n, All
+    WordList := Trim(WordList,"`n") ;remove blank lines at the beginning and end
 }
 
 
