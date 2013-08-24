@@ -3,7 +3,6 @@ Approved Ideas for Autocomplete
 
 * 1 character search is not substring matching. (Macros listed at top of lists to favor them with 1 character)
 * Multiple character reverts to substring search
-* Sift-3 Scoring Algorithm for better scoring.
 * Start making lists of macros.
 * Change Macros into Functions
 * Chain Macros into Brief Multi-step mini-flows.
@@ -14,6 +13,8 @@ Someday Ideas
 ===========
 
 * Suggestion Macro: Creates a Simple Feedback form
+* Sift-3 Scoring Algorithm for better scoring?
+* Quicksilver Algorithm?
 * Turn Plantext into a variable inside the single include file.
 * Can Includes include partial code (that doesn't work on it's own?)
 * Subtle Achievements (Gamification Cards?)
