@@ -4,7 +4,6 @@ ListName=C:\Users\jkploudre\Documents\GitHub\undevelop\plantext.txt
 FileRead, WordList, %Listname%
 PrepareWordList(WordList)
 
-SetBatchLines -1
 windowwidth := 600
 nobevel = -E0x200
 smallboxheight = 26
@@ -14,8 +13,11 @@ lefteditoffset = 2
 editwidth := windowwidth - lefteditoffset
 MaxResults = 8
 
+SetBatchLines -1
 #NoEnv
-
+#Warn All
+#Warn LocalSameAsGlobal, Off
+#MaxThreadsBuffer On
 #SingleInstance, Force
 
 DllCall( "GDI32.DLL\AddFontResourceEx", Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10), Int,0)
