@@ -115,6 +115,8 @@ else if (small = 0) {
 
 Suggest(CurrentWord, Byref Wordlist)
 {
+    global
+    
     Pattern := ".*" . RegExReplace(CurrentWord,"S).","$0.*") ;subsequence matching pattern
     Pattern := "`nimS)^" . Pattern ;match options
 
@@ -139,6 +141,11 @@ Suggest(CurrentWord, Byref Wordlist)
     MatchList := ""
     Loop, Parse, SortedMatches, `n
         MatchList .= SubStr(A_LoopField,InStr(A_LoopField,"}",True,-1) + 1) . "|"
+
+    Position := InStr(MatchList,"|",True,1,MaxResults)
+    If Position
+    MatchList := SubStr(MatchList,1,Position - 1)
+
 
     Return, MatchList
 }
