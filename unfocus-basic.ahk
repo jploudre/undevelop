@@ -91,11 +91,9 @@ Critical
 If (small = 0)
 {
 	Matchlist := Suggest(searchterm, ByRef Wordlist)
+	GuiControl,, ListBox1, |%Matchlist%
+	GuiControl, Choose, ListBox1, 1
 }
-
-GuiControl,, ListBox1, |%Matchlist%
-GuiControl, Choose, ListBox1, 1
-
 
 If (animate = 1) {
 	Gui +LastFound
