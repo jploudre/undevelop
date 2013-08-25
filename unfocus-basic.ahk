@@ -131,14 +131,14 @@ Suggest(CurrentWord, Byref Wordlist)
     ;sort by score
     SortedMatches := ""
     Loop, Parse, MatchList, `n
-        SortedMatches .= Score(CurrentWord,A_LoopField) . "`t" . A_LoopField . "`n"
+        SortedMatches .= Score(CurrentWord,A_LoopField) . "}" . A_LoopField . "`n"
     SortedMatches := SubStr(SortedMatches,1,-1)
     Sort, SortedMatches, N R ;rank results numerically descending by score
 
     ;remove scores
     MatchList := ""
     Loop, Parse, SortedMatches, `n
-        MatchList .= SubStr(A_LoopField,InStr(A_LoopField,"`t",True,-1) + 1) . "|"
+        MatchList .= SubStr(A_LoopField,InStr(A_LoopField,"}",True,-1) + 1) . "|"
 
     Return, MatchList
 }
