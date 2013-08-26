@@ -26,7 +26,7 @@ ifWinActive, Patient Chart
 WinGetText wintext
 IfInString, wintext, pcsProgressNote
 {
-run, unfocus-icd(2012).ahk
+Run, C:\Users\jkploudre\Documents\GitHub\undevelop\unfocus-basic.ahk
 }
 }
 return

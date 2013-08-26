@@ -1,5 +1,17 @@
+ifwinactive, Level
+{
 ListName=C:\Users\jkploudre\Documents\GitHub\undevelop\plantext.txt
 #Include C:\Users\jkploudre\Documents\GitHub\undevelop\unfocus-plan-macros.ahk
+}
+ifWinActive, Patient Chart
+{
+WinGetText wintext
+IfInString, wintext, pcsProgressNote
+{
+    ListName=C:\Users\jkploudre\Documents\GitHub\undevelop\visitnote.txt
+#Include C:\Users\jkploudre\Documents\GitHub\undevelop\visitnote-macros.ahk
+}
+}
 
 FileRead, WordList, %Listname%
 PrepareWordList(WordList)
@@ -91,11 +103,9 @@ Critical
 If (small = 0)
 {
 	Matchlist := Suggest(searchterm, ByRef Wordlist)
+	GuiControl,, ListBox1, |%Matchlist%
+	GuiControl, Choose, ListBox1, 1
 }
-
-GuiControl,, ListBox1, |%Matchlist%
-GuiControl, Choose, ListBox1, 1
-
 
 If (animate = 1) {
 	Gui +LastFound
@@ -115,8 +125,9 @@ else if (small = 0) {
 
 Suggest(CurrentWord, Byref Wordlist)
 {
-Pattern := ".*" . RegExReplace(CurrentWord,"S).","$0.*") ;subsequence matching pattern
-
+    global
+    
+    Pattern := ".*" . RegExReplace(CurrentWord,"S).","$0.*") ;subsequence matching pattern
     Pattern := "`nimS)^" . Pattern ;match options
 
     ;search for words matching the pattern
@@ -132,14 +143,19 @@ Pattern := ".*" . RegExReplace(CurrentWord,"S).","$0.*") ;subsequence matching p
     ;sort by score
     SortedMatches := ""
     Loop, Parse, MatchList, `n
-        SortedMatches .= Score(CurrentWord,A_LoopField) . "`t" . A_LoopField . "`n"
+        SortedMatches .= Score(CurrentWord,A_LoopField) . "}" . A_LoopField . "`n"
     SortedMatches := SubStr(SortedMatches,1,-1)
     Sort, SortedMatches, N R ;rank results numerically descending by score
 
     ;remove scores
     MatchList := ""
     Loop, Parse, SortedMatches, `n
-        MatchList .= SubStr(A_LoopField,InStr(A_LoopField,"`t",True,-1) + 1) . "|"
+        MatchList .= SubStr(A_LoopField,InStr(A_LoopField,"}",True,-1) + 1) . "|"
+
+    Position := InStr(MatchList,"|",True,1,MaxResults)
+    If Position
+    MatchList := SubStr(MatchList,1,Position - 1)
+
 
     Return, MatchList
 }
