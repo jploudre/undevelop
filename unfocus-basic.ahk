@@ -131,7 +131,7 @@ Suggest(CurrentWord, Byref Wordlist)
     ;sort by score
     SortedMatches := ""
     Loop, Parse, MatchList, `n
-        SortedMatches .= Score(CurrentWord,A_LoopField) . "}" . A_LoopField . "`n"
+        SortedMatches .= StrDiff(CurrentWord,A_LoopField) . "}" . A_LoopField . "`n"
     SortedMatches := SubStr(SortedMatches,1,-1)
     Sort, SortedMatches, N R ;rank results numerically descending by score
 
