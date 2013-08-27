@@ -11,9 +11,6 @@ send !w
 send {Tab}{Down}{Enter}	
 }
 
-
-
-
 ; Plan Template Items from spreadsheet replace with \r\n (transform backslashes)
 
 performchoice(theinput) {

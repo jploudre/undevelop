@@ -1,15 +1,15 @@
-ifwinactive, Level
-{
+;ifwinactive, Level
+;{
 ListName=C:\Users\jkploudre\Documents\GitHub\undevelop\plantext.txt
 #Include C:\Users\jkploudre\Documents\GitHub\undevelop\unfocus-plan-macros.ahk
-}
+;}
 ifWinActive, Patient Chart
 {
 WinGetText wintext
 IfInString, wintext, pcsProgressNote
 {
     ListName=C:\Users\jkploudre\Documents\GitHub\undevelop\visitnote.txt
-#Include C:\Users\jkploudre\Documents\GitHub\undevelop\visitnote-macros.ahk
+    #Include C:\Users\jkploudre\Documents\GitHub\undevelop\visitnote-macros.ahk
 }
 }
 
@@ -143,7 +143,7 @@ Suggest(CurrentWord, Byref Wordlist)
     ;sort by score
     SortedMatches := ""
     Loop, Parse, MatchList, `n
-        SortedMatches .= Score(CurrentWord,A_LoopField) . "}" . A_LoopField . "`n"
+        SortedMatches .= StrDiff(CurrentWord,A_LoopField) . "}" . A_LoopField . "`n"
     SortedMatches := SubStr(SortedMatches,1,-1)
     Sort, SortedMatches, N R ;rank results numerically descending by score
 
