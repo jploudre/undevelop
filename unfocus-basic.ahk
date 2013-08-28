@@ -1,8 +1,9 @@
-;ifwinactive, Level
-;{
+ifwinactive, Level
+{
 ListName=C:\Users\jkploudre\Documents\GitHub\undevelop\plantext.txt
 #Include C:\Users\jkploudre\Documents\GitHub\undevelop\unfocus-plan-macros.ahk
-;}
+}
+
 /*
 ifWinActive, Patient Chart
 {
@@ -132,6 +133,13 @@ Suggest(CurrentWord, Byref Wordlist)
     Pattern := ".*" . RegExReplace(CurrentWord,"S).","$0.*") ;subsequence matching pattern
     Pattern := "`nimS)^" . Pattern ;match options
 
+	/* From Uberi
+	RegExMatch(WhatTheWordIs,"`nimS)^" . SubStr(RegExReplace(WhatTheUserTyped,"S).","$0.*"),1,-2),Remaining)
+	StrDiff(Remaining,WhatTheUserTyped)
+	
+	*/
+
+
     ;search for words matching the pattern
     MatchList := ""
     Position := 1
@@ -145,7 +153,7 @@ Suggest(CurrentWord, Byref Wordlist)
     ;sort by score
     SortedMatches := ""
     Loop, Parse, MatchList, `n
-        SortedMatches .= StrDiff(CurrentWord,A_LoopField) . "}" . A_LoopField . "`n"
+        SortedMatches .= Score(CurrentWord,A_LoopField) . "}" . A_LoopField . "`n"
     SortedMatches := SubStr(SortedMatches,1,-1)
     Sort, SortedMatches, N R ;rank results numerically descending by score
 
