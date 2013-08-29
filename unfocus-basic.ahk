@@ -1,20 +1,5 @@
-ifwinactive, Level
-{
 ListName=C:\Users\jkploudre\Documents\GitHub\undevelop\plantext.txt
 #Include C:\Users\jkploudre\Documents\GitHub\undevelop\unfocus-plan-macros.ahk
-}
-
-/*
-ifWinActive, Patient Chart
-{
-WinGetText wintext
-IfInString, wintext, pcsProgressNote
-{
-    ListName=C:\Users\jkploudre\Documents\GitHub\undevelop\visitnote.txt
-    #Include C:\Users\jkploudre\Documents\GitHub\undevelop\visitnote-macros.ahk
-}
-}
-*/ 
 
 FileRead, WordList, %Listname%
 PrepareWordList(WordList)
