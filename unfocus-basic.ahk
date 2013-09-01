@@ -155,6 +155,15 @@ Suggest(CurrentWord, Byref Wordlist)
     Return, MatchList
 }
 
+/*
+
+Basically, what you want to do is instead of using StrDiff(WhatTheUserTyped,WhatTheWordIs), you can use something like this:
+
+RegExMatch(WhatTheWordIs,"`nimS)^" . SubStr(RegExReplace(WhatTheUserTyped,"S).","$0.*"),1,-2),Remaining)
+StrDiff(Remaining,WhatTheUserTyped)
+*/
+
+
 Score(Word,Entry)
 {
     Score := 100
