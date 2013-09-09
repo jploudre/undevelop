@@ -7,6 +7,7 @@ Approved Ideas for Autocomplete
 * Change Macros into Functions
 * Chain Macros into Brief Multi-step mini-flows.
 * Use 'CSV' for data store. Extract function from line and use dynamic function to call.
+* Eliminate globals
 
 
 
