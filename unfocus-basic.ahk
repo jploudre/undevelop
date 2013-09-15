@@ -59,7 +59,7 @@ Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h21
 gui, font, s18 q4 c%cyan%, FontAwesome
 Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
 gui, font, s18 q4 c%blue%, FontAwesome
-Gui, Add, Text, x1 y0, Ä
+Gui, Add, Text, x2 y0, Ä
 
 RefreshList(1,1)
 

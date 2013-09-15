@@ -57,9 +57,9 @@ gui, color, %base2%, %base3%
 gui, font, s18 q4 c%base01%, FontAwesome
 Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h216 t9 %nobevel%
 gui, font, s18 q4 c%cyan%, FontAwesome
-Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
+Gui, Add, Edit, x%lefteditoffset% y0 -Background w%editwidth% h%smallboxheight% %nobevel%
 gui, font, s18 q4 c%blue%, FontAwesome
-Gui, Add, Text, x0 y0, Ä
+Gui, Add, Text, x2 y0, Ä
 
 RefreshList(1,1)
 
