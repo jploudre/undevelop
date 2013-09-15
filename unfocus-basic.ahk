@@ -50,7 +50,6 @@ gui, font, s18 q4 c%searchcolor%, FontAwesome
 Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
 Gui, Add, Text, x2 y0, Ä
 
-
 RefreshList(1,1)
 
 searchterm =   
