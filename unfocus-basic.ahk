@@ -9,14 +9,17 @@ nobevel = -E0x200
 smallboxheight = 26
 fromtopposition = 10
 fullboxheight = 235
-lefteditoffset = 2
+lefteditoffset = 36
 editwidth := windowwidth - lefteditoffset
 MaxResults = 8
 base2 = eee8d5
 base3 = fdf6e3
 base01 = 586e75
 base00 = 657b83
-
+base03 = 002b36
+cyan = 2aa198
+yellow = b58900
+blue = 268bd2
 /*
 http://ethanschoonover.com/solarized
 
@@ -50,11 +53,13 @@ SetBatchLines -1
 DllCall( "GDI32.DLL\AddFontResourceEx", Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10), Int,0)
 Gui, +AlwaysOnTop -Caption +ToolWindow Border
 GUI, margin, 0,0
-gui, color, 6b7c70, %base3%
-gui, font, s18 q4 c%base00%, FontAwesome
-Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h216 t9 -Background %nobevel%
-gui, color, %base2%, %base2%
-Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% c%base01% %nobevel%
+gui, color, %base2%, %base3%
+gui, font, s18 q4 c%base01%, FontAwesome
+Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h216 t9 %nobevel%
+gui, font, s18 q4 c%cyan%, FontAwesome
+Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
+gui, font, s18 q4 c%blue%, FontAwesome
+Gui, Add, Text, x1 y0, Ä
 
 RefreshList(1,1)
 
