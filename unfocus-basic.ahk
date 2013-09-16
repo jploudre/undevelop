@@ -12,131 +12,35 @@ fullboxheight = 235
 lefteditoffset = 36
 editwidth := windowwidth - lefteditoffset
 MaxResults = 8
-
-; Colors from http://ethanschoonover.com/solarized
-base0 = 839496
-base1 = 93a1a1
 base2 = eee8d5
 base3 = fdf6e3
-base00 = 657b83
 base01 = 586e75
-base02 = 073642
+base00 = 657b83
 base03 = 002b36
-yellow = b58900
-orange = cb4b16
-red = dc322f
-magenta = d33682
-violet = 6c71c4
-blue = 268bd2
 cyan = 2aa198
-green = 859900
-
-;http://www.autohotkey.com/board/topic/35813-function-ctlcolors-more-colored-controls/?p=289426
+yellow = b58900
+blue = 268bd2
 /*
-	Function:	CColor
-				Set text and background color for some Gui controls. 
-				Supported types: Edit, Text, ListBox, ComboBox, DropDownList, CheckBox, RadioButton, ListView, TreeView, RichEdit
-   
-	Parameters:   
-		Hwnd		-  Handle of the control.
-		Background  -  Background color. HTML color name or 6-digit RGB value. Optional.
-		Foreground  -  Foreground color. HTML color name or 6-digit RGB value. Optional.
-	  
-	Remarks:
-		You need to redraw the window for changes to take effect. For some controls, it may be needed to explicitelly specify 
-		foreground color ("cRed") when creating control, otherwise text will stay black.
+http://ethanschoonover.com/solarized
 
-		On tha first call for a specific control class the function registers itself as message handler for WM_CTLCOLOR
-		message of appropriate class.
+base03    #002b36  8/4 brblack  234 #1c1c1c 15 -12 -12   0  43  54 193 100  21
+base02    #073642  0/4 black    235 #262626 20 -12 -12   7  54  66 192  90  26
+base01    #586e75 10/7 brgreen  240 #585858 45 -07 -07  88 110 117 194  25  46
+base00    #657b83 11/7 bryellow 241 #626262 50 -07 -07 101 123 131 195  23  51
+base0     #839496 12/6 brblue   244 #808080 60 -06 -03 131 148 150 186  13  59
+base1     #93a1a1 14/4 brcyan   245 #8a8a8a 65 -05 -02 147 161 161 180   9  63
+base2     #eee8d5  7/7 white    254 #e4e4e4 92 -00  10 238 232 213  44  11  93
+base3     #fdf6e3 15/7 brwhite  230 #ffffd7 97  00  10 253 246 227  44  10  99
+yellow    #b58900  3/3 yellow   136 #af8700 60  10  65 181 137   0  45 100  71
+orange    #cb4b16  9/3 brred    166 #d75f00 50  50  55 203  75  22  18  89  80
+red       #dc322f  1/1 red      160 #d70000 50  65  45 220  50  47   1  79  86
+magenta   #d33682  5/5 magenta  125 #af005f 50  65 -05 211  54 130 331  74  83
+violet    #6c71c4 13/5 brmagenta 61 #5f5faf 50  15 -45 108 113 196 237  45  77
+blue      #268bd2  4/4 blue      33 #0087ff 55 -10 -45  38 139 210 205  82  82
+cyan      #2aa198  6/6 cyan      37 #00afaf 60 -35 -05  42 161 152 175  74  63
+green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
 
-		Buttons are always drawn with the default system colors. Drawing buttons requires several different brushes-face, highlight and shadow 
-		but the WM_CTLCOLORBTN message allows only one brush to be returned. To provide a custom appearance for push buttons, use an owner-drawn button.
-
-	About:
-		o Version 1.0 by majkinetor.
-		o Original code by (de)nick, See: <http://www.autohotkey.com/forum/topic238864.html>.
-		o Licenced under BSD <http://creativecommons.org/licenses/BSD/>.
- */
-CColor(Hwnd, Background="", Foreground="") {
-	return CColor_(Background, Foreground, "", Hwnd+0)
-}
-
-CColor_(Wp, Lp, Msg, Hwnd) { 
-	static 
-	static WM_CTLCOLOREDIT=0x0133, WM_CTLCOLORLISTBOX=0x134, WM_CTLCOLORSTATIC=0x0138
-		  ,LVM_SETBKCOLOR=0x1001, LVM_SETTEXTCOLOR=0x1024, LVM_SETTEXTBKCOLOR=0x1026, TVM_SETTEXTCOLOR=0x111E, TVM_SETBKCOLOR=0x111D
-		  ,BS_CHECKBOX=2, BS_RADIOBUTTON=8, ES_READONLY=0x800
-		  ,CLR_NONE=-1, CSILVER=0xC0C0C0, CGRAY=0x808080, CWHITE=0xFFFFFF, CMAROON=0x80, CRED=0x0FF, CPURPLE=0x800080, CFUCHSIA=0xFF00FF, CGREEN=0x8000, CLIME=0xFF00, COLIVE=0x8080, CYELLOW=0xFFFF, CNAVY=0x800000, CBLUE=0xFF0000, CTEAL=0x808000, CAQUA=0xFFFF00
- 		  ,CLASSES := "Button,ComboBox,Edit,ListBox,Static,RICHEDIT50W,SysListView32,SysTreeView32"
-	
-	If (Msg = "") {      
-		if !adrSetTextColor
-			adrSetTextColor	:= DllCall("GetProcAddress", "uint", DllCall("GetModuleHandle", "str", "Gdi32.dll"), "str", "SetTextColor")
-		   ,adrSetBkColor	:= DllCall("GetProcAddress", "uint", DllCall("GetModuleHandle", "str", "Gdi32.dll"), "str", "SetBkColor")
-		   ,adrSetBkMode	:= DllCall("GetProcAddress", "uint", DllCall("GetModuleHandle", "str", "Gdi32.dll"), "str", "SetBkMode")
-	
-      ;Set the colors (RGB -> BGR)
-		BG := !Wp ? "" : C%Wp% != "" ? C%Wp% : "0x" SubStr(WP,5,2) SubStr(WP,3,2) SubStr(WP,1,2) 
-		FG := !Lp ? "" : C%Lp% != "" ? C%Lp% : "0x" SubStr(LP,5,2) SubStr(LP,3,2) SubStr(LP,1,2)
-
-	  ;Activate message handling with OnMessage() on the first call for a class 
-		WinGetClass, class, ahk_id %Hwnd% 
-		If class not in %CLASSES% 
-			return A_ThisFunc "> Unsupported control class: " class
-
-		ControlGet, style, Style, , , ahk_id %Hwnd% 
-		if (class = "Edit") && (Style & ES_READONLY) 
-			class := "Static"
-	
-		if (class = "Button")
-			if (style & BS_RADIOBUTTON) || (style & BS_CHECKBOX) 
-				 class := "Static" 
-			else return A_ThisFunc "> Unsupported control class: " class
-		
-		if (class = "ComboBox") { 
-			VarSetCapacity(CBBINFO, 52, 0), NumPut(52, CBBINFO), DllCall("GetComboBoxInfo", "UInt", Hwnd, "UInt", &CBBINFO) 
-			hwnd := NumGet(CBBINFO, 48)		;hwndList
-			%hwnd%BG := BG, %hwnd%FG := FG, %hwnd% := BG ? DllCall("CreateSolidBrush", "UInt", BG) : -1
-
-			IfEqual, CTLCOLORLISTBOX,,SetEnv, CTLCOLORLISTBOX, % OnMessage(WM_CTLCOLORLISTBOX, A_ThisFunc) 
-
-			If NumGet(CBBINFO,44)	;hwndEdit
-				Hwnd :=  Numget(CBBINFO,44), class := "Edit"
-		} 
-
-		if class in SysListView32,SysTreeView32
-		{
-			m := class="SysListView32" ? "LVM" : "TVM" 
-			SendMessage, %m%_SETBKCOLOR, ,BG, ,ahk_id %Hwnd%
-			SendMessage, %m%_SETTEXTCOLOR, ,FG, ,ahk_id %Hwnd%
-			SendMessage, %m%_SETTEXTBKCOLOR, ,CLR_NONE, ,ahk_id %Hwnd%
-			return
-		}
-
-		if (class = "RICHEDIT50W")
-			return f := "RichEdit_SetBgColor", %f%(Hwnd, -BG)
-
-		if (!CTLCOLOR%Class%)
-			CTLCOLOR%Class% := OnMessage(WM_CTLCOLOR%Class%, A_ThisFunc) 
-
-		return %Hwnd% := BG ? DllCall("CreateSolidBrush", "UInt", BG) : CLR_NONE,  %Hwnd%BG := BG,  %Hwnd%FG := FG
-   } 
- 
- ; Message handler 
-	critical					;its OK, always in new thread.
-
-	Hwnd := Lp + 0, hDC := Wp + 0
-	If (%Hwnd%) { 
-		DllCall(adrSetBkMode, "uint", hDC, "int", 1)
-		if (%Hwnd%FG)
-			DllCall(adrSetTextColor, "UInt", hDC, "UInt", %Hwnd%FG)
-		if (%Hwnd%BG)
-			DllCall(adrSetBkColor, "UInt", hDC, "UInt", %Hwnd%BG)
-		return (%Hwnd%)
-	}
-}
-
-
+*/
 
 
 SetBatchLines -1
@@ -152,15 +56,10 @@ GUI, margin, 0,0
 gui, color, %base2%, %base3%
 gui, font, s18 q4 c%base01%, FontAwesome
 Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h216 t9 %nobevel%
-Random, colorchoice, 0, 7
-searchcolor := (colorchoice = 0 ) ? yellow : (colorchoice = 2) ? orange : (colorchoice = 3) ? red : (colorchoice = 4) ? magenta : (colorchoice = 5) ? violet : (colorchoice = 6) ? cyan : green
-gui, font, s18 q4 c%searchcolor%, FontAwesome
-hGui := WInExist()
-CColor(hGui, %base2%, %base2%)
+gui, font, s18 q4 c%cyan%, FontAwesome
 Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
-
+gui, font, s18 q4 c%blue%, FontAwesome
 Gui, Add, Text, x2 y0, Ä
-
 
 RefreshList(1,1)
 
