@@ -1,5 +1,5 @@
-ListName=C:\Users\jkploudre\Documents\GitHub\undevelop\plantext.txt
-#Include C:\Users\jkploudre\Documents\GitHub\undevelop\unfocus-plan-macros.ahk
+ListName=plantext.txt
+#Include unfocus-plan-macros.ahk
 
 FileRead, WordList, %Listname%
 PrepareWordList(WordList)
@@ -45,7 +45,7 @@ SetBatchLines -1
 #MaxThreadsBuffer On
 #SingleInstance, Force
 
-DllCall( "GDI32.DLL\AddFontResourceEx", Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10), Int,0)
+DllCall( "GDI32.DLL\AddFontResourceEx", Str,"jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10), Int,0)
 Gui, +AlwaysOnTop -Caption +ToolWindow Border
 GUI, margin, 0,0
 gui, color, %base2%, %base3%
@@ -108,7 +108,11 @@ return
 GuiClose:
 GuiEscape:
 
+<<<<<<< HEAD
 DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
+=======
+DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
+>>>>>>> 62b6725b67ff325c01176a3076ff98dd177f7be4
    ExitApp
    
 RefreshList(animate, small){
