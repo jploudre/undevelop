@@ -108,12 +108,7 @@ return
 GuiClose:
 GuiEscape:
 
-<<<<<<< HEAD
 DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
-=======
-DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
->>>>>>> 62b6725b67ff325c01176a3076ff98dd177f7be4
-   ExitApp
    
 RefreshList(animate, small){
 global
@@ -186,15 +181,6 @@ Suggest(CurrentWord, Byref Wordlist)
     Return, MatchList
 }
 
-/*
-
-Basically, what you want to do is instead of using StrDiff(WhatTheUserTyped,WhatTheWordIs), you can use something like this:
-
-RegExMatch(WhatTheWordIs,"`nimS)^" . SubStr(RegExReplace(WhatTheUserTyped,"S).","$0.*"),1,-2),Remaining)
-StrDiff(Remaining,WhatTheUserTyped)
-*/
-
-
 Score(Word,Entry)
 {
     Score := 100
@@ -214,12 +200,7 @@ Score(Word,Entry)
     Return, Score
 }
 
-/*
-
-Forum thread: http://www.autohotkey.com/forum/topic59407.html
-
-*/
- 
+;Forum thread: http://www.autohotkey.com/forum/topic59407.html 
 StrDiff(str1, str2, maxOffset:=5) {
 if (str1 = str2)
 return (str1 == str2 ? 0/1 : 0.2/StrLen(str1))
