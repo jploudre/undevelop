@@ -35,7 +35,7 @@ cyan = 2aa198
 green = 859900
 
 Random, colorchoice, 0, 7
-accentcolor := (colorchoice = 0 ) ? yellow : (colorchoice = 2) ? orange : (colorchoice = 3) ? red : (colorchoice = 4) ? magenta : (colorchoice = 5) ? violet : (colorchoice = 6) ? cyan : green
+randomeaccentcolor := (colorchoice = 0 ) ? yellow : (colorchoice = 2) ? orange : (colorchoice = 3) ? red : (colorchoice = 4) ? magenta : (colorchoice = 5) ? violet : (colorchoice = 6) ? cyan : green
 
 
 SetBatchLines -1
@@ -49,9 +49,9 @@ DllCall( "GDI32.DLL\AddFontResourceEx", Str,"jkpAwesome.TTF",UInt,(FR_PRIVATE:=0
 Gui, +AlwaysOnTop -Caption +ToolWindow Border
 GUI, margin, 0,0
 gui, color, %base2%, %base3%
-gui, font, s18 q4 c%base01%, FontAwesome
+gui, font, s18 q4 c%base02%, FontAwesome
 Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h216 t9 %nobevel%
-gui, font, s18 q4 c%accentcolor%, FontAwesome
+gui, font, s18 q4 c%randomeaccentcolor%, FontAwesome
 Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
 Gui, Add, Text, x2 y0, Ä
 
@@ -107,12 +107,7 @@ return
 ; Functions.#######################################################
 GuiClose:
 GuiEscape:
-
-<<<<<<< HEAD
 DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
-=======
-DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
->>>>>>> 62b6725b67ff325c01176a3076ff98dd177f7be4
    ExitApp
    
 RefreshList(animate, small){
@@ -197,6 +192,9 @@ StrDiff(Remaining,WhatTheUserTyped)
 
 Score(Word,Entry)
 {
+    RegExMatch(Entry,"`nimS)^" . SubStr(RegExReplace(Word,"S).","$0.*"),1,-2),Remaining)
+    Return, StrDiff(Remaining,Word)
+    /*
     Score := 100
 
     Length := StrLen(Word)
@@ -212,6 +210,45 @@ Score(Word,Entry)
     Score *= (1 + StrLen(Remaining) - Length) ** -1.5
 
     Return, Score
+    */
+}
+
+/*
+
+Forum thread: http://www.autohotkey.com/forum/topic59407.html
+
+*/
+ 
+StrDiff(str1, str2, maxOffset:=5) {
+if (str1 = str2)
+return (str1 == str2 ? 0/1 : 0.2/StrLen(str1))
+if (str1 = "" || str2 = "")
+return (str1 = str2 ? 0/1 : 1/1)
+StringSplit, n, str1
+StringSplit, m, str2
+ni := 1, mi := 1, lcs := 0
+while ((ni <= n0) && (mi <= m0)) {
+if (n%ni% == m%mi%)
+lcs += 1
+else if (n%ni% = m%mi%)
+lcs += 0.8
+else {
+Loop, % maxOffset {
+oi := ni + A_Index, pi := mi + A_Index
+if ((n%oi% = m%mi%) && (oi <= n0)) {
+ni := oi, lcs += (n%oi% == m%mi% ? 1 : 0.8)
+break
+}
+if ((n%ni% = m%pi%) && (pi <= m0)) {
+mi := pi, lcs += (n%ni% == m%pi% ? 1 : 0.8)
+break
+}
+}
+}
+ni += 1
+mi += 1
+}
+return ((n0 + m0)/2 - lcs) / (n0 > m0 ? n0 : m0)
 }
 
 PrepareWordList(ByRef WordList)

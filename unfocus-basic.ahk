@@ -49,7 +49,7 @@ DllCall( "GDI32.DLL\AddFontResourceEx", Str,"jkpAwesome.TTF",UInt,(FR_PRIVATE:=0
 Gui, +AlwaysOnTop -Caption +ToolWindow Border
 GUI, margin, 0,0
 gui, color, %base2%, %base3%
-gui, font, s18 q4 c%base01%, FontAwesome
+gui, font, s18 q4 c%base02%, FontAwesome
 Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h216 t9 %nobevel%
 gui, font, s18 q4 c%randomeaccentcolor%, FontAwesome
 Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
@@ -107,12 +107,7 @@ return
 ; Functions.#######################################################
 GuiClose:
 GuiEscape:
-
-<<<<<<< HEAD
 DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
-=======
-DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
->>>>>>> 62b6725b67ff325c01176a3076ff98dd177f7be4
    ExitApp
    
 RefreshList(animate, small){
@@ -186,17 +181,11 @@ Suggest(CurrentWord, Byref Wordlist)
     Return, MatchList
 }
 
-/*
-
-Basically, what you want to do is instead of using StrDiff(WhatTheUserTyped,WhatTheWordIs), you can use something like this:
-
-RegExMatch(WhatTheWordIs,"`nimS)^" . SubStr(RegExReplace(WhatTheUserTyped,"S).","$0.*"),1,-2),Remaining)
-StrDiff(Remaining,WhatTheUserTyped)
-*/
-
-
 Score(Word,Entry)
 {
+    RegExMatch(Entry,"`nimS)^" . SubStr(RegExReplace(Word,"S).","$0.*"),1,-2),Remaining)
+    Return, StrDiff(Remaining,Word)
+    /*
     Score := 100
 
     Length := StrLen(Word)
@@ -212,6 +201,7 @@ Score(Word,Entry)
     Score *= (1 + StrLen(Remaining) - Length) ** -1.5
 
     Return, Score
+    */
 }
 
 /*
