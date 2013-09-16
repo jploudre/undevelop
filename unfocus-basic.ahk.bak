@@ -1,5 +1,5 @@
-ListName=C:\Users\jkploudre\Documents\GitHub\undevelop\plantext.txt
-#Include C:\Users\jkploudre\Documents\GitHub\undevelop\unfocus-plan-macros.ahk
+ListName=plantext.txt
+#Include unfocus-plan-macros.ahk
 
 FileRead, WordList, %Listname%
 PrepareWordList(WordList)
@@ -38,7 +38,7 @@ SetBatchLines -1
 #MaxThreadsBuffer On
 #SingleInstance, Force
 
-DllCall( "GDI32.DLL\AddFontResourceEx", Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10), Int,0)
+DllCall( "GDI32.DLL\AddFontResourceEx", Str,"jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10), Int,0)
 Gui, +AlwaysOnTop -Caption +ToolWindow Border
 GUI, margin, 0,0
 gui, color, %base2%, %base3%
@@ -49,7 +49,6 @@ searchcolor := (colorchoice = 0 ) ? yellow : (colorchoice = 2) ? orange : (color
 gui, font, s18 q4 c%searchcolor%, FontAwesome
 Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
 Gui, Add, Text, x2 y0, Ä
-
 
 RefreshList(1,1)
 
@@ -103,7 +102,8 @@ return
 ; Functions.#######################################################
 GuiClose:
 GuiEscape:
-DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
+
+DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
    ExitApp
    
 RefreshList(animate, small){
@@ -203,44 +203,6 @@ Score(Word,Entry)
     Score *= (1 + StrLen(Remaining) - Length) ** -1.5
 
     Return, Score
-}
-
-/*
-
-Forum thread: http://www.autohotkey.com/forum/topic59407.html
-
-*/
- 
-StrDiff(str1, str2, maxOffset:=5) {
-if (str1 = str2)
-return (str1 == str2 ? 0/1 : 0.2/StrLen(str1))
-if (str1 = "" || str2 = "")
-return (str1 = str2 ? 0/1 : 1/1)
-StringSplit, n, str1
-StringSplit, m, str2
-ni := 1, mi := 1, lcs := 0
-while ((ni <= n0) && (mi <= m0)) {
-if (n%ni% == m%mi%)
-lcs += 1
-else if (n%ni% = m%mi%)
-lcs += 0.8
-else {
-Loop, % maxOffset {
-oi := ni + A_Index, pi := mi + A_Index
-if ((n%oi% = m%mi%) && (oi <= n0)) {
-ni := oi, lcs += (n%oi% == m%mi% ? 1 : 0.8)
-break
-}
-if ((n%ni% = m%pi%) && (pi <= m0)) {
-mi := pi, lcs += (n%ni% == m%pi% ? 1 : 0.8)
-break
-}
-}
-}
-ni += 1
-mi += 1
-}
-return ((n0 + m0)/2 - lcs) / (n0 > m0 ? n0 : m0)
 }
 
 PrepareWordList(ByRef WordList)
