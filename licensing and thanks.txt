@@ -17,3 +17,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 ### Original Autocompleting Listbox per Boskoop
 
 http://www.autohotkey.com/board/topic/2391-listbox-with-incremental-search/
+
+### StrDiff: String Ranking based on SIFT-3
+
+Forum thread: http://www.autohotkey.com/forum/topic59407.html
+
