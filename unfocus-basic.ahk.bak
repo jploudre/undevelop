@@ -107,8 +107,18 @@ return
 ; Functions.#######################################################
 GuiClose:
 GuiEscape:
+<<<<<<< HEAD
+<<<<<<< HEAD
 DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
    ExitApp
+=======
+
+DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
+>>>>>>> ab4a455c5ffc4ccacc4bbccff93ed90c5a3d70a1
+=======
+
+DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
+>>>>>>> ab4a455c5ffc4ccacc4bbccff93ed90c5a3d70a1
    
 RefreshList(animate, small){
 global
@@ -143,13 +153,6 @@ Suggest(CurrentWord, Byref Wordlist)
     
     Pattern := ".*" . RegExReplace(CurrentWord,"S).","$0.*") ;subsequence matching pattern
     Pattern := "`nimS)^" . Pattern ;match options
-
-	/* From Uberi
-	RegExMatch(WhatTheWordIs,"`nimS)^" . SubStr(RegExReplace(WhatTheUserTyped,"S).","$0.*"),1,-2),Remaining)
-	StrDiff(Remaining,WhatTheUserTyped)
-	
-	*/
-
 
     ;search for words matching the pattern
     MatchList := ""
