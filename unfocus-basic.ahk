@@ -107,8 +107,13 @@ return
 ; Functions.#######################################################
 GuiClose:
 GuiEscape:
+<<<<<<< HEAD
 DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
    ExitApp
+=======
+
+DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
+>>>>>>> ab4a455c5ffc4ccacc4bbccff93ed90c5a3d70a1
    
 RefreshList(animate, small){
 global
@@ -204,12 +209,7 @@ Score(Word,Entry)
     */
 }
 
-/*
-
-Forum thread: http://www.autohotkey.com/forum/topic59407.html
-
-*/
- 
+;Forum thread: http://www.autohotkey.com/forum/topic59407.html 
 StrDiff(str1, str2, maxOffset:=5) {
 if (str1 = str2)
 return (str1 == str2 ? 0/1 : 0.2/StrLen(str1))
