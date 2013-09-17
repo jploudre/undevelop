@@ -108,8 +108,13 @@ return
 GuiClose:
 GuiEscape:
 <<<<<<< HEAD
+<<<<<<< HEAD
 DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
    ExitApp
+=======
+
+DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
+>>>>>>> ab4a455c5ffc4ccacc4bbccff93ed90c5a3d70a1
 =======
 
 DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
