@@ -178,23 +178,6 @@ Score(Word,Entry)
 {
     RegExMatch(Entry,"`nimS)^" . SubStr(RegExReplace(Word,"S).","$0.*"),1,-2),Remaining)
     Return, StrDiff(Remaining,Word)
-    /*
-    Score := 100
-
-    Length := StrLen(Word)
-
-    ;determine prefixing
-    Position := 1
-    While, Position <= Length && SubStr(Word,Position,1) = SubStr(Entry,Position,1)
-        Position ++
-    Score *= Position ** 8
-
-    ;determine number of superfluous characters
-    RegExMatch(Entry,"`nimS)^" . SubStr(RegExReplace(Word,"S).","$0.*"),1,-2),Remaining)
-    Score *= (1 + StrLen(Remaining) - Length) ** -1.5
-
-    Return, Score
-    */
 }
 
 
