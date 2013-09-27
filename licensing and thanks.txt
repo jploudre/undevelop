@@ -19,7 +19,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 http://www.autohotkey.com/board/topic/2391-listbox-with-incremental-search/
 
 
-### StrDiff: String Ranking based on SIFT-3
+### String Score
 
-Forum thread: http://www.autohotkey.com/forum/topic59407.html
+string_score.js: String Scoring Algorithm 0.1.10 
+
+http://joshaven.com/string_score
+https://github.com/joshaven/string_score
+
+Copyright (C) 2009-2011 Joshaven Potter <yourtech@gmail.com>
+Special thanks to all of the contributors listed here https://github.com/joshaven/string_score
+MIT license: http://www.opensource.org/licenses/mit-license.php
+
+Date: Tue Mar 1 2011
 
