@@ -1,5 +1,5 @@
 /*!
- * string_score.js: String Scoring Algorithm 0.1.10 
+ * string_score.js: String Scoring Algorithm 0.1.20 
  *
  * http://joshaven.com/string_score
  * https://github.com/joshaven/string_score
@@ -91,8 +91,6 @@ String.prototype.score = function(word, fuzziness) {
       startAt = idxOf + 1;
     }
   }
-
-
 
   // Reduce penalty for longer strings.
   finalScore = 0.5 * (runningScore / strLength  + runningScore / wordLength) / fuzzies;

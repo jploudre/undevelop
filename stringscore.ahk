@@ -1,5 +1,8 @@
 /*
  * Based on string_score.js. Ported by Jonathan Ploudre
+ * October 2013
+ * --------------------
+ * 
  * string_score.js: String Scoring Algorithm 0.1.10 
  *
  * http://joshaven.com/string_score
@@ -47,40 +50,87 @@ StringScore(word,line,fuzziness=0)
 
     ; Walk through word and add up scores.
     ; Code duplication occurs to prevent checking fuzziness inside for loop
-    counter = 0
 
     if (fuzziness) {
-        while (counter < wordLength)
+        while (%A_Index% <= wordLength)
         {
 		; Find next first case-insensitive match of a character.
+		; AHK StringMid counts from 1; StringGetPos counts from 0
+		StringMid, wordcharacter, lWord, %A_Index%, 1
+		StringGetPos, indxOf, lstring, wordcharacter, , startAt
+
+		if (Errorlevel = 1)
+		{
+		fuzzies += fuzzyFactor ; for mispelling
 		
-		
+		}
+		if (startAt = indxOf {
 		; Consecutive letter & start-of-string Bonus
-		
+		charScore = 0.7
+      	} 
+      	else {
+        charScore = 0.1
 		
 		; Acronym Bonus
         ; Weighing Logic: Typing the first character of an acronym is as if you
         ; preceded it with two perfect character matches.
+        
+		StringMid, previousstringcharacter, lstring, indxOf - 1, 1
+		; For my use, might also want to match previous character of tab or hyphen
+		if (previousstringcharacter = ' ')
+		charScore += 0.8
+		}
 		
 		; Same case bonus.
+		StringMid, wordcasecharacter, word, indxOf, 1
+		StringMid, stringcasecharacter, line, indxOf, 1
+		if (wordcasecharacter = stringcasecharacter)
+		charScore += 0.1
 		
 		
 		; Update scores and startAt position for next round of indexOf
-		
-        counter ++
+		runningScore += charScore;
+      	startAt = idxOf + 1;
         }
     }
     else {
-        while (counter < wordLength)
+        while (%A_Index% <= wordLength )
         {
-    
-        counter ++
+		StringMid, wordcharacter, lWord, %A_Index%, 1
+		StringGetPos, indxOf, lstring, wordcharacter, , startAt
+
+		if (Errorlevel = 1)
+		return 0
+		
+		if (startAt = indxOf {
+		charScore = 0.7
+      	} 
+      	else {
+        charScore = 0.1
+		
+		StringMid, previousstringcharacter, lstring, indxOf - 1, 1
+		if (previousstringcharacter = ' ')
+		charScore += 0.8
+		}
+		
+		StringMid, wordcasecharacter, word, indxOf, 1
+		StringMid, stringcasecharacter, line, indxOf, 1
+		if (wordcasecharacter = stringcasecharacter)
+		charScore += 0.1
+		
+		runningScore += charScore;
+      	startAt = idxOf + 1;
+		
         }
     }
     
 	; Reduce penalty for longer strings.
+	finalScore = 0.5 * (runningScore / strLength  + runningScore / wordLength) / fuzzies
+	StringMid, firststringcharacter, lstring, 1, 1
+	StringMid, firstwordcharacter, lword, 1, 1
 	
-	
+	if ((firststringcharacter = firstwordcharacter) AND (finalScore < 0.85))
+	finalScore += 0.15;
 	
 	return finalScore
 }
