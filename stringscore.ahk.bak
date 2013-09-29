@@ -1,0 +1,91 @@
+
+; Ported from string_score.js
+StringScore(word,line,fuzziness=0)
+{
+    StringCaseSense, On
+    
+    ;If the string is equal to the word, perfect match.
+    if (word = line)
+        return 1
+    
+    ;if it's not a perfect match and is empty return 0
+    if( word = "") 
+        return 0
+    
+    runningScore = 0
+    ; charScore
+    ; finalScore
+    StringLower, lString, line
+    strLength = strlen (abbreviation)
+    StringLower, lWord, word
+    wordLength = strlen (word)
+    ; idxOf
+    startAt = 0
+    fuzzies = 1
+    ; fuzzyFactor
+  
+    ; Cache fuzzyFactor for speed increase
+    if (fuzziness)
+    fuzzyFactor = 1 - fuzziness;
+
+    ; Walk through word and add up scores.
+    ; Code duplication occurs to prevent checking fuzziness inside for loop
+
+    counter = 0
+
+    if (fuzziness) {
+        while (counter < wordLength)
+        {
+    
+        counter ++
+        }
+    }
+    else {
+        while (counter < wordLength)
+        {
+    
+        counter ++
+        }
+    }
+    
+    
+    while (counter < abbreviation_length)
+    {
+    c = SubStr, abbreviation, counter, 1
+    ; need to check ErrorLevel
+    Stringlower, c_lowercase, c
+    StringGetPos, index_c_lowercase, line, c_lowercase
+    if (ErrorLevel = 1)
+        min_index = -1
+    Stringupper, c_upper, c
+    StringGetPos, index_c_uppercase, line, c_uppercase
+    if (ErrorLevel = 1)
+        min_index = -1
+    if (min_index > -1)
+    index_in_string := min_index
+    else
+    index_in_string := (index_c_lowercase > index_c_uppercase) ? index_c_lowercase : index_c_uppercase
+    
+    if (index_in_string = -1) 
+    { 
+      if (fuzziness) 
+      {
+        fuzzies += 1-fuzziness;
+        continue;
+      } else {
+        return 0;
+      }
+    } 
+    else {
+      character_score = 0.1;
+    }
+    
+    if (string[index_in_string] === c) { 
+      character_score += 0.1; 
+    }
+    
+    StringCaseSense, Off
+    counter ++
+    }
+    
+}

@@ -99,8 +99,10 @@ Loop
          continue
       }
     searchterm = %searchterm%%input%  
-    GuiControl,, Edit1, %searchterm%            
+    GuiControl,, Edit1, %searchterm%
+
 	RefreshList(0,0)
+    
 }
 return
 
@@ -178,24 +180,78 @@ Score(Word,Entry)
 {
     RegExMatch(Entry,"`nimS)^" . SubStr(RegExReplace(Word,"S).","$0.*"),1,-2),Remaining)
     Return, StrDiff(Remaining,Word)
-    /*
-    Score := 100
-
-    Length := StrLen(Word)
-
-    ;determine prefixing
-    Position := 1
-    While, Position <= Length && SubStr(Word,Position,1) = SubStr(Entry,Position,1)
-        Position ++
-    Score *= Position ** 8
-
-    ;determine number of superfluous characters
-    RegExMatch(Entry,"`nimS)^" . SubStr(RegExReplace(Word,"S).","$0.*"),1,-2),Remaining)
-    Score *= (1 + StrLen(Remaining) - Length) ** -1.5
-
-    Return, Score
-    */
 }
+
+; Ported from string_score.js
+StringScore(abbreviation,line,fuzziness=0)
+{
+    if (abbreviation = line)
+        return 1
+    
+    total_character_score = 0
+    abbreviation_length = strlen(abbreviation)
+    string_length = strlen(line)
+    fuzzies=1
+    ; Other Variables: start_of_string_bonus, abbreviation_score, final_score
+    
+    counter = 0
+    character_score = 0
+    index_in_string = 0
+    c = ''
+    index_c_lowercase = 0
+    index_c_uppercase = 0
+    min_index = 0
+    
+    while (counter < abbreviation_length)
+    {
+    c = SubStr, abbreviation, counter, 1
+    ; need to check ErrorLevel
+    Stringlower, c_lowercase, c
+    StringGetPos, index_c_lowercase, line, c_lowercase
+    Stringupper, c_upper, c
+    StringGetPos, index_c_uppercase, line, c_uppercase
+    
+    ;min_index = Math.min(index_c_lowercase, index_c_uppercase);
+    
+    
+    counter ++
+    }
+    
+}
+
+;Forum thread: http://www.autohotkey.com/forum/topic59407.html 
+StrDiff(str1, str2, maxOffset:=5) {
+if (str1 = str2)
+return (str1 == str2 ? 0/1 : 0.2/StrLen(str1))
+if (str1 = "" || str2 = "")
+return (str1 = str2 ? 0/1 : 1/1)
+StringSplit, n, str1
+StringSplit, m, str2
+ni := 1, mi := 1, lcs := 0
+while ((ni <= n0) && (mi <= m0)) {
+if (n%ni% == m%mi%)
+lcs += 1
+else if (n%ni% = m%mi%)
+lcs += 0.8
+else {
+Loop, % maxOffset {
+oi := ni + A_Index, pi := mi + A_Index
+if ((n%oi% = m%mi%) && (oi <= n0)) {
+ni := oi, lcs += (n%oi% == m%mi% ? 1 : 0.8)
+break
+}
+if ((n%ni% = m%pi%) && (pi <= m0)) {
+mi := pi, lcs += (n%ni% == m%pi% ? 1 : 0.8)
+break
+}
+}
+}
+ni += 1
+mi += 1
+}
+return ((n0 + m0)/2 - lcs) / (n0 > m0 ? n0 : m0)
+}
+
 
 
 PrepareWordList(ByRef WordList)
