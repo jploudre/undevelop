@@ -1,5 +1,6 @@
 ListName=C:\Users\jkploudre\Documents\GitHub\undevelop\plantext.txt
 #Include C:\Users\jkploudre\Documents\GitHub\undevelop\unfocus-plan-macros.ahk
+#include stringscore.ahk
 
 FileRead, WordList, %Listname%
 PrepareWordList(WordList)
@@ -180,43 +181,6 @@ Score(Word,Entry)
 {
     RegExMatch(Entry,"`nimS)^" . SubStr(RegExReplace(Word,"S).","$0.*"),1,-2),Remaining)
     Return, StrDiff(Remaining,Word)
-}
-
-; Ported from string_score.js
-StringScore(abbreviation,line,fuzziness=0)
-{
-    if (abbreviation = line)
-        return 1
-    
-    total_character_score = 0
-    abbreviation_length = strlen(abbreviation)
-    string_length = strlen(line)
-    fuzzies=1
-    ; Other Variables: start_of_string_bonus, abbreviation_score, final_score
-    
-    counter = 0
-    character_score = 0
-    index_in_string = 0
-    c = ''
-    index_c_lowercase = 0
-    index_c_uppercase = 0
-    min_index = 0
-    
-    while (counter < abbreviation_length)
-    {
-    c = SubStr, abbreviation, counter, 1
-    ; need to check ErrorLevel
-    Stringlower, c_lowercase, c
-    StringGetPos, index_c_lowercase, line, c_lowercase
-    Stringupper, c_upper, c
-    StringGetPos, index_c_uppercase, line, c_uppercase
-    
-    ;min_index = Math.min(index_c_lowercase, index_c_uppercase);
-    
-    
-    counter ++
-    }
-    
 }
 
 ;Forum thread: http://www.autohotkey.com/forum/topic59407.html 

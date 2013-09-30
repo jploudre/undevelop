@@ -1,5 +1,6 @@
 ListName=C:\Users\jkploudre\Documents\GitHub\undevelop\plantext.txt
 #Include C:\Users\jkploudre\Documents\GitHub\undevelop\unfocus-plan-macros.ahk
+#include stringscore.ahk
 
 FileRead, WordList, %Listname%
 PrepareWordList(WordList)
@@ -159,7 +160,7 @@ Suggest(CurrentWord, Byref Wordlist)
     ;sort by score
     SortedMatches := ""
     Loop, Parse, MatchList, `n
-        SortedMatches .= Score(CurrentWord,A_LoopField) . "}" . A_LoopField . "`n"
+        SortedMatches .= StringScore(CurrentWord,A_LoopField) . "}" . A_LoopField . "`n"
     SortedMatches := SubStr(SortedMatches,1,-1)
     Sort, SortedMatches, N R ;rank results numerically descending by score
 
