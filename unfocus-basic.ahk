@@ -1,6 +1,6 @@
 ListName=C:\Users\jkploudre\Documents\GitHub\undevelop\plantext.txt
 #Include C:\Users\jkploudre\Documents\GitHub\undevelop\unfocus-plan-macros.ahk
-#include stringscore.ahk
+#include C:\Users\jkploudre\Documents\GitHub\undevelop\stringscore.ahk
 
 FileRead, WordList, %Listname%
 PrepareWordList(WordList)
