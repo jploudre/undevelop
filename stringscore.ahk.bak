@@ -1,6 +1,6 @@
-;scorestring_testsuite()
+stringscore_testsuite()
 
-scorestring_testsuite()
+stringscore_testsuite()
 {
 ExactMatch := StringScore("Hello World","Hello World")
 NotMatch := StringScore("hellx","Hello World")
@@ -160,7 +160,7 @@ StringScore(word,line,fuzziness=0)
 		if (Errorlevel = 1)
 		return 0
 		
-		if (%startAt% = %idxOf%)
+		if (startAt = idxOf)
 		{
 		charScore = 0.7
       	} 
@@ -168,8 +168,7 @@ StringScore(word,line,fuzziness=0)
 		{
         charScore = 0.1
 		
-		StringGetPos, idxOf, lstring, %wordcharacter%, , startAt
-		StringMid, previousstringcharacter, lstring, idxOf - 1, 1
+		StringMid, previousstringcharacter, lstring, idxOf, 1
 		if (previousstringcharacter = " ")
 		charScore += 0.8
 		}
