@@ -1,5 +1,7 @@
 ;stringscore_testsuite()
 
+autotrim, off
+
 stringscore_testsuite()
 {
 ExactMatch := StringScore("Hello World","Hello World")
@@ -132,12 +134,12 @@ StringScore(word,line,fuzziness=0)
         ; Weighing Logic: Typing the first character of an acronym is as if you
         ; preceded it with two perfect character matches.
 
-		StringMid, wordcharacter, lWord, %A_Index%, 1
-		StringGetPos, idxOf, lstring, %wordcharacter%, , startAt
-		StringMid, previousstringcharacter, lstring, idxOf - 1, 1
+
+		StringMid, previousstringcharacter, lstring, idxOf, 1
 		; Might also want to match previous character of tab or hyphen
-		if (previousstringcharacter = " ")
+		if (previousstringcharacter = (%A_Space%))
 		charScore += 0.8
+		msgbox Loop %A_Index%, previousstringcharacter is space or tab
 		}
 
 		; Same case bonus.
@@ -157,27 +159,38 @@ StringScore(word,line,fuzziness=0)
 		StringMid, wordcharacter, lWord, %A_Index%, 1
 		StringGetPos, idxOf, lstring, %wordcharacter%, , startAt
 		
+		;msgbox Loopnumber %A_index% wordLength %wordLength% startat %startAt% indxof %idxOf% wordcharacter %wordcharacter% 
+		
 		if (Errorlevel = 1)
 		return 0
 		
 		if (startAt = idxOf)
 		{
+		;msgbox startat %startAt% indxof %idxOf% so 0.7 points
 		charScore = 0.7
       	} 
       	else 
 		{
         charScore = 0.1
-		
-		StringMid, previousstringcharacter, lstring, idxOf, 1
-		if (previousstringcharacter = " ")
-		charScore += 0.8
+		;msgbox startat %startAt% not equal indxof %idxOf% so 0.1 points
+		StringMid, previousstringcharacter, lstring, idxOf -1, 1
+		if (Errorlevel != 1)
+		{
+			if (previousstringcharacter = A_Space or A_Tab)
+			{
+			;	msgbox Loop %A_Index%, previousstringcharacter is Tab or Space
+			charScore += 10.8
+			}
+		}
 		}
 		
 		StringMid, wordcasecharacter, word, idxOf, 1
 		StringMid, stringcasecharacter, line, idxOf, 1
 		if (wordcasecharacter == stringcasecharacter)
+		{
+		;MsgBox Loop %A_Index% Capitalization wordcasecharacter %wordcasecharacter% stringcasecharacter %stringcasecharacter% so add 0.1
 		charScore += 0.1
-		
+		}
 		runningScore += charScore
       	startAt := idxOf + 1
 		}

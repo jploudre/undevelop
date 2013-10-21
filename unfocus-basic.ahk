@@ -163,6 +163,7 @@ Suggest(CurrentWord, Byref Wordlist)
         SortedMatches .= StringScore(CurrentWord,A_LoopField) . "}" . A_LoopField . "`n"
     SortedMatches := SubStr(SortedMatches,1,-1)
     Sort, SortedMatches, N R ;rank results numerically descending by score
+    ;msgbox Before removing scores %SortedMatches% 
 
     ;remove scores
     MatchList := ""
@@ -172,7 +173,7 @@ Suggest(CurrentWord, Byref Wordlist)
     Position := InStr(MatchList,"|",True,1,MaxResults)
     If Position
     MatchList := SubStr(MatchList,1,Position - 1)
-
+    
 
     Return, MatchList
 }
