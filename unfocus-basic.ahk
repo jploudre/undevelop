@@ -174,12 +174,6 @@ Suggest(CurrentWord, Byref Wordlist)
     Return, MatchList
 }
 
-Score(Word,Entry)
-{
-    RegExMatch(Entry,"`nimS)^" . SubStr(RegExReplace(Word,"S).","$0.*"),1,-2),Remaining)
-    Return, StrDiff(Remaining,Word)
-}
-
 StringScore(word,line,fuzziness=0)
 {
 	;If the string is equal to the word, perfect match.
