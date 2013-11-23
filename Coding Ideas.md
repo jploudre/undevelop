@@ -3,6 +3,8 @@ Approved Ideas for Autocomplete
 
 * Use 'CSV' for data store. Extract function from line and use dynamic function to call.
 * Start making lists of structured data (Top x00 lists: ICD-9, CPT, CPT E&M, Medication, Referral, Discussions, Follow-up, Treatment Goals, etc)
+* Transcribe Menu Structure/Centricity Hotkeys
+* Transcribe Global Quick Texts.
 
 Someday Ideas
 ===========
