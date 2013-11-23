@@ -1,44 +1,15 @@
 ListName=plantext.txt
 #Include unfocus-plan-macros.ahk
 
-
-
 FileRead, WordList, %Listname%
 PrepareWordList(WordList)
 
-windowwidth := 600
-nobevel = -E0x200
-smallboxheight = 26
-fromtopposition = 10
-fullboxheight = 235
-lefteditoffset = 36
-editwidth := windowwidth - lefteditoffset
-MaxResults = 8
+windowwidth := 600, nobevel = -E0x200, smallboxheight = 26,fromtopposition = 10, fullboxheight = 235, lefteditoffset = 36, editwidth := windowwidth - lefteditoffset, MaxResults = 8
 
 ; Colors from http://ethanschoonover.com/solarized
-base0 = 839496
-base1 = 93a1a1
-base2 = eee8d5
-base3 = fdf6e3
-base00 = 657b83
-base01 = 586e75
-base02 = 073642
-base03 = 002b36
-
-; Accent Colors
-cyan = 2aa198
-yellow = b58900
-orange = cb4b16
-red = dc322f
-magenta = d33682
-violet = 6c71c4
-blue = 268bd2
-cyan = 2aa198
-green = 859900
-
+base0 = 839496, base1 = 93a1a1, base2 = eee8d5, base3 = fdf6e3, base00 = 657b83, base01 = 586e75, base02 = 073642, base03 = 002b36, cyan = 2aa198, yellow = b58900, orange = cb4b16, red = dc322f, magenta = d33682, violet = 6c71c4, blue = 268bd2, cyan = 2aa198, green = 859900
 Random, colorchoice, 0, 7
 randomeaccentcolor := (colorchoice = 0 ) ? yellow : (colorchoice = 2) ? orange : (colorchoice = 3) ? red : (colorchoice = 4) ? magenta : (colorchoice = 5) ? violet : (colorchoice = 6) ? cyan : green
-
 
 SetBatchLines -1
 #NoEnv
@@ -184,6 +155,40 @@ Score(Word,Entry)
     RegExMatch(Entry,"`nimS)^" . SubStr(RegExReplace(Word,"S).","$0.*"),1,-2),Remaining)
     Return, StrDiff(Remaining,Word)
 }
+
+;Forum thread: http://www.autohotkey.com/forum/topic59407.html 
+StrDiff(str1, str2, maxOffset:=5) {
+if (str1 = str2)
+return (str1 == str2 ? 0/1 : 0.2/StrLen(str1))
+if (str1 = "" || str2 = "")
+return (str1 = str2 ? 0/1 : 1/1)
+StringSplit, n, str1
+StringSplit, m, str2
+ni := 1, mi := 1, lcs := 0
+while ((ni <= n0) && (mi <= m0)) {
+if (n%ni% == m%mi%)
+lcs += 1
+else if (n%ni% = m%mi%)
+lcs += 0.8
+else {
+Loop, % maxOffset {
+oi := ni + A_Index, pi := mi + A_Index
+if ((n%oi% = m%mi%) && (oi <= n0)) {
+ni := oi, lcs += (n%oi% == m%mi% ? 1 : 0.8)
+break
+}
+if ((n%ni% = m%pi%) && (pi <= m0)) {
+mi := pi, lcs += (n%ni% == m%pi% ? 1 : 0.8)
+break
+}
+}
+}
+ni += 1
+mi += 1
+}
+return ((n0 + m0)/2 - lcs) / (n0 > m0 ? n0 : m0)
+}
+
 
 StringScore(word,line,fuzziness=0)
 {
