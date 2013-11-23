@@ -4,10 +4,34 @@ ListName=plantext.txt
 FileRead, WordList, %Listname%
 PrepareWordList(WordList)
 
-windowwidth := 600, nobevel = -E0x200, smallboxheight = 26,fromtopposition = 10, fullboxheight = 235, lefteditoffset = 36, editwidth := windowwidth - lefteditoffset, MaxResults = 8
+windowwidth := 600
+nobevel = -E0x200
+smallboxheight = 26
+fromtopposition = 10
+fullboxheight = 235
+lefteditoffset = 36
+editwidth := windowwidth - lefteditoffset
+MaxResults = 8
 
 ; Colors from http://ethanschoonover.com/solarized
-base0 = 839496, base1 = 93a1a1, base2 = eee8d5, base3 = fdf6e3, base00 = 657b83, base01 = 586e75, base02 = 073642, base03 = 002b36, cyan = 2aa198, yellow = b58900, orange = cb4b16, red = dc322f, magenta = d33682, violet = 6c71c4, blue = 268bd2, cyan = 2aa198, green = 859900
+base0 = 839496
+base1 = 93a1a1
+base2 = eee8d5
+base3 = fdf6e3
+base00 = 657b83
+base01 = 586e75
+base02 = 073642
+base03 = 002b36
+cyan = 2aa198
+yellow = b58900
+orange = cb4b16
+red = dc322f
+magenta = d33682
+violet = 6c71c4
+blue = 268bd2
+cyan = 2aa198
+green = 859900
+
 Random, colorchoice, 0, 7
 randomeaccentcolor := (colorchoice = 0 ) ? yellow : (colorchoice = 2) ? orange : (colorchoice = 3) ? red : (colorchoice = 4) ? magenta : (colorchoice = 5) ? violet : (colorchoice = 6) ? cyan : green
 
