@@ -1,6 +1,7 @@
-ListName=C:\Users\jkploudre\Documents\GitHub\undevelop\plantext.txt
-#Include C:\Users\jkploudre\Documents\GitHub\undevelop\unfocus-plan-macros.ahk
-#include C:\Users\jkploudre\Documents\GitHub\undevelop\stringscore.ahk
+ListName=plantext.txt
+#Include unfocus-plan-macros.ahk
+
+
 
 FileRead, WordList, %Listname%
 PrepareWordList(WordList)
@@ -46,7 +47,7 @@ SetBatchLines -1
 #MaxThreadsBuffer On
 #SingleInstance, Force
 
-DllCall( "GDI32.DLL\AddFontResourceEx", Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10), Int,0)
+DllCall( "GDI32.DLL\AddFontResourceEx", Str,"C:\Documents and Settings\Admin\My Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10), Int,0)
 Gui, +AlwaysOnTop -Caption +ToolWindow Border
 GUI, margin, 0,0
 gui, color, %base2%, %base3%
@@ -110,7 +111,7 @@ return
 ; Functions.#######################################################
 GuiClose:
 GuiEscape:
-DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Users\jkploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
+DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Documents and Settings\Admin\My Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
    ExitApp
    
 RefreshList(animate, small){
@@ -182,6 +183,129 @@ Score(Word,Entry)
 {
     RegExMatch(Entry,"`nimS)^" . SubStr(RegExReplace(Word,"S).","$0.*"),1,-2),Remaining)
     Return, StrDiff(Remaining,Word)
+}
+
+StringScore(word,line,fuzziness=0)
+{
+	;If the string is equal to the word, perfect match.
+    if (word = line)
+        return 1
+    
+    ;if it's not a perfect match and is empty return 0
+    if(word = "") 
+        return 0
+    
+    runningScore = 0
+    StringLower, lString, line
+    strLength := strlen(line)
+    StringLower, lWord, word
+    wordLength := strlen(word)
+    startAt = 0
+    fuzzies = 1
+  
+    ; Cache fuzzyFactor for speed increase
+    if (fuzziness)
+    fuzzyFactor = 1 - %fuzziness%
+
+    ; Walk through word and add up scores.
+    ; Code duplication occurs to prevent checking fuzziness inside for loop
+		
+    if (fuzziness) {
+        while (A_Index <= wordLength )
+        {
+		; Find next first case-insensitive match of a character.
+		; AHK StringMid counts from 1; StringGetPos counts from 0
+		StringMid, wordcharacter, lWord, %A_Index%, 1
+		StringGetPos, idxOf, lstring, %wordcharacter%, , startAt
+
+		if (Errorlevel = 1)
+		{
+		fuzzies += fuzzyFactor ; for mispelling
+		continue
+		}
+		if (%startAt% = %idxOf%)
+		{
+		; Consecutive letter & start-of-string Bonus
+		charScore = 0.7
+      	} 
+      	else {
+        charScore = 0.1
+		
+		; Acronym Bonus
+        ; Weighing Logic: Typing the first character of an acronym is as if you
+        ; preceded it with two perfect character matches.
+
+
+		StringMid, previousstringcharacter, lstring, idxOf, 1
+		; Might also want to match previous character of tab or hyphen
+		if (previousstringcharacter = (%A_Space%))
+		charScore += 0.8
+		msgbox Loop %A_Index%, previousstringcharacter is space or tab
+		}
+
+		; Same case bonus.
+		StringMid, wordcasecharacter, word, idxOf, 1
+		StringMid, stringcasecharacter, line, idxOf, 1
+		if (wordcasecharacter == stringcasecharacter)
+		charScore += 0.1		
+		
+		; Update scores and startAt position for next round of search
+		runningScore += charScore
+      	startAt := idxOf + 1
+        }
+    }
+    else {
+        while (A_Index <= wordLength )
+        {
+		StringMid, wordcharacter, lWord, %A_Index%, 1
+		StringGetPos, idxOf, lstring, %wordcharacter%, , startAt
+		
+		;msgbox Loopnumber %A_index% wordLength %wordLength% startat %startAt% indxof %idxOf% wordcharacter %wordcharacter% 
+		
+		if (Errorlevel = 1)
+		return 0
+		
+		if (startAt = idxOf)
+		{
+		;msgbox startat %startAt% indxof %idxOf% so 0.7 points
+		charScore = 0.7
+      	} 
+      	else 
+		{
+        charScore = 0.1
+		;msgbox startat %startAt% not equal indxof %idxOf% so 0.1 points
+		StringMid, previousstringcharacter, lstring, idxOf -1, 1
+		if (Errorlevel != 1)
+		{
+			if (previousstringcharacter = A_Space or A_Tab)
+			{
+			;	msgbox Loop %A_Index%, previousstringcharacter is Tab or Space
+			charScore += 10.8
+			}
+		}
+		}
+		
+		StringMid, wordcasecharacter, word, idxOf, 1
+		StringMid, stringcasecharacter, line, idxOf, 1
+		if (wordcasecharacter == stringcasecharacter)
+		{
+		;MsgBox Loop %A_Index% Capitalization wordcasecharacter %wordcasecharacter% stringcasecharacter %stringcasecharacter% so add 0.1
+		charScore += 0.1
+		}
+		runningScore += charScore
+      	startAt := idxOf + 1
+		}
+    }
+    
+	; Reduce penalty for longer strings.
+	finalScore := (0.5*((runningScore/strLength)+(runningScore/wordLength)))/fuzzies
+	StringMid, firststringcharacter, lstring, 1, 1
+	StringMid, firstwordcharacter, lword, 1, 1
+	
+	if ((firststringcharacter = firstwordcharacter) AND (finalScore < 0.85))
+	finalScore += 0.15
+	
+	return finalScore
 }
 
 ;Forum thread: http://www.autohotkey.com/forum/topic59407.html 
