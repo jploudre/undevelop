@@ -1,5 +1,6 @@
 FileRead, testcsv, planprescribemed.csv
-PrepareCSV (testcsv,Wordlist)
+WordList := WordlistFromCSV(testcsv)
+DoList := DoListFromCSV(testcsv)
 
 ; UI Variables
 {
@@ -37,6 +38,7 @@ green = 859900
 Random, colorchoice, 0, 7
 randomeaccentcolor := (colorchoice = 0 ) ? yellow : (colorchoice = 2) ? orange : (colorchoice = 3) ? red : (colorchoice = 4) ? magenta : (colorchoice = 5) ? violet : (colorchoice = 6) ? cyan : green
 }
+
 ; AHK Program Variables
 {
 SetBatchLines -1
@@ -58,7 +60,6 @@ Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h21
 gui, font, s18 q4 c%randomeaccentcolor%, FontAwesome
 Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
 Gui, Add, Text, x2 y0, Ä
-}
 
 RefreshList(1,1)
 
@@ -110,10 +111,12 @@ Loop
     
 }
 return
+} ; End GUI
 
 ; Functions #######################################################
 
-RefreshList(animate, small){
+RefreshList(animate, small)
+{
 global
 Critical
 
@@ -312,23 +315,34 @@ PrepareWordList(ByRef WordList)
     WordList := Trim(WordList,"`n") ;remove blank lines at the beginning and end
 }
 
-PrepareCSV(ByRef CSVfile, outputlist)
+WordlistFromCSV(ByRef CSVfile)
 {
-	global
 	Loop, parse, CSVfile, `n, `r
 	{
-		MsgBox %A_Loopline%
 		loop, parse, A_Loopfield, CSV
 		{
 			; Just grab first two fields
 			if (A_Index < "3"){
-			outputlist .= A_Loopfield . "`t"
+			WordList .= A_Loopfield . "`t"
 			}
-		outputlist .= "`n"
+		}
+		WordList .= "`n"
+	}
+	return WordList
+}
+
+DolistFromCSV(ByRef CSVfile)
+{
+	Loop, parse, CSVfile, `n, `r
+	{
+		loop, parse, A_Loopfield, CSV
+		{
+			if (A_Index = "4"){
+			DoList .= A_Loopfield . "`n"
+			}
 		}
 	}
-	WordList := Trim(outputlist,"`n") ;remove blank lines at the beginning and end
-	msgbox %Wordlist%
+	return DoList
 }
 
 performchoice(theinput)
@@ -338,14 +352,13 @@ performchoice(theinput)
 
 
 ; Subroutines #######################################################
-
 GuiClose:
 GuiEscape:
 {
 DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Documents and Settings\Admin\My Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
    ExitApp
-}
 return
+}
 
 DeleteSearchChar:
 {
@@ -359,15 +372,15 @@ if searchterm =
     return
 }
 RefreshList(0,0)
-}
 return
+}
 
 ListBoxClick:
 {
 if A_GuiControlEvent = DoubleClick
     send, {enter}
-}
 return
+}
 
 GetSelection:
 {
@@ -376,13 +389,13 @@ GuiControlGet, Choice
 gui, cancel
 PerformChoice(Choice)
 gosub, GuiClose
-}
 return
+}
 
 DoImDone:
 {
 gui, cancel
 Send #{Space}
 gosub, GuiClose
-}
 return
+}
