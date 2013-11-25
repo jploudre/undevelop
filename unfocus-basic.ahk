@@ -1,6 +1,5 @@
 FileRead, testcsv, planprescribemed.csv
-msgbox %testcsv%
-PrepareCSV(testcsv,Wordlist)
+PrepareCSV (testcsv,Wordlist)
 
 ; UI Variables
 {
@@ -33,9 +32,11 @@ cyan = 2aa198
 green = 859900
 }
 
+; Random UI Color
+{
 Random, colorchoice, 0, 7
 randomeaccentcolor := (colorchoice = 0 ) ? yellow : (colorchoice = 2) ? orange : (colorchoice = 3) ? red : (colorchoice = 4) ? magenta : (colorchoice = 5) ? violet : (colorchoice = 6) ? cyan : green
-
+}
 ; AHK Program Variables
 {
 SetBatchLines -1
@@ -313,29 +314,21 @@ PrepareWordList(ByRef WordList)
 
 PrepareCSV(ByRef CSVfile, outputlist)
 {
-	outputlist = ""
-	Loop, parse, clipboard1, `n, `r
+	global
+	Loop, parse, CSVfile, `n, `r
 	{
+		MsgBox %A_Loopline%
 		loop, parse, A_Loopfield, CSV
 		{
-			if (A_Index = "1"){
-			outputlist .= %A_Loopfield% 
-			}
-			if (A_Index = "4"){
-			accountnumber = %A_Loopfield%
-			}
-			if (A_Index = "5"){
-			ptname = %A_Loopfield%
-			}
-			if (A_Index = "6"){
-			testdescription = %A_Loopfield%
-			}
-			if (A_Index = "7"){
-			category = %A_Loopfield%
+			; Just grab first two fields
+			if (A_Index < "3"){
+			outputlist .= A_Loopfield . "`t"
 			}
 		outputlist .= "`n"
 		}
 	}
+	WordList := Trim(outputlist,"`n") ;remove blank lines at the beginning and end
+	msgbox %Wordlist%
 }
 
 performchoice(theinput)
