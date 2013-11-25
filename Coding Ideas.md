@@ -9,6 +9,7 @@ Approved Ideas for Autocomplete
 Someday Ideas
 ===========
 
+* Click outside GUI should close it.
 * Chain Macros into Brief Multi-step mini-flows.
 * Eliminate globals
 * Finish debugging stringscore algorithm
