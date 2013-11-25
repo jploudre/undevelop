@@ -1,9 +1,9 @@
-ListName=plantext.txt
-#Include unfocus-plan-macros.ahk
+FileRead, testcsv, planprescribemed.csv
+msgbox %testcsv%
+PrepareCSV(testcsv,Wordlist)
 
-FileRead, WordList, %Listname%
-PrepareWordList(WordList)
-
+; UI Variables
+{
 windowwidth := 600
 nobevel = -E0x200
 smallboxheight = 26
@@ -31,17 +31,23 @@ violet = 6c71c4
 blue = 268bd2
 cyan = 2aa198
 green = 859900
+}
 
 Random, colorchoice, 0, 7
 randomeaccentcolor := (colorchoice = 0 ) ? yellow : (colorchoice = 2) ? orange : (colorchoice = 3) ? red : (colorchoice = 4) ? magenta : (colorchoice = 5) ? violet : (colorchoice = 6) ? cyan : green
 
+; AHK Program Variables
+{
 SetBatchLines -1
 #NoEnv
 ;#Warn All
 ;#Warn LocalSameAsGlobal, Off
 #MaxThreadsBuffer On
 #SingleInstance, Force
+}
 
+; Set Up GUI
+{
 DllCall( "GDI32.DLL\AddFontResourceEx", Str,"C:\Documents and Settings\Admin\My Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10), Int,0)
 Gui, +AlwaysOnTop -Caption +ToolWindow Border
 GUI, margin, 0,0
@@ -51,6 +57,7 @@ Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h21
 gui, font, s18 q4 c%randomeaccentcolor%, FontAwesome
 Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
 Gui, Add, Text, x2 y0, Ä
+}
 
 RefreshList(1,1)
 
@@ -103,12 +110,8 @@ Loop
 }
 return
 
-; Functions.#######################################################
-GuiClose:
-GuiEscape:
-DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Documents and Settings\Admin\My Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
-   ExitApp
-   
+; Functions #######################################################
+
 RefreshList(animate, small){
 global
 Critical
@@ -162,7 +165,6 @@ Suggest(CurrentWord, Byref Wordlist)
 	}
     SortedMatches := SubStr(SortedMatches,1,-1)
     Sort, SortedMatches, N R ;rank results numerically descending by score
-    msgbox Before removing scores %SortedMatches% 
 
     ;remove scores
     MatchList := ""
@@ -309,7 +311,51 @@ PrepareWordList(ByRef WordList)
     WordList := Trim(WordList,"`n") ;remove blank lines at the beginning and end
 }
 
+PrepareCSV(ByRef CSVfile, outputlist)
+{
+	outputlist = ""
+	Loop, parse, clipboard1, `n, `r
+	{
+		loop, parse, A_Loopfield, CSV
+		{
+			if (A_Index = "1"){
+			outputlist .= %A_Loopfield% 
+			}
+			if (A_Index = "4"){
+			accountnumber = %A_Loopfield%
+			}
+			if (A_Index = "5"){
+			ptname = %A_Loopfield%
+			}
+			if (A_Index = "6"){
+			testdescription = %A_Loopfield%
+			}
+			if (A_Index = "7"){
+			category = %A_Loopfield%
+			}
+		outputlist .= "`n"
+		}
+	}
+}
+
+performchoice(theinput)
+{
+
+}
+
+
+; Subroutines #######################################################
+
+GuiClose:
+GuiEscape:
+{
+DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Documents and Settings\Admin\My Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
+   ExitApp
+}
+return
+
 DeleteSearchChar:
+{
 if searchterm =
     return
 StringTrimRight, searchterm, searchterm, 1
@@ -320,23 +366,30 @@ if searchterm =
     return
 }
 RefreshList(0,0)
+}
 return
 
 ListBoxClick:
+{
 if A_GuiControlEvent = DoubleClick
     send, {enter}
+}
 return
 
 GetSelection:
+{
 Gui, submit
 GuiControlGet, Choice
 gui, cancel
 PerformChoice(Choice)
 gosub, GuiClose
+}
 return
 
 DoImDone:
+{
 gui, cancel
 Send #{Space}
 gosub, GuiClose
+}
 return
