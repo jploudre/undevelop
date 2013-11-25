@@ -1,17 +1,29 @@
-Approved Ideas for Autocomplete
-======================
+New Features
+============
 
 * Use 'CSV' for data store. Extract function from line and use dynamic function to call.
+
+New Data
+========
+
 * Start making lists of structured data (Top x00 lists: ICD-9, CPT, CPT E&M, Medication, Referral, Discussions, Follow-up, Treatment Goals, etc)
 * Transcribe Menu Structure/Centricity Hotkeys
 * Transcribe Global Quick Texts.
 
-Someday Ideas
-===========
+Bug Fixes
+=========
 
 * Click outside GUI should close it.
-* Chain Macros into Brief Multi-step mini-flows.
+
+Refactoring
+===========
+
 * Eliminate globals
+
+Someday Ideas
+=============
+
+* Chain Macros into Brief Multi-step mini-flows.
 * Finish debugging stringscore algorithm
 * Suggestion Macro: Creates a Simple Feedback form
 * Notify()
