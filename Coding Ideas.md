@@ -1,14 +1,25 @@
 New Features
 ============
 
-* Use 'CSV' for data store. Extract function from line and use dynamic function to call.
+* CSV data Extract function from line and use dynamic function to call.
 
 New Data
 ========
 
-* Start making lists of structured data (Top x00 lists: ICD-9, CPT, CPT E&M, Medication, Referral, Discussions, Follow-up, Treatment Goals, etc)
+* Top xxx Lists
+	* ICD-9
+	* CPT
+	* CPT E&M
+	* Prescriptions
+	* Referrals
+	* Discussion items/advice
+	* Follow up plans
+	* Established Problems: Surveillance
+	* Established Problems: Treatment Goals
+	* HPI Screeners (Clinical Decision Rules)
 * Transcribe Menu Structure/Centricity Hotkeys
-* Transcribe Global Quick Texts.
+* Process Global Quick Texts.
+* FP Notebook Clinical Decision Tools
 
 Bug Fixes
 =========
