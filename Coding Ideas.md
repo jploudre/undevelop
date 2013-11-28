@@ -8,7 +8,6 @@ New Data
 
 * Top xxx Lists
 	* ICD-9
-	* CPT
 	* CPT E&M
 	* Prescriptions
 	* Referrals
@@ -20,6 +19,15 @@ New Data
 * Transcribe Menu Structure/Centricity Hotkeys
 * Process Global Quick Texts.
 * FP Notebook Clinical Decision Tools
+
+Completed Data
+===========
+* CPT
+	* Question: What's the right echo code? 93307
+	* Question: What about Chlamydia/GC codes?
+	* Question: Myocardial Perfusion study 78461 (what's the right description?)
+	* Question: Arrythmia Test Codes (What names?)
+* Prescriptions
 
 Bug Fixes
 =========
