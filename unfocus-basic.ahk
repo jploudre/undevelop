@@ -101,7 +101,10 @@ Loop
       }
     searchterm = %searchterm%%input%  
     GuiControl,, Edit1, %searchterm%
-
+    if (strlen(searchterm) < 2)
+    {
+        continue
+    }
 	RefreshList(0,0)
     
 }
