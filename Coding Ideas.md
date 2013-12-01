@@ -20,7 +20,7 @@ New Data
 * Process Global Quick Texts.
 * FP Notebook Clinical Decision Tools
 
-Completed Data
+Completed Top Lists
 ===========
 * CPT
 	* Question: What's the right echo code? 93307
@@ -28,6 +28,8 @@ Completed Data
 	* Question: Myocardial Perfusion study 78461 (what's the right description?)
 	* Question: Arrythmia Test Codes (What names?)
 * Prescriptions
+	* Need DDID numbers
+	
 
 Bug Fixes
 =========
