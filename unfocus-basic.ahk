@@ -160,7 +160,10 @@ Suggest(CurrentWord, Byref Wordlist)
     ;sort by score
     SortedMatches := ""
     Loop, Parse, MatchList, `n
-        SortedMatches .= StringScore(CurrentWord,A_LoopField) . "}" . A_LoopField . "`n"
+    {
+        StringTrimLeft, trimmedfield, A_Loopfield, 2
+        SortedMatches .= StringScore(CurrentWord,trimmedfield) . "}" . A_LoopField . "`n"
+    }
     SortedMatches := SubStr(SortedMatches,1,-1)
     Sort, SortedMatches, N R ;rank results numerically descending by score
     ;msgbox Before removing scores %SortedMatches% 

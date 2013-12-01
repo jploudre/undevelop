@@ -179,7 +179,7 @@ StringScore(word,line,fuzziness=0)
 			if (previousstringcharacter = A_Space or A_Tab)
 			{
 			;	msgbox Loop %A_Index%, previousstringcharacter is Tab or Space
-			charScore += 10.8
+			charScore += 0.1
 			}
 		}
 		}

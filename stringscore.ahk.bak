@@ -173,7 +173,7 @@ StringScore(word,line,fuzziness=0)
 		{
         charScore = 0.1
 		;msgbox startat %startAt% not equal indxof %idxOf% so 0.1 points
-		StringMid, previousstringcharacter, lstring, idxOf, 1
+		StringMid, previousstringcharacter, lstring, idxOf -1, 1
 		if (Errorlevel != 1)
 		{
 			if (previousstringcharacter = A_Space or A_Tab)
