@@ -106,6 +106,11 @@ Loop
       }
     searchterm = %searchterm%%input%  
     GuiControl,, Edit1, %searchterm%
+	if (strlen(searchterm) < 2)
+    {
+        continue
+    }
+
 
 	RefreshList(0,0)
     
@@ -366,7 +371,7 @@ if searchterm =
     return
 StringTrimRight, searchterm, searchterm, 1
 GuiControl,, Edit1, %searchterm%
-if searchterm =
+if (strlen(searchterm) < 2)
 {
 	RefreshList(0,1)
     return
