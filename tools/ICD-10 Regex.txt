@@ -1,0 +1,14 @@
+ICD-10 Regex
+
+According to www.cms.gov ICD-10 has the following rules:
+
+* 3-7 Characters
+* Character 1 is alpha (cannot be U)
+* Character 2 is numeric
+* Characters 3-7 are alphanumeric
+* After 3 characters you use a decimal
+
+Alpha characters are not case sensitive
+Here is the regex I came up with:
+
+^[A-TV-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$
