@@ -1,0 +1,43 @@
+Data Sources
+
+PROBLEM_CUST_LIST
+
+A delimited list of items Description, ICD9 code, duration if non-zero, from the table ICDDEPT for the specific custom list with pipes(|) between problem records and carets (^) between fields in the format of Description^icd9code^duration
+
+(3 fields total)
+
+
+
+ORDER_CUST_LIST
+
+Delimited Returns a delimited list of all items in the specific custom list with pipes(|) between order records and carets (^) between fields. Information returned is in the following table.
+Order Type T = test
+S = service
+R = referral
+H = header
+P = order set
+Order Description
+Order Code
+
+
+
+MED_CUST_LIST
+
+A delimited list for the specific custom list with pipes(|) between medication records and carets (^) between fields. In the format of
+
+1	NDCNUM
+2	PRODUCTNAME
+3	DOSEFORM
+4	STRENGTH
+5	GENERICNAME
+6	AWPUNIT
+7	QUANTITY
+8	REFILLS
+9	DEFAULTSIG
+10	GPI
+11	GENERICMED	
+12	DDID
+13	KDC
+14	LEGEND
+15	MEDDID
+16	DAW
