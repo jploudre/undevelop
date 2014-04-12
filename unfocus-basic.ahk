@@ -1,64 +1,12 @@
+InitialSettings()
+
+FileRead, icdlist, data/icdlist.txt
+FileRead, medlist, data/icdlist.txt
+FileRead, orderlist, data/orderlist.txt
+
 FileRead, testcsv, planprescribemed.csv
 WordList := WordlistFromCSV(testcsv)
 DoList := DoListFromCSV(testcsv)
-
-; Setup
-{
-; AHK Program Variables
-SetBatchLines -1
-#NoEnv
-;#Warn All
-;#Warn LocalSameAsGlobal, Off
-#MaxThreadsBuffer On
-#SingleInstance, Force
-
-; UI Variables
-windowwidth := 600
-nobevel = -E0x200
-smallboxheight = 26
-fromtopposition = 10
-fullboxheight = 235
-lefteditoffset = 36
-editwidth := windowwidth - lefteditoffset
-MaxResults = 8
-
-; Colors from http://ethanschoonover.com/solarized
-base0 = 839496
-base1 = 93a1a1
-base2 = eee8d5
-base3 = fdf6e3
-base00 = 657b83
-base01 = 586e75
-base02 = 073642
-base03 = 002b36
-cyan = 2aa198
-yellow = b58900
-orange = cb4b16
-red = dc322f
-magenta = d33682
-violet = 6c71c4
-blue = 268bd2
-cyan = 2aa198
-green = 859900
-
-; Random UI Color
-Random, colorchoice, 0, 7
-randomeaccentcolor := (colorchoice = 0 ) ? yellow : (colorchoice = 2) ? orange : (colorchoice = 3) ? red : (colorchoice = 4) ? magenta : (colorchoice = 5) ? violet : (colorchoice = 6) ? cyan : green
-
-; Install the Custom Font
-DllCall( "GDI32.DLL\AddFontResourceEx", Str,"C:\Documents and Settings\Admin\My Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10), Int,0)
-
-; GUI Interface
-Gui, +AlwaysOnTop -Caption +ToolWindow Border
-GUI, margin, 0,0
-gui, color, %base2%, %base3%
-gui, font, s18 q4 c%base02%, FontAwesome
-Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h216 t9 %nobevel%
-gui, font, s18 q4 c%randomeaccentcolor%, FontAwesome
-Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
-Gui, Add, Text, x2 y0, Ä
-
-}
 
 
 ; Set Up GUI
@@ -344,11 +292,63 @@ DolistFromCSV(ByRef CSVfile)
 	return DoList
 }
 
-performchoice(theinput)
+
+InitialSettings()
 {
+; AHK Program Variables
+SetBatchLines -1
+#NoEnv
+;#Warn All
+;#Warn LocalSameAsGlobal, Off
+#MaxThreadsBuffer On
+#SingleInstance, Force
 
+; UI Variables
+windowwidth := 600
+nobevel = -E0x200
+smallboxheight = 26
+fromtopposition = 10
+fullboxheight = 235
+lefteditoffset = 36
+editwidth := windowwidth - lefteditoffset
+MaxResults = 8
+
+; Colors from http://ethanschoonover.com/solarized
+base0 = 839496
+base1 = 93a1a1
+base2 = eee8d5
+base3 = fdf6e3
+base00 = 657b83
+base01 = 586e75
+base02 = 073642
+base03 = 002b36
+cyan = 2aa198
+yellow = b58900
+orange = cb4b16
+red = dc322f
+magenta = d33682
+violet = 6c71c4
+blue = 268bd2
+cyan = 2aa198
+green = 859900
+
+; Random UI Color
+Random, colorchoice, 0, 7
+randomeaccentcolor := (colorchoice = 0 ) ? yellow : (colorchoice = 2) ? orange : (colorchoice = 3) ? red : (colorchoice = 4) ? magenta : (colorchoice = 5) ? violet : (colorchoice = 6) ? cyan : green
+
+; Install the Custom Font
+DllCall( "GDI32.DLL\AddFontResourceEx", Str,"C:\Documents and Settings\Admin\My Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10), Int,0)
+
+; GUI Interface
+Gui, +AlwaysOnTop -Caption +ToolWindow Border
+GUI, margin, 0,0
+gui, color, %base2%, %base3%
+gui, font, s18 q4 c%base02%, FontAwesome
+Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h216 t9 %nobevel%
+gui, font, s18 q4 c%randomeaccentcolor%, FontAwesome
+Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
+Gui, Add, Text, x2 y0, Ä
 }
-
 
 ; Subroutines #######################################################
 GuiClose:
