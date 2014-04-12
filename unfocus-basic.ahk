@@ -314,15 +314,6 @@ StringScore(word,line,fuzziness=0)
 	return finalScore
 }
 
-PrepareWordList(ByRef WordList)
-{
-    If InStr(WordList,"`r")
-        StringReplace, WordList, WordList, `r,, All
-    While, InStr(WordList,"`n`n") ;remove blank lines within the list
-        StringReplace, WordList, WordList, `n`n, `n, All
-    WordList := Trim(WordList,"`n") ;remove blank lines at the beginning and end
-}
-
 WordlistFromCSV(ByRef CSVfile)
 {
 	Loop, parse, CSVfile, `n, `r
