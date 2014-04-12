@@ -1,12 +1,9 @@
 InitialSettings()
-
-FileRead, icdlist, data/icdlist.txt
-FileRead, medlist, data/icdlist.txt
-FileRead, orderlist, data/orderlist.txt
+ReadDataFiles()
 
 FileRead, testcsv, planprescribemed.csv
 WordList := WordlistFromCSV(testcsv)
-DoList := DoListFromCSV(testcsv)
+
 
 
 ; Set Up GUI
@@ -278,23 +275,9 @@ WordlistFromCSV(ByRef CSVfile)
 	return WordList
 }
 
-DolistFromCSV(ByRef CSVfile)
-{
-	Loop, parse, CSVfile, `n, `r
-	{
-		loop, parse, A_Loopfield, CSV
-		{
-			if (A_Index = "4"){
-			DoList .= A_Loopfield . "`n"
-			}
-		}
-	}
-	return DoList
-}
-
-
 InitialSettings()
 {
+global
 ; AHK Program Variables
 SetBatchLines -1
 #NoEnv
@@ -337,7 +320,8 @@ Random, colorchoice, 0, 7
 randomeaccentcolor := (colorchoice = 0 ) ? yellow : (colorchoice = 2) ? orange : (colorchoice = 3) ? red : (colorchoice = 4) ? magenta : (colorchoice = 5) ? violet : (colorchoice = 6) ? cyan : green
 
 ; Install the Custom Font
-DllCall( "GDI32.DLL\AddFontResourceEx", Str,"C:\Documents and Settings\Admin\My Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10), Int,0)
+DllCall( "GDI32.DLL\AddFontResourceEx", Str,"C:\Users\jploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10), Int,0)
+
 
 ; GUI Interface
 Gui, +AlwaysOnTop -Caption +ToolWindow Border
@@ -348,6 +332,14 @@ Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h21
 gui, font, s18 q4 c%randomeaccentcolor%, FontAwesome
 Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
 Gui, Add, Text, x2 y0, Ä
+}
+
+ReadDataFiles()
+{
+global
+FileRead, icdlist, data/icdlist.txt
+FileRead, medlist, data/icdlist.txt
+FileRead, orderlist, data/orderlist.txt
 }
 
 ; Subroutines #######################################################
@@ -386,7 +378,6 @@ GetSelection:
 Gui, submit
 GuiControlGet, Choice
 gui, cancel
-PerformChoice(Choice)
 gosub, GuiClose
 return
 }
