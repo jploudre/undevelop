@@ -2,8 +2,17 @@ FileRead, testcsv, planprescribemed.csv
 WordList := WordlistFromCSV(testcsv)
 DoList := DoListFromCSV(testcsv)
 
-; UI Variables
+; Setup
 {
+; AHK Program Variables
+SetBatchLines -1
+#NoEnv
+;#Warn All
+;#Warn LocalSameAsGlobal, Off
+#MaxThreadsBuffer On
+#SingleInstance, Force
+
+; UI Variables
 windowwidth := 600
 nobevel = -E0x200
 smallboxheight = 26
@@ -31,27 +40,15 @@ violet = 6c71c4
 blue = 268bd2
 cyan = 2aa198
 green = 859900
-}
 
 ; Random UI Color
-{
 Random, colorchoice, 0, 7
 randomeaccentcolor := (colorchoice = 0 ) ? yellow : (colorchoice = 2) ? orange : (colorchoice = 3) ? red : (colorchoice = 4) ? magenta : (colorchoice = 5) ? violet : (colorchoice = 6) ? cyan : green
-}
 
-; AHK Program Variables
-{
-SetBatchLines -1
-#NoEnv
-;#Warn All
-;#Warn LocalSameAsGlobal, Off
-#MaxThreadsBuffer On
-#SingleInstance, Force
-}
-
-; Set Up GUI
-{
+; Install the Custom Font
 DllCall( "GDI32.DLL\AddFontResourceEx", Str,"C:\Documents and Settings\Admin\My Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10), Int,0)
+
+; GUI Interface
 Gui, +AlwaysOnTop -Caption +ToolWindow Border
 GUI, margin, 0,0
 gui, color, %base2%, %base3%
@@ -60,6 +57,12 @@ Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h21
 gui, font, s18 q4 c%randomeaccentcolor%, FontAwesome
 Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
 Gui, Add, Text, x2 y0, Ä
+
+}
+
+
+; Set Up GUI
+{
 
 RefreshList(1,1)
 
