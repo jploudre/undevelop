@@ -16,7 +16,7 @@ RefreshList(1,1)
 searchterm =   
 Loop
 {
-    Input, input, L1, {enter}{esc}{backspace}{up}{down}{tab}{space}
+    Input, input, L1, {enter}{esc}{backspace}{up}{down}{tab}
     
 	   if ErrorLevel = EndKey:escape
       {
@@ -46,12 +46,6 @@ Loop
 		if ErrorLevel = EndKey:tab
       {
          GoSub, GetSelection
-         continue
-      }
-   		if ErrorLevel = EndKey:space
-      {
-         if searchterm = 
-         GoSub, DoImDone
          continue
       }
     searchterm = %searchterm%%input%  
@@ -401,14 +395,6 @@ GetSelection:
 Gui, submit
 GuiControlGet, Choice
 gui, cancel
-gosub, GuiClose
-return
-}
-
-DoImDone:
-{
-gui, cancel
-Send #{Space}
 gosub, GuiClose
 return
 }
