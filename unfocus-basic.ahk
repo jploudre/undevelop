@@ -255,6 +255,80 @@ StringScore(word,line,fuzziness=0)
 	return finalScore
 }
 
+; toralf's version. http://www.autohotkey.com/board/topic/99960-string-score-compare-two-strings/
+StrScore(string, word, fuziness=0){
+  ;If the string is equal to the word, perfect match.
+  If (string == word) 
+    return 1
+  ;if it's not a perfect match and is empty return 0
+  If (word = "")
+    return 0   
+ 
+  runningScore = 0
+  strLength := StrLen(string)
+  wordLength := StrLen(word)
+  startAt = 1
+  fuzzies = 1
+  Offset = 0
+  
+  ;Cache fuzzyFactor for speed increase
+  fuzzyFactor := fuziness ? 1 - fuziness : 0
+ 
+  ;Walk through word and add up scores.
+  ;Code duplication occurs to prevent checking fuzziness inside for loop
+  If fuziness {
+    Loop, Parse, word
+      {
+        ;Find next first case-insensitive match of a character.
+        idxOf := InStr(String, A_Loopfield, 0, startAt)
+        If (idxOf = 0){
+          fuzzies += fuzzyFactor
+          continue  
+        }Else If (startAt = idxOf){
+          ;Consecutive letter & start-of-string Bonus
+          charScore = 0.7
+        }Else{
+          charScore = 0.1
+          ;Acronym Bonus
+          ;Weighing Logic: Typing the first character of an acronym is as if you
+          ;preceded it with two perfect character matches.
+          if (SubStr(string, idxOf - 1, 1) = " ")
+            charScore += 0.8
+        }
+        ;Same case bonus.
+        if (SubStr(string,idxOf,1) == A_Loopfield)
+          charScore += 0.1 
+        ;Update scores and startAt position for next round of indexOf
+        runningScore += charScore
+        startAt := idxOf + 1
+      }
+  }Else {
+    Loop, Parse, word
+      {
+        idxOf := InStr(String, A_Loopfield, 0, startAt)
+        If (idxOf = 0){
+          return 0  
+        }Else If (startAt = idxOf){
+          charScore = 0.7
+        }Else{
+          charScore = 0.1
+          if (SubStr(string, idxOf - 1, 1) = " ")
+            charScore += 0.8
+        }
+        if (SubStr(string,idxOf,1) == A_Loopfield)
+          charScore += 0.1 
+        runningScore += charScore
+        startAt := idxOf + 1
+      }
+  }
+  ;Reduce penalty for longer strings.
+  finalScore := 0.5 * (runningScore / strLength  + runningScore / wordLength) / fuzzies
+  if ((SubStr(Word, 1, 1) = SubStr(String, 1, 1)) AND (finalScore < 0.85)) 
+    finalScore += 0.15
+  return finalScore
+}
+
+
 WordlistFromCSV(ByRef CSVfile)
 {
 	Loop, parse, CSVfile, `n, `r
