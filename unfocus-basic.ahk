@@ -341,7 +341,9 @@ Random, colorchoice, 0, 7
 randomeaccentcolor := (colorchoice = 0 ) ? yellow : (colorchoice = 2) ? orange : (colorchoice = 3) ? red : (colorchoice = 4) ? magenta : (colorchoice = 5) ? violet : (colorchoice = 6) ? cyan : green
 
 ; Install the Custom Font
-DllCall( "GDI32.DLL\AddFontResourceEx", Str,"C:\Users\jploudre\Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10), Int,0)
+Filecopy, jkpAwesome.TTF, %A_Temp%\jkpAwesome.TTF
+tempfontlocation :=  A_Temp . "\jkpAwesome.TTF"
+DllCall( "GDI32.DLL\AddFontResourceEx", Str, tempfontlocation ,UInt,(FR_PRIVATE:=0x10), Int,0)
 
 
 ; GUI Interface
@@ -367,7 +369,7 @@ FileRead, orderlist, data/orderlist.txt
 GuiClose:
 GuiEscape:
 {
-DllCall( "GDI32.DLL\RemoveFontResourceEx",Str,"C:\Documents and Settings\Admin\My Documents\GitHub\undevelop\jkpAwesome.TTF",UInt,(FR_PRIVATE:=0x10),Int,0)
+DllCall( "GDI32.DLL\RemoveFontResourceEx",Str, tempfontlocation ,UInt,(FR_PRIVATE:=0x10),Int,0)
    ExitApp
 return
 }
