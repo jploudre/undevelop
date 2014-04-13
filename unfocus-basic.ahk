@@ -2,7 +2,9 @@ InitialSettings()
 ReadDataFiles()
 
 FileRead, testcsv, planprescribemed.csv
-WordList := WordlistFromCSV(testcsv)
+;WordList := WordlistFromCSV(testcsv)
+
+WordList := WordlistFromDataFile(ByRef icdlist)
 
 
 
@@ -275,6 +277,24 @@ WordlistFromCSV(ByRef CSVfile)
 	return WordList
 }
 
+WordlistFromDataFile(ByRef datafile)
+{
+	Loop, parse, datafile, |
+	{
+		loop, parse, A_Loopfield, ^
+		{
+			if (A_Index = "1"){
+			WordList .= "…"  . "`t" .  A_Loopfield . "`t"
+			}
+			if (A_Index = "2"){
+			WordList .= A_Loopfield . "`t"
+			}
+		}
+		WordList .= "`n"
+	}
+	return WordList
+}
+
 InitialSettings()
 {
 global
@@ -328,7 +348,7 @@ Gui, +AlwaysOnTop -Caption +ToolWindow Border
 GUI, margin, 0,0
 gui, color, %base2%, %base3%
 gui, font, s18 q4 c%base02%, FontAwesome
-Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h216 t9 %nobevel%
+Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h216 t9 t18 t300 %nobevel%
 gui, font, s18 q4 c%randomeaccentcolor%, FontAwesome
 Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
 Gui, Add, Text, x2 y0, Ä
