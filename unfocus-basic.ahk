@@ -284,7 +284,8 @@ WordlistFromDataFile(ByRef datafile)
 		loop, parse, A_Loopfield, ^
 		{
 			if (A_Index = "1"){
-			WordList .= "…"  . "`t" .  A_Loopfield . "`t"
+			StringUpper, titlecase, A_Loopfield, T
+			WordList .= "…"  . "`t" .  titlecase . "`t"
 			}
 			if (A_Index = "2"){
 			WordList .= A_Loopfield . "`t"
