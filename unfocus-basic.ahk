@@ -5,6 +5,7 @@ FileRead, testcsv, planprescribemed.csv
 ;WordList := WordlistFromCSV(testcsv)
 
 WordList := WordlistFromDataFile(ByRef icdlist)
+Sort, Wordlist, U
 
 
 
@@ -431,6 +432,7 @@ global
 FileRead, icdlist, data/icdlist.txt
 FileRead, medlist, data/icdlist.txt
 FileRead, orderlist, data/orderlist.txt
+
 }
 
 ; Subroutines #######################################################
