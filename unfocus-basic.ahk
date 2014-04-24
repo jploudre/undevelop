@@ -326,23 +326,6 @@ StrScore(string, word, fuziness=0){
   return finalScore
 }
 
-
-WordlistFromCSV(ByRef CSVfile)
-{
-	Loop, parse, CSVfile, `n, `r
-	{
-		loop, parse, A_Loopfield, CSV
-		{
-			; Just grab first two fields
-			if (A_Index < "3"){
-			WordList .= A_Loopfield . "`t"
-			}
-		}
-		WordList .= "`n"
-	}
-	return WordList
-}
-
 WordlistFromDataFile(ByRef datafile)
 {
 	Loop, parse, datafile, |
@@ -468,6 +451,7 @@ GetSelection:
 Gui, submit
 GuiControlGet, Choice
 gui, cancel
+
 gosub, GuiClose
 return
 }
