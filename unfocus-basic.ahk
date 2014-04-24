@@ -1,9 +1,6 @@
 InitialSettings()
 ReadDataFiles()
 
-FileRead, testcsv, planprescribemed.csv
-;WordList := WordlistFromCSV(testcsv)
-
 WordList := WordlistFromDataFile(ByRef icdlist)
 Sort, Wordlist, U
 
