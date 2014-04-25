@@ -325,13 +325,14 @@ StrScore(string, word, fuziness=0){
 
 WordlistFromDataFile(ByRef datafile)
 {
+	global
 	Loop, parse, datafile, |
 	{
 		loop, parse, A_Loopfield, ^
 		{
 			if (A_Index = "1"){
 			StringUpper, titlecase, A_Loopfield, T
-			WordList .= "…"  . "`t" .  titlecase . "`t"
+			WordList .= stethoscope  . "`t" .  titlecase . "`t"
 			}
 			if (A_Index = "2"){
 			WordList .= A_Loopfield . "`t"
@@ -363,6 +364,10 @@ lefteditoffset = 36
 editwidth := windowwidth - lefteditoffset
 MaxResults = 8
 
+; Names of Icons
+
+stethoscope = … ; Used for ICD
+
 ; Colors from http://ethanschoonover.com/solarized
 base0 = 839496
 base1 = 93a1a1
@@ -390,14 +395,12 @@ randomeaccentcolor := (colorchoice = 0 ) ? yellow : (colorchoice = 2) ? orange :
 Filecopy, jkpAwesome.TTF, %A_Temp%\jkpAwesome.TTF
 tempfontlocation :=  A_Temp . "\jkpAwesome.TTF"
 DllCall( "GDI32.DLL\AddFontResourceEx", Str, tempfontlocation ,UInt,(FR_PRIVATE:=0x10), Int,0)
-
 FileInstall, data/icdlist.txt, %A_Temp%\icdlist.txt, 1
 FileInstall, data/medlist.txt, %A_Temp%\medlist.txt, 1
 FileInstall, data/orderlist.txt, %A_Temp%\orderlist.txt, 1
-
-FileRead, icdlist, data/icdlist.txt
-FileRead, medlist, data/medlist.txt
-FileRead, orderlist, data/orderlist.txt
+FileRead, icdlist, %A_Temp%\icdlist.txt
+FileRead, medlist, %A_Temp%\medlist.txt
+FileRead, orderlist, %A_Temp%\orderlist.txt
 
 ; GUI Interface
 Gui, +AlwaysOnTop -Caption +ToolWindow Border
@@ -452,30 +455,48 @@ gosub, GuiClose
 return
 }
 
-ProcessSelection(thechoice)
+ProcessSelection(theuserchoice)
 {
+	global
 ; Assumes tab delimited line with 1) Icon character, 2) The Selected Text, 3 and on) Items to process.
 
-choice_array := StrSplit(thechoice, A_Tab)
-if (choice_array[1] = "…")
+userchoicechunks := StrSplit(theuserchoice, A_Tab)
+if (userchoicechunks[1] = "…")
 {
-addICD(choice_array[3])
+addICD(userchoicechunks[2], userchoicechunks[3])
 }
 
 }
 
-addICD(ICD)
+addICD(TextDescription, ICD)
 {
 ; For now assumes in Update
 Click, 405, 40
 WinWaitActive, New Problem
+Sleep, 100
 Click, 586, 72
 WinWaitActive, Find Problem
+sleep, 100
 SendInput %ICD% !s
 Sleep, 100
 Click 491, 422
 WinWaitActive New Problem
+Sleep, 100
 Click, 510, 421
 WinWaitActive Update
-Msgbox Added %ICD%	
+Notify("…", "Added",TextDescription)
+}
+
+Notify(Type, Title, Message)
+{
+Global
+Gui 2:+LastFound +AlwaysOnTop -Caption +ToolWindow Border  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
+GUI, 2:margin, 0,0
+Gui, 2:Color, %base2%, %base3%
+gui, 2:font, s18 q4 c%randomeaccentcolor%, FontAwesome
+Gui, 2:Add, Text, x2 y0, %Type%
+Gui, 2:Add, Text, c%Base02% x%lefteditoffset% y0, %Title% -- %Message%
+Gui, 2:Show, xCenter y%fromtopposition% w%windowwidth% h%smallboxheight% NoActivate  ; NoActivate avoids deactivating the currently active window.
+Sleep 1500
+GUI, 2:Destroy
 }
