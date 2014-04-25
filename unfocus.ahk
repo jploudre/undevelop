@@ -1,6 +1,8 @@
 InitialSettings()
 
 WordList := WordlistFromDataFile(listtypeicd, ByRef icdlist)
+WordList := WordlistFromDataFile(listtypemedication, ByRef medlist)
+msgbox %Wordlist%
 Sort, Wordlist, U
 
 ; Set Up GUI
@@ -328,10 +330,10 @@ WordlistFromDataFile(listtype, ByRef datafile)
 	global
 	Loop, parse, datafile, |
 	{
+		if (listtype = listtypeicd)
+		{
 		loop, parse, A_Loopfield, ^
 		{
-			;if (listtype = "listtypeicd")
-			;{
 			if (A_Index = "1"){
 			StringUpper, titlecase, A_Loopfield, T
 			WordList .= stethoscope  . "`t" .  titlecase . "`t"
@@ -339,15 +341,20 @@ WordlistFromDataFile(listtype, ByRef datafile)
 			if (A_Index = "2"){
 			WordList .= A_Loopfield . "`t"
 			}
-			;} ;list-type-icd
-			;else 
-			;{
-			;msgbox Invalid List Type	
-			;break
-			;}
-			
 		}
 		WordList .= "`n"
+		}
+		if (listtype = listtypemed)
+		{
+		loop, parse, A_Loopfield, ^
+		{
+			if (A_Index = "5"){
+			StringUpper, titlecase, A_Loopfield, T
+			WordList .= pencilpaper  . "`t" .  titlecase
+			}
+		}
+		WordList .= "`n"
+		}
 	}
 	return WordList
 }
@@ -376,6 +383,7 @@ MaxResults = 8
 ; Names of Icons
 
 stethoscope = … ; Used for ICD
+pencilpaper = î  ; Used for Prescriptions
 
 ; Colors from http://ethanschoonover.com/solarized
 base0 = 839496
