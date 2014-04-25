@@ -2,6 +2,7 @@ InitialSettings()
 
 WordList := WordlistFromDataFile(listtypeicd, ByRef icdlist)
 WordList := WordlistFromDataFile(listtypemedication, ByRef medlist)
+WordList := WordlistFromDataFile(listtypeorder, ByRef orderlist)
 Sort, Wordlist, U
 
 ; Set Up GUI
@@ -354,6 +355,20 @@ WordlistFromDataFile(listtype, ByRef datafile)
 		}
 		WordList .= "`n"
 		}
+		if (listtype = listtypeorder)
+		{
+		loop, parse, A_Loopfield, ^
+		{
+			if (A_Index = "2"){
+			StringUpper, titlecase, A_Loopfield, T
+			WordList .= labbeaker  . "`t" .  titlecase . "`t"
+			}
+			if (A_Index = "3"){
+			WordList .= A_Loopfield . "`t"
+			}
+		}
+		WordList .= "`n"
+		}
 	}
 	return WordList
 }
@@ -370,7 +385,7 @@ SetBatchLines -1
 #SingleInstance, Force
 
 ; UI Variables
-windowwidth := 600
+windowwidth := 800
 nobevel = -E0x200
 smallboxheight = 26
 fromtopposition = 10
@@ -383,6 +398,7 @@ MaxResults = 8
 
 stethoscope = … ; Used for ICD
 pencilpaper = î  ; Used for Prescriptions
+labbeaker = ± ; Orders
 
 ; Colors from http://ethanschoonover.com/solarized
 base0 = 839496
@@ -485,6 +501,10 @@ if (userchoicechunks[1] = pencilpaper) ; Medication
 {
 addMed(userchoicechunks[2])
 }
+if (userchoicechunks[1] = labbeaker) ; Order
+{
+addOrder(userchoicechunks[3])
+}
 
 }
 
@@ -500,6 +520,23 @@ WinWaitActive, Find Medication
 sleep, 100
 SendInput %Medication% !s
 }
+
+AddOrder(Order)
+{
+Global
+; For now assumes in Update
+Click, 254, 38
+WinWaitActive, Update Orders
+Sleep, 100
+Click, 246, 289
+Sleep, 100
+Click, 465, 328
+SendInput %Order%
+SendInput {Enter}
+Sleep, 100
+Click, 739, 542
+}
+
 
 addICD(TextDescription, ICD)
 {
