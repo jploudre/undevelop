@@ -1,5 +1,4 @@
 InitialSettings()
-ReadDataFiles()
 
 WordList := WordlistFromDataFile(ByRef icdlist)
 Sort, Wordlist, U
@@ -387,11 +386,18 @@ green = 859900
 Random, colorchoice, 0, 7
 randomeaccentcolor := (colorchoice = 0 ) ? yellow : (colorchoice = 2) ? orange : (colorchoice = 3) ? red : (colorchoice = 4) ? magenta : (colorchoice = 5) ? violet : (colorchoice = 6) ? cyan : green
 
-; Install the Custom Font
+; Install the Custom Files
 Filecopy, jkpAwesome.TTF, %A_Temp%\jkpAwesome.TTF
 tempfontlocation :=  A_Temp . "\jkpAwesome.TTF"
 DllCall( "GDI32.DLL\AddFontResourceEx", Str, tempfontlocation ,UInt,(FR_PRIVATE:=0x10), Int,0)
 
+FileInstall, data/icdlist.txt, %A_Temp%\icdlist.txt, 1
+FileInstall, data/medlist.txt, %A_Temp%\medlist.txt, 1
+FileInstall, data/orderlist.txt, %A_Temp%\orderlist.txt, 1
+
+FileRead, icdlist, data/icdlist.txt
+FileRead, medlist, data/medlist.txt
+FileRead, orderlist, data/orderlist.txt
 
 ; GUI Interface
 Gui, +AlwaysOnTop -Caption +ToolWindow Border
@@ -402,14 +408,6 @@ Gui, Add, ListBox, vChoice gListBoxClick w%windowwidth% x0 Y%smallboxheight% h21
 gui, font, s18 q4 c%randomeaccentcolor%, FontAwesome
 Gui, Add, Edit, x%lefteditoffset% y0 w%editwidth% h%smallboxheight% %nobevel%
 Gui, Add, Text, x2 y0, Ä
-}
-
-ReadDataFiles()
-{
-global
-FileRead, icdlist, data/icdlist.txt
-FileRead, medlist, data/medlist.txt
-FileRead, orderlist, data/orderlist.txt
 
 }
 
