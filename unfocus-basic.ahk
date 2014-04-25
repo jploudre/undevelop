@@ -4,8 +4,6 @@ ReadDataFiles()
 WordList := WordlistFromDataFile(ByRef icdlist)
 Sort, Wordlist, U
 
-
-
 ; Set Up GUI
 {
 
@@ -410,7 +408,7 @@ ReadDataFiles()
 {
 global
 FileRead, icdlist, data/icdlist.txt
-FileRead, medlist, data/icdlist.txt
+FileRead, medlist, data/medlist.txt
 FileRead, orderlist, data/orderlist.txt
 
 }
@@ -451,7 +449,35 @@ GetSelection:
 Gui, submit
 GuiControlGet, Choice
 gui, cancel
-
+ProcessSelection(Choice)
 gosub, GuiClose
 return
+}
+
+ProcessSelection(thechoice)
+{
+; Assumes tab delimited line with 1) Icon character, 2) The Selected Text, 3 and on) Items to process.
+
+choice_array := StrSplit(thechoice, A_Tab)
+if (choice_array[1] = "…")
+{
+addICD(choice_array[3])
+}
+
+}
+
+addICD(ICD)
+{
+; For now assumes in Update
+Click, 405, 40
+WinWaitActive, New Problem
+Click, 586, 72
+WinWaitActive, Find Problem
+SendInput %ICD% !s
+Sleep, 100
+Click 491, 422
+WinWaitActive New Problem
+Click, 510, 421
+WinWaitActive Update
+Msgbox Added %ICD%	
 }
