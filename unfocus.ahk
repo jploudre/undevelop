@@ -2,7 +2,6 @@ InitialSettings()
 
 WordList := WordlistFromDataFile(listtypeicd, ByRef icdlist)
 WordList := WordlistFromDataFile(listtypemedication, ByRef medlist)
-msgbox %Wordlist%
 Sort, Wordlist, U
 
 ; Set Up GUI
@@ -478,11 +477,28 @@ ProcessSelection(theuserchoice)
 ; Assumes tab delimited line with 1) Icon character, 2) The Selected Text, 3 and on) Items to process.
 
 userchoicechunks := StrSplit(theuserchoice, A_Tab)
-if (userchoicechunks[1] = stethoscope)
+if (userchoicechunks[1] = stethoscope) ; ICD
 {
 addICD(userchoicechunks[2], userchoicechunks[3])
 }
+if (userchoicechunks[1] = pencilpaper) ; Medication
+{
+addMed(userchoicechunks[2])
+}
 
+}
+
+AddMed(Medication)
+{
+Global
+; For now assumes in Update
+Click, 333, 40
+WinWaitActive, New Medication
+Sleep, 100
+Click, 716, 51
+WinWaitActive, Find Medication
+sleep, 100
+SendInput %Medication% !s
 }
 
 addICD(TextDescription, ICD)
