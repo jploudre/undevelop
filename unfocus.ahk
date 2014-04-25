@@ -1,6 +1,6 @@
 InitialSettings()
 
-WordList := WordlistFromDataFile(ByRef icdlist)
+WordList := WordlistFromDataFile(listtypeicd, ByRef icdlist)
 Sort, Wordlist, U
 
 ; Set Up GUI
@@ -323,13 +323,15 @@ StrScore(string, word, fuziness=0){
   return finalScore
 }
 
-WordlistFromDataFile(ByRef datafile)
+WordlistFromDataFile(listtype, ByRef datafile)
 {
 	global
 	Loop, parse, datafile, |
 	{
 		loop, parse, A_Loopfield, ^
 		{
+			;if (listtype = "listtypeicd")
+			;{
 			if (A_Index = "1"){
 			StringUpper, titlecase, A_Loopfield, T
 			WordList .= stethoscope  . "`t" .  titlecase . "`t"
@@ -337,6 +339,13 @@ WordlistFromDataFile(ByRef datafile)
 			if (A_Index = "2"){
 			WordList .= A_Loopfield . "`t"
 			}
+			;} ;list-type-icd
+			;else 
+			;{
+			;msgbox Invalid List Type	
+			;break
+			;}
+			
 		}
 		WordList .= "`n"
 	}
@@ -461,7 +470,7 @@ ProcessSelection(theuserchoice)
 ; Assumes tab delimited line with 1) Icon character, 2) The Selected Text, 3 and on) Items to process.
 
 userchoicechunks := StrSplit(theuserchoice, A_Tab)
-if (userchoicechunks[1] = "…")
+if (userchoicechunks[1] = stethoscope)
 {
 addICD(userchoicechunks[2], userchoicechunks[3])
 }
@@ -470,6 +479,7 @@ addICD(userchoicechunks[2], userchoicechunks[3])
 
 addICD(TextDescription, ICD)
 {
+Global
 ; For now assumes in Update
 Click, 405, 40
 WinWaitActive, New Problem
@@ -484,7 +494,7 @@ WinWaitActive New Problem
 Sleep, 100
 Click, 510, 421
 WinWaitActive Update
-Notify("…", "Added",TextDescription)
+Notify(stethoscope, "Added",TextDescription)
 }
 
 Notify(Type, Title, Message)
