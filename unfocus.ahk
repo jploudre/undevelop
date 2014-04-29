@@ -489,7 +489,7 @@ return
 
 ProcessSelection(theuserchoice)
 {
-	global
+global
 ; Assumes tab delimited line with 1) Icon character, 2) The Selected Text, 3 and on) Items to process.
 
 userchoicechunks := StrSplit(theuserchoice, A_Tab)
@@ -503,7 +503,7 @@ addMed(userchoicechunks[2])
 }
 if (userchoicechunks[1] = labbeaker) ; Order
 {
-addOrder(userchoicechunks[3])
+addOrder(userchoicechunks[2])
 }
 
 }
@@ -518,7 +518,8 @@ Sleep, 100
 Click, 716, 51
 WinWaitActive, Find Medication
 sleep, 100
-SendInput %Medication% !s
+SendInput %Medication%
+Send !s
 }
 
 AddOrder(Order)
@@ -537,7 +538,6 @@ Sleep, 100
 Click, 739, 542
 }
 
-
 addICD(TextDescription, ICD)
 {
 Global
@@ -548,7 +548,8 @@ Sleep, 100
 Click, 586, 72
 WinWaitActive, Find Problem
 sleep, 100
-SendInput %ICD% !s
+SendInput %ICD% 
+SendInput !s
 Sleep, 100
 Click 491, 422
 WinWaitActive New Problem
