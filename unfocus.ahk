@@ -548,7 +548,7 @@ Sleep, 100
 Click, 586, 72
 WinWaitActive, Find Problem
 sleep, 100
-SendInput %ICD% 
+SendInput %TextDescription% 
 SendInput !s
 Sleep, 100
 Click 491, 422
