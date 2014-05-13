@@ -482,7 +482,6 @@ GetSelection:
 Gui, submit
 GuiControlGet, Choice
 gui, cancel
-SoundPlay, match.wav
 ProcessSelection(Choice)
 gosub, GuiClose
 return
@@ -497,14 +496,17 @@ userchoicechunks := StrSplit(theuserchoice, A_Tab)
 if (userchoicechunks[1] = stethoscope) ; ICD
 {
 addICD(userchoicechunks[2], userchoicechunks[3])
+SoundPlay, match.wav
 }
 if (userchoicechunks[1] = pencilpaper) ; Medication
 {
 addMed(userchoicechunks[2])
+SoundPlay, match.wav
 }
 if (userchoicechunks[1] = labbeaker) ; Order
 {
 addOrder(userchoicechunks[2])
+SoundPlay, match.wav
 }
 
 }
