@@ -480,13 +480,6 @@ WinWaitActive, Find Problem
 sleep, 100
 SendInput %TextDescription% 
 SendInput !s
-Sleep, 100
-Click 491, 422
-WinWaitActive New Problem
-Sleep, 100
-Click, 510, 421
-WinWaitActive Update
-Notify(stethoscope, "Added",TextDescription)
 }
 
 Notify(Type, Title, Message)
