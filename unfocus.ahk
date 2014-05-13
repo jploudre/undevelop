@@ -482,6 +482,7 @@ GetSelection:
 Gui, submit
 GuiControlGet, Choice
 gui, cancel
+SoundPlay, match.wav
 ProcessSelection(Choice)
 gosub, GuiClose
 return
