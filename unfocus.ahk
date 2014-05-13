@@ -357,6 +357,7 @@ DllCall( "GDI32.DLL\AddFontResourceEx", Str, tempfontlocation ,UInt,(FR_PRIVATE:
 FileInstall, data/icdlist.txt, %A_Temp%\icdlist.txt, 1
 FileInstall, data/medlist.txt, %A_Temp%\medlist.txt, 1
 FileInstall, data/orderlist.txt, %A_Temp%\orderlist.txt, 1
+FileInstall, data/match.wav, %A_Temp%\match.wav, 1
 FileRead, icdlist, %A_Temp%\icdlist.txt
 FileRead, medlist, %A_Temp%\medlist.txt
 FileRead, orderlist, %A_Temp%\orderlist.txt
@@ -423,17 +424,17 @@ userchoicechunks := StrSplit(theuserchoice, A_Tab)
 if (userchoicechunks[1] = stethoscope) ; ICD
 {
 addICD(userchoicechunks[2], userchoicechunks[3])
-SoundPlay, match.wav
+SoundPlay, %A_Temp%\match.wav
 }
 if (userchoicechunks[1] = pencilpaper) ; Medication
 {
 addMed(userchoicechunks[2])
-SoundPlay, match.wav
+SoundPlay, %A_Temp%\match.wav
 }
 if (userchoicechunks[1] = labbeaker) ; Order
 {
 addOrder(userchoicechunks[2])
-SoundPlay, match.wav
+SoundPlay, %A_Temp%\match.wav
 }
 
 }
