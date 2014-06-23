@@ -444,11 +444,9 @@ AddMed(Medication)
 Global
 ; For now assumes in Update
 Click, 333, 40
-WinWaitActive, New Medication
-Sleep, 100
+WinWaitActiveDelay("New Medication")
 Click, 716, 51
-WinWaitActive, Find Medication
-sleep, 100
+WinWaitActiveDelay("Find Medication")
 SendInput %Medication%
 Send !s
 }
@@ -458,8 +456,7 @@ AddOrder(Order)
 Global
 ; For now assumes in Update
 Click, 254, 38
-WinWaitActive, Update Orders
-Sleep, 100
+WinWaitActiveDelay("Update Orders")
 Click, 246, 289
 Sleep, 100
 Click, 465, 328
@@ -474,11 +471,9 @@ addICD(TextDescription, ICD)
 Global
 ; For now assumes in Update
 Click, 405, 40
-WinWaitActive, New Problem
-Sleep, 100
+WinWaitActiveDelay("New Problem")
 Click, 586, 72
-WinWaitActive, Find Problem
-sleep, 100
+WinWaitActiveDelay("Find Problem")
 SendInput %TextDescription% 
 SendInput !s
 }
@@ -495,4 +490,10 @@ Gui, 2:Add, Text, c%Base02% x%lefteditoffset% y0, %Title% -- %Message%
 Gui, 2:Show, xCenter y%fromtopposition% w%windowwidth% h%smallboxheight% NoActivate  ; NoActivate avoids deactivating the currently active window.
 Sleep 1500
 GUI, 2:Destroy
+}
+
+WinWaitActiveDelay(winTitle)
+{
+WinWaitActive, %winTitle%
+Sleep, 1000
 }
